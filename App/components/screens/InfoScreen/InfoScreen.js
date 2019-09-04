@@ -25,7 +25,7 @@ export default class InfoScreen extends React.Component {
 	this.setState({ expanded: !this.state.expanded });
   }
   componentDidMount() {
-		return fetch('http://192.168.1.80:3001/ourcampaigns')
+		return fetch('http://xxx.xxx.x.xx:3001/ourcampaigns')//replace the x with your own IP or localhost
 			.then((response) => response.json())
 			.then((reponseJson) => {
 				console.log(reponseJson[0]);
