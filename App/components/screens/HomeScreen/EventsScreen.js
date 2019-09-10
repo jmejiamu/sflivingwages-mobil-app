@@ -27,6 +27,11 @@ export default class EventScreen extends React.Component {
                 	    title="Today Date"
                 	    onPress={() => this.props.navigation.navigate('Event')}
                 	/>
+					<Button
+						title="+"
+						onPress={() => this.props.navigation.navigate('Event')}
+					/>
+
 					<Text>
 					   Calendar
 					</Text>

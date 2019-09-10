@@ -16,6 +16,7 @@
     "nodemon": "^1.19.1",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "react-native-calendars": "^1.212.0",
     "react-native-cardview": "^2.0.3",
     "react-native-drop-down-item": "^1.0.5",
     "react-navigation": "^3.11.0",
