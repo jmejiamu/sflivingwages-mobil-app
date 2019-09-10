@@ -6,19 +6,19 @@ export default HomeNavComponent = (props) => {
 		<View style={styles.homeNav}>
 			<Text 
 			style={styles.homeNavText}
-			onPress={() => props.navigate(props.destination)}
+			onPress={() => props.navigate('News')}
 			>
 				News
 			</Text>
 			<Text
 			style={styles.homeNavText}
-			onPress={() => props.navigate(props.destination)}
+			onPress={() => props.navigate('Media')}
 			>
 				Media
 			</Text>
 			<Text
 			style={styles.homeNavText}
-			onPress={() => props.navigate(props.destination)}
+			onPress={() => props.navigate('Event')}
 			>
 				Events
 			</Text>

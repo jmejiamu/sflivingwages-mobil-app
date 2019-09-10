@@ -4,7 +4,7 @@ import { Button, View, Text, ScrollView } from 'react-native';
 
 import HomeNavComponent from './HomeNavComponent';
 
-export default class EventScreen extends React.Component {
+export default class MediaScreen extends React.Component {
 	// static navigationOptions = {
 	// 	title: 'Event',
 	// };
