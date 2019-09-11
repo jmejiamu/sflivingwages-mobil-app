@@ -1,6 +1,6 @@
 //Import Necessary Packages
 import React from 'react';
-import { Button, View, Text, ScrollView } from 'react-native';
+import { Button, View, Text, ScrollView, StyleSheet,ActivityIndicator } from 'react-native';
 
 import HomeNavComponent from './HomeNavComponent';
 
@@ -9,11 +9,14 @@ export default class EventScreen extends React.Component {
 	// 	title: 'Event',
 	// };
 	
+	
+ 
 	render() {
 		/*
 			Get param, provide a fallback value
 		*/
 		return(
+
 			<ScrollView style={{flex: 1}}>
 				{/*Home Navigation Bar*/}
 				<HomeNavComponent
@@ -26,7 +29,10 @@ export default class EventScreen extends React.Component {
 						Event Page
 					</Text>
 				</View>
+				
 			</ScrollView>
-		);
+
+		)
+		
 	}
 }

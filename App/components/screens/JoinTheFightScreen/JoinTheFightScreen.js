@@ -63,12 +63,12 @@ export default class JoinTheFightScreen extends React.Component {
 			})
 
 				return(
-				<View  style={styles.item}>
-					<Text style={styles.titleCam}>Our Campaings</Text>
-					<ScrollView>
-							{data}	
-					</ScrollView>
-				</View>
+					<View  style={styles.item}>
+						<Text style={styles.titleCam}>Join the Fight</Text>
+						<ScrollView>
+								{data}	
+						</ScrollView>
+					</View>
 				)
 		}
   }
