@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView
+} from 'react-native';
 
 export default HomeNavComponent = (props) => {
 	return(
+
+	<ScrollView style={{ flex: 1}}>
 		<View style={styles.homeNav}>
 			<Text 
 			style={styles.homeNavText}
@@ -23,6 +26,8 @@ export default HomeNavComponent = (props) => {
 				Events
 			</Text>
 		</View>
+		 </ScrollView>
+
 	);
 };
 

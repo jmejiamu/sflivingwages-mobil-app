@@ -3,6 +3,7 @@ import React from 'react';
 import { Button, View, Text, ScrollView } from 'react-native';
 
 import HomeNavComponent from './HomeNavComponent';
+import CalendarNav from './CalendarNav';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 
 export default class EventScreen extends React.Component {
@@ -21,27 +22,16 @@ export default class EventScreen extends React.Component {
 					navigate={this.props.navigation.navigate}
 
 				/>
-				{/*Page Contents*/}
-				<View>
-				    <Button
-                	    title="Today Date"
-                	    onPress={() => this.props.navigation.navigate('Event')}
-                	/>
-					<Button
-						title="+"
-						onPress={() => this.props.navigation.navigate()}
-					/>
+				<CalendarNav
+                    navigate={this.props.navigation.navigate}
 
-					<Text>
-					   Calendar
-					</Text>
+                />
+
 
 					<CalendarList onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}
 					 pastScrollRange={24} futureScrollRange={24} />
 
 
-
-				</View>
 			</ScrollView>
 		);
 	}
