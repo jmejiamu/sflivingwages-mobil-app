@@ -30,7 +30,6 @@ export default class HomeScreen extends React.Component {
       {/*Home Page Navigation part*/}
       <HomeNavComponent
         navigate={this.props.navigation.navigate}
-        destination='Event'
       />
       {/*Start of the Home Page Contents*/}
         <View style={{ height: 300 }}>
