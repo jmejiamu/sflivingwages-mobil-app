@@ -12,6 +12,8 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 // Pages/Screens
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import EventsScreen from '../screens/HomeScreen/EventsScreen';
+import MediaScreen from "../screens/HomeScreen/MediaScreen";
+import NewsScreen from "../screens/HomeScreen/NewsScreen";
 import JoinTheFightScreen from '../screens/JoinTheFightScreen/JoinTheFightScreen';
 import AboutScreen from '../screens/AboutScreen/AboutScreen';
 import InfoScreen from '../screens/InfoScreen/InfoScreen';
@@ -35,7 +37,9 @@ export const header = ({navigation}) => ({
 export const HomeStack = createStackNavigator(
 	{
 		Home: HomeScreen,
-		Event: EventsScreen
+		Event: EventsScreen,
+		Media: MediaScreen,
+		News: NewsScreen
 	},
 	{
 		defaultNavigationOptions: header,
