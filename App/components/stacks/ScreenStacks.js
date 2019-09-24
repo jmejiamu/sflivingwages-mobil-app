@@ -14,6 +14,7 @@ import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import EventsScreen from '../screens/HomeScreen/EventsScreen';
 import MediaScreen from "../screens/HomeScreen/MediaScreen";
 import NewsScreen from "../screens/HomeScreen/NewsScreen";
+import PlusScreen from "../screens/HomeScreen/PlusScreen";
 import JoinTheFightScreen from '../screens/JoinTheFightScreen/JoinTheFightScreen';
 import AboutScreen from '../screens/AboutScreen/AboutScreen';
 import InfoScreen from '../screens/InfoScreen/InfoScreen';
@@ -28,7 +29,7 @@ import { styles, bannerStyle } from '../style/styleSheet';
 
 // header bar
 export const header = ({navigation}) => ({
-	headerTitle: <LogoHeader/>,
+	headerTitle: <LogoHeader navigationProps={'Home'}/>,
 	headerStyle: bannerStyle.bannerHeaderStyle,
 	headerLeft: <NavigationDrawerStructure navigationProps={navigation}/>
 });
@@ -36,10 +37,11 @@ export const header = ({navigation}) => ({
 // Stack Screen for Home, News, Medias, Events
 export const HomeStack = createStackNavigator(
 	{
-		Home: HomeScreen,
+		Home: {screen: HomeScreen},
 		Event: EventsScreen,
 		Media: MediaScreen,
-		News: NewsScreen
+		News: NewsScreen,
+		Plus: PlusScreen
 	},
 	{
 		defaultNavigationOptions: header,
