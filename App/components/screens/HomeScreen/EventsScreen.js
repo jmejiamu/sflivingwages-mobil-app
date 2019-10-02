@@ -47,31 +47,32 @@ export default class EventScreen extends React.Component {
 
                // marked: true means it has to mark the day
 						// selected: true means it selected in a circle
+
 	         	markedDates={{
 					'2019-10-16': {marked: true, selectedColor: 'blue'},
 					'2019-10-17': {marked: true},
 					'2019-10-18': {marked: true, dotColor: 'blue'}
 				}}
+								  currentD={'2019-10-16'}
+						  onDayPress={(day)=>{
 
-                  /*
-					/////////// Sooooooooooooooooo, above code markedDates is the date to mark up manually. I haven't figure out
-					how to markup based on the day I have on google sheets yet./////////////////////////////
+						  	this.setState({
+							  selected: day.dateString
+						  });
 
-					/////////// onDayPress is the method that will do something as long as user press it. Pls help me figure out
-					what argument I should put on on 'day' variable. For now, I use PlusScreen just to test if it leads to another
-					page or not. You can create a new page to test it out too //////////////////////////////
+						  	if(day.dateString == '2019-10-16'  ) {
+
+								this.props.navigation.navigate('News')
+								console.log(day.dateString)
+							}
+						  }}
 
 
 
-				/* Code below */
 
 
-					/*
-						  onDayPress={(day) => props.navigate('PlusScreen')}
-
-						// callback that gets called when day changes while scrolling agenda list
-								  onDayChange={(day)=>{console.log('day changed')}}
-
+					// callback that gets called when day changes while scrolling agenda list
+								  onDayChange={(day)=>{console.log('day changed', day)}}
 
 
 						// specify how empty date content with no items should be rendered
@@ -85,7 +86,7 @@ export default class EventScreen extends React.Component {
 						// Hide knob button. Default = false
 								  hideKnob={true}
 						// By default, agenda dates are marked if they have at least one item, but you can override this if needed
-                      */
+
 						/>
 
 
