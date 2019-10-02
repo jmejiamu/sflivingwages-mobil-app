@@ -24,7 +24,7 @@ export default class PlusScreen extends React.Component {
 
 
                     <Text>
-                        + hi
+                        eventsssss
                     </Text>
 
                     <CalendarList onVisibleMonthsChange={(months) => {console.log('now these months are visible', months);}}

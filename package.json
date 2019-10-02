@@ -20,6 +20,7 @@
     "react-native-cardview": "^2.0.3",
     "react-native-drop-down-item": "^1.0.5",
     "react-native-general-calendars": "^1.10.1",
+    "react-native-square-in-app-payments": "^1.2.3",
     "react-navigation": "^3.11.0",
     "react-twitter-embed": "^2.0.8",
     "request": "^2.88.0"
