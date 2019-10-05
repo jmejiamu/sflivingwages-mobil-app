@@ -13,6 +13,7 @@
     "expo": "^33.0.1",
     "express": "^4.17.1",
     "mysql": "^2.17.1",
+    "native-base": "^2.13.8",
     "nodemon": "^1.19.1",
     "react": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",

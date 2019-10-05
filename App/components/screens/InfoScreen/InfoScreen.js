@@ -5,6 +5,7 @@ import {
 	LayoutAnimation, Platform, UIManager, TouchableOpacity
  } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { Container, Header, Content, Accordion } from "native-base";
 
 export default class InfoScreen extends React.Component {
 	/*=====Change the navigation styling for this page=========*/
@@ -25,7 +26,7 @@ export default class InfoScreen extends React.Component {
 	this.setState({ expanded: !this.state.expanded });
   }
   componentDidMount() {
-		return fetch('http://192.168.1.80:3001/ourcampaigns')//replace the x with your own IP or localhost
+		return fetch('http://192.168.1.x:3001/ourcampaigns')//replace the x with your own IP or localhost
 			.then((response) => response.json())
 			.then((reponseJson) => {
 				console.log(reponseJson[0]);
@@ -61,7 +62,7 @@ export default class InfoScreen extends React.Component {
 					</View>
 				);		
 			})
-
+			
 				return(
 				<View  style={styles.item}>
 					<Text style={styles.titleCam}>Our Campaings</Text>
@@ -69,6 +70,7 @@ export default class InfoScreen extends React.Component {
 							{data}	
 					</ScrollView>
 				</View>
+				
 				)
 		}
   }

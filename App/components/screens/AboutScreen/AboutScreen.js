@@ -1,6 +1,6 @@
 //Import Necessary Packages
 import React from 'react';
-import { Button, View, Text, ActivityIndicator, StyleSheet } from 'react-native';
+import { Button, View, Text, ActivityIndicator, StyleSheet,Image } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { FlatList } from 'react-native-gesture-handler';
 
@@ -15,7 +15,7 @@ export default class AboutScreen extends React.Component {
 		}
 	}
  componentDidMount() {
-		return fetch('http://192.168.1.80:3001/about') //replace the x with your own IP or localhost
+		return fetch('http://192.168.1.x:3001/about') //replace the x with your own IP or localhost
 			.then((response) => response.json())
 			.then((reponseJson) => {
 				console.log(reponseJson);
@@ -39,8 +39,12 @@ export default class AboutScreen extends React.Component {
 				return(
 				<View  style={styles.item}>
 						<Text style={styles.titleAbout}>About Us</Text>
-							<Text style={styles.aboutInfoText}>{ this.state.dataSource.aboutinfo }</Text>
-					</View>
+							<Text style={styles.aboutInfoText}>{ this.state.dataSource.abooutinfo }</Text>
+					
+						
+				
+
+				</View>
 				)
 		}
 			
