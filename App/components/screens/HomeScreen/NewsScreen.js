@@ -50,7 +50,7 @@ export default class NewsScreen extends React.Component {
 				{/*Page Contents*/}
 				<View style={{justifyContent: 'center', alignItems: 'center'}}>
 					<Text style={{textAlign: 'center'}}>
-						News Page
+						News
 					</Text>
 				</View>
 				<FlatList
