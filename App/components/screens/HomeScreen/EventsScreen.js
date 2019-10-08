@@ -12,10 +12,26 @@ export default class EventScreen extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			items:{}
+			items:{},
+			data: null
 		}
 	}
-	
+
+	//getting data from database
+	componentWillMount () {
+		this.fetchData();
+	}
+    //fetching the data
+	fetchData = async () => {
+		const response  = await fetch('http://192.168.1.172:3001/calendar');
+		const json = await response.json();
+		console.log(json[0]);
+		this.setState({
+			data: json.start_date
+
+		})
+
+	}
 	render() {
 		/*
 			Get param, provide a fallback value
@@ -45,7 +61,8 @@ export default class EventScreen extends React.Component {
 						Calendar
 					</Text>
 
-					{/* <CalendarList style={styles.cal}
+
+					/* <CalendarList style={styles.cal}
 						onVisibleMonthsChange={(months) => {
 							console.log('now these months are visible', months);
 						}}
@@ -61,15 +78,27 @@ export default class EventScreen extends React.Component {
 						onDayPress={(day) => {console.log('I click this day', day)}}
 						// specify how each item should be rendered in agenda
   						renderItem={(item, firstItemInDay) => {return (<View />);}}
-						/> */}
+						/> */
 
 						<Agenda
-								items={this.state.items}
-								loadItemsForMonth={this.loadItems.bind(this)}
 								selected={new Date()}
+								items={this.state.items}
+                                emptyDates = {this.state.emptyDates}
+								loadItemsForMonth={this.loadItems.bind(this)}
 								renderItem={this.renderItem.bind(this)}
 								renderEmptyDate={this.renderEmptyDate.bind(this)}
 								rowHasChanged={this.rowHasChanged.bind(this)}
+
+
+								//markedDates = {this.state.data.start_date}
+
+								//Example Dates to mark
+
+								markedDates={this.state.data}
+
+
+								//}}
+
 						/>
 
 
@@ -82,21 +111,37 @@ export default class EventScreen extends React.Component {
 	}
 	loadItems(day) {
 		setTimeout(() => {
-		  for (let i = -15; i < 85; i++) {
+
+
+		  for (let i = -1; i < 5; i++) {
 			const time = day.timestamp + i * 24 * 60 * 60 * 1000;
 			console.log(time);
 			const strTime = this.timeToString(time);
+			//  console.log(strTime);
 			
 			if (!this.state.items[strTime]) {
 			  this.state.items[strTime] = [];
-			  const numItems = 3;
-			  for (let j = 0; j < numItems; j++) {
+			  const numItems = 1;
+			  for (let j = 0; j < 1; j++) {
 				this.state.items[strTime].push({
-				  name: 'Item for ' + strTime,
+				  name: 'No Event for ' + strTime,
 				  height: 50
 				});
 			  }
 			}
+
+			if(day.dateString == '2019-10-16') {
+				this.state.emptyDates[strTime] = [];
+				const numItems = 1;
+				for (let j = 0; j < numItems; j++) {
+					this.state.emptyDates[strTime].push({
+						name: ' No Event ',
+						height: 50
+					});
+				}
+
+			}
+
 		  }
 		  //console.log(this.state.items);
 		  const newItems = {};
@@ -134,7 +179,7 @@ export default class EventScreen extends React.Component {
 
 	const styles = StyleSheet.create({
 		item: {
-		  backgroundColor: 'red',
+		  backgroundColor: 'white',
 		  flex: 1,
 		  borderRadius: 5,
 		  paddingLeft: 10,

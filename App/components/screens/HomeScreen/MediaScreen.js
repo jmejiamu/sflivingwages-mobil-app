@@ -18,7 +18,7 @@ export default class MediaScreen extends React.Component {
 	}
 
 	fetchData = async () => {
-		const response  = await fetch('http://192.168.1.x:3001/pictures');
+		const response  = await fetch('http://192.168.1.172:3001/pictures');
 		const json = await response.json();
 		console.log(json[0]);
 		this.setState({
