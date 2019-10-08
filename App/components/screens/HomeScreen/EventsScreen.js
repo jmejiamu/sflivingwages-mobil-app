@@ -13,7 +13,7 @@ export default class EventScreen extends React.Component {
 		super(props);
 		this.state = {
 			items:{},
-			data: null
+			data: []
 		}
 	}
 
@@ -27,7 +27,7 @@ export default class EventScreen extends React.Component {
 		const json = await response.json();
 		console.log(json[0]);
 		this.setState({
-			data: json.start_date
+			data: json
 
 		})
 
@@ -62,7 +62,7 @@ export default class EventScreen extends React.Component {
 					</Text>
 
 
-					/* <CalendarList style={styles.cal}
+					{	/* <CalendarList style={styles.cal}
 						onVisibleMonthsChange={(months) => {
 							console.log('now these months are visible', months);
 						}}
@@ -79,30 +79,32 @@ export default class EventScreen extends React.Component {
 						// specify how each item should be rendered in agenda
   						renderItem={(item, firstItemInDay) => {return (<View />);}}
 						/> */
+					}
 
-						<Agenda
-								selected={new Date()}
-								items={this.state.items}
-                                emptyDates = {this.state.emptyDates}
-								loadItemsForMonth={this.loadItems.bind(this)}
-								renderItem={this.renderItem.bind(this)}
-								renderEmptyDate={this.renderEmptyDate.bind(this)}
-								rowHasChanged={this.rowHasChanged.bind(this)}
-
-
-								//markedDates = {this.state.data.start_date}
-
-								//Example Dates to mark
-
-								markedDates={this.state.data}
-
-
-								//}}
-
-						/>
 
 
 				</View>
+				<Agenda
+					selected={new Date()}
+					items={this.state.items}
+					emptyDates = {this.state.emptyDates}
+					loadItemsForMonth={this.loadItems.bind(this)}
+					renderItem={this.renderItem.bind(this)}
+					renderEmptyDate={this.renderEmptyDate.bind(this)}
+					rowHasChanged={this.rowHasChanged.bind(this)}
+
+
+					//markedDates = {this.state.data.start_date}
+
+					//Example Dates to mark
+
+					markedDates={this.state.data}
+
+
+					//}}
+
+				/>
+
 
 				</ScrollView>
 
