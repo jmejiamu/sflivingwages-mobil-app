@@ -9,12 +9,7 @@ export default class EventScreen extends React.Component {
 	// static navigationOptions = {
 	// 	title: 'Event',
 	// };
-	constructor(props){
-		super(props);
-		this.state = {
-			items:{}
-		}
-	}
+	
 	
 	render() {
 		/*
@@ -22,6 +17,7 @@ export default class EventScreen extends React.Component {
 		*/
 		
 		return (
+			
 
 			<ScrollView style={{ flex: 1 }}>
 				{/*Home Navigation Bar*/}
@@ -44,7 +40,7 @@ export default class EventScreen extends React.Component {
 					<Text>
 						Calendar
 					</Text>
-
+						
 					{/* <CalendarList style={styles.cal}
 						onVisibleMonthsChange={(months) => {
 							console.log('now these months are visible', months);
@@ -63,6 +59,7 @@ export default class EventScreen extends React.Component {
   						renderItem={(item, firstItemInDay) => {return (<View />);}}
 						/> */}
 
+
 						<Agenda
 								items={this.state.items}
 								loadItemsForMonth={this.loadItems.bind(this)}
@@ -70,9 +67,9 @@ export default class EventScreen extends React.Component {
 								renderItem={this.renderItem.bind(this)}
 								renderEmptyDate={this.renderEmptyDate.bind(this)}
 								rowHasChanged={this.rowHasChanged.bind(this)}
+
 						/>
-
-
+						
 				</View>
 
 				</ScrollView>

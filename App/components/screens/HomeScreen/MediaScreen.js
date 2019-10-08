@@ -1,6 +1,6 @@
 //Import Necessary Packages
 import React from 'react';
-import { Button, View, Text, ScrollView, Image, FlatList,StyleSheet } from 'react-native';
+import { Button, View, Text, ScrollView, Image, FlatList,StyleSheet, TouchableOpacity } from 'react-native';
 
 import HomeNavComponent from './HomeNavComponent';
 
@@ -10,21 +10,24 @@ export default class MediaScreen extends React.Component {
 	// };
 
 	state = {
-		data:[]
+		dataBooks:[], 
+		dataArt:[]
+
 	}
 	componentWillMount () {
 		this.fetchData();
 	}
 
 	fetchData = async () => {
-		const response  = await fetch('http://192.168.1.x:3001/pictures');
-		const json = await response.json();
-		console.log(json[0]);
-		this.setState({
-			data: json
-			
-		})
-		
+		Promise.all([
+            fetch('http://192.168.1.x:3001/pictures'),
+            fetch('http://192.168.1.x:3001/arts')
+        ])
+        .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
+        .then(([data1, data2]) => this.setState({
+            dataBooks: data1, 
+            dataArt: data2
+        }));
 	}
 	render() {
 		/*
@@ -45,14 +48,34 @@ export default class MediaScreen extends React.Component {
 					<Text style={styles.titleStyle}> Books </Text>
 					<FlatList 
 						horizontal={true}
-						data={this.state.data}
+						data={this.state.dataBooks}
 						keyExtractor={(item, index) => index.toString()}
 						renderItem={({item})=> {
 						return(
 							<View style={{flex:1}}>
+								<TouchableOpacity>
+									<Image
+										style={{width: 155, height: 150,  marginLeft: 15}}
+										source = {{uri: item.path}}/>
+								</TouchableOpacity>
+								<Text style={{marginLeft: 15}}>{item.details}</Text>
+						 	</View>
+						)
+						}}
+					/>
+					<Text style={styles.titleStyle}> Art </Text>
+					<FlatList 
+						horizontal={true}
+						data={this.state.dataArt}
+						keyExtractor={(item, index) => index.toString()}
+						renderItem={({item})=> {
+						return(
+							<View style={{flex:1}}>
+								<TouchableOpacity>
 								<Image
-								style={{width: 155, height: 150,  marginLeft: 15}}
-								source = {{uri: item.path}}/>
+									style={{width: 155, height: 150,  marginLeft: 15}}
+									source = {{uri: item.path}}/>
+								</TouchableOpacity>
 								<Text style={{marginLeft: 15}}>{item.details}</Text>
 						 	</View>
 						)

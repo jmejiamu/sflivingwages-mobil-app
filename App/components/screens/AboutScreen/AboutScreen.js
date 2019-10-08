@@ -2,7 +2,6 @@
 import React from 'react';
 import { Button, View, Text, ActivityIndicator, StyleSheet,Image } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import { FlatList } from 'react-native-gesture-handler';
 
 
 export default class AboutScreen extends React.Component {
@@ -15,7 +14,7 @@ export default class AboutScreen extends React.Component {
 		}
 	}
  componentDidMount() {
-		return fetch('http://192.168.1.x:3001/about') //replace the x with your own IP or localhost
+		return fetch('http://192.168.1.x:3001/events') //replace the x with your own IP or localhost
 			.then((response) => response.json())
 			.then((reponseJson) => {
 				console.log(reponseJson);
@@ -38,12 +37,9 @@ export default class AboutScreen extends React.Component {
 		} else {
 				return(
 				<View  style={styles.item}>
-						<Text style={styles.titleAbout}>About Us</Text>
-							<Text style={styles.aboutInfoText}>{ this.state.dataSource.abooutinfo }</Text>
+						<Text style={styles.titleAbout}>{this.state.dataSource.title}</Text>
+							<Text style={styles.aboutInfoText}>{ this.state.dataSource.aboutinfo }</Text>
 					
-						
-				
-
 				</View>
 				)
 		}
