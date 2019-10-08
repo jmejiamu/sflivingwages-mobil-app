@@ -12,6 +12,7 @@
     "cheerio": "^1.0.0-rc.3",
     "expo": "^33.0.1",
     "express": "^4.17.1",
+    "moment": "^2.24.0",
     "mysql": "^2.17.1",
     "native-base": "^2.13.8",
     "nodemon": "^1.19.1",
@@ -20,8 +21,13 @@
     "react-native-calendars": "^1.212.0",
     "react-native-cardview": "^2.0.3",
     "react-native-drop-down-item": "^1.0.5",
+    "react-native-elements": "^1.2.6",
     "react-native-general-calendars": "^1.10.1",
+<<<<<<< HEAD
     "react-native-gesture-handler": "1.2.1",
+=======
+    "react-native-modal": "^11.4.0",
+>>>>>>> c85e412fd1072af1d68848ce9641ec719ed20544
     "react-native-square-in-app-payments": "^1.2.3",
     "react-navigation": "^3.11.0",
     "react-twitter-embed": "^2.0.8",

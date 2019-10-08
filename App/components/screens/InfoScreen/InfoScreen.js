@@ -5,7 +5,7 @@ import {
 	LayoutAnimation, Platform, UIManager, TouchableOpacity
  } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import { Container, Header, Content, Accordion } from "native-base";
+//import { Container, Header, Content, Accordion } from "native-base";
 
 export default class InfoScreen extends React.Component {
 	/*=====Change the navigation styling for this page=========*/
