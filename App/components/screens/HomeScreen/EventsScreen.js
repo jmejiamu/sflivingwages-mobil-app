@@ -9,10 +9,6 @@ export default class EventScreen extends React.Component {
 	// static navigationOptions = {
 	// 	title: 'Event',
 	// };
-<<<<<<< HEAD
-	
-	
-=======
 	constructor(props){
 		super(props);
 		this.state = {
@@ -36,7 +32,6 @@ export default class EventScreen extends React.Component {
 		})
 
 	}
->>>>>>> c85e412fd1072af1d68848ce9641ec719ed20544
 	render() {
 		/*
 			Get param, provide a fallback value
@@ -66,14 +61,9 @@ export default class EventScreen extends React.Component {
 					<Text>
 						Calendar
 					</Text>
-<<<<<<< HEAD
-						
-					{/* <CalendarList style={styles.cal}
-=======
 
 
 					{	/* <CalendarList style={styles.cal}
->>>>>>> c85e412fd1072af1d68848ce9641ec719ed20544
 						onVisibleMonthsChange={(months) => {
 							console.log('now these months are visible', months);
 						}}
@@ -93,16 +83,6 @@ export default class EventScreen extends React.Component {
 					}
 
 
-<<<<<<< HEAD
-						<Agenda
-								items={this.state.items}
-								loadItemsForMonth={this.loadItems.bind(this)}
-								selected={new Date()}
-								renderItem={this.renderItem.bind(this)}
-								renderEmptyDate={this.renderEmptyDate.bind(this)}
-								rowHasChanged={this.rowHasChanged.bind(this)}
-=======
->>>>>>> c85e412fd1072af1d68848ce9641ec719ed20544
 
 						/>
 						
