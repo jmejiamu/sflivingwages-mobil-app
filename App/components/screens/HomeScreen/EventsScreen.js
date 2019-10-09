@@ -13,24 +13,23 @@ export default class EventScreen extends React.Component {
 		super(props);
 		this.state = {
 			items:{},
-			data: []
+			data: {},
 		}
 	}
 
 	//getting data from database
-	componentWillMount () {
-		this.fetchData();
-	}
-    //fetching the data
-	fetchData = async () => {
-		const response  = await fetch('http://192.168.1.172:3001/calendar');
-		const json = await response.json();
-		console.log(json[0]);
-		this.setState({
-			data: json
-
-		})
-
+	componentDidMount() {
+		return fetch('http://192.168.1.73:3001/calendar') //replace the x with your own IP or localhost
+			.then((response) => response.json())
+			.then((reponseJson) => {
+				console.log(reponseJson[0]);
+				this.setState({
+					data: reponseJson[0]
+				})
+			})
+			.catch((error) => {
+				console.log(error)
+			});
 	}
 	render() {
 		/*
@@ -84,7 +83,7 @@ export default class EventScreen extends React.Component {
 
 
 
-						/>
+					
 						
 				</View>
 				<Agenda
@@ -101,10 +100,18 @@ export default class EventScreen extends React.Component {
 
 					//Example Dates to mark
 
-					markedDates={this.state.data}
+					
+					markedDates={{
+						// '2019-10-16': {marked: true, selectedColor: 'blue'},
+						  [this.state.data.start_date]: {marked: true, selectedColor: 'blue', dotColor: 'red'},
+						// [this.state.data.start_date]: {marked: true, selectedColor: 'blue', dotColor: 'green'},
+						
+						// '2019-10-17': {marked: true},
+						// '2019-10-18': {marked: true, dotColor: 'blue'}
+					}}
 
 
-					//}}
+					
 
 				/>
 
@@ -112,8 +119,9 @@ export default class EventScreen extends React.Component {
 				</ScrollView>
 
 		)
-
+				
 	}
+
 	loadItems(day) {
 		setTimeout(() => {
 
@@ -129,7 +137,7 @@ export default class EventScreen extends React.Component {
 			  const numItems = 1;
 			  for (let j = 0; j < 1; j++) {
 				this.state.items[strTime].push({
-				  name: 'No Event for ' + strTime,
+				  name: this.state.data.description + strTime,
 				  height: 50
 				});
 			  }
@@ -140,7 +148,7 @@ export default class EventScreen extends React.Component {
 				const numItems = 1;
 				for (let j = 0; j < numItems; j++) {
 					this.state.emptyDates[strTime].push({
-						name: ' No Event ',
+						name: 'No events',
 						height: 50
 					});
 				}
