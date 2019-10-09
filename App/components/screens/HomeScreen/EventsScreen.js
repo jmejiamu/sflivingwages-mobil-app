@@ -19,7 +19,7 @@ export default class EventScreen extends React.Component {
 
 	//getting data from database
 	componentDidMount() {
-		return fetch('http://192.168.1.73:3001/calendar') //replace the x with your own IP or localhost
+		return fetch('http://192.168.0.8:3001/calendar') //replace the x with your own IP or localhost
 			.then((response) => response.json())
 			.then((reponseJson) => {
 				console.log(reponseJson[0]);
@@ -95,19 +95,10 @@ export default class EventScreen extends React.Component {
 					renderEmptyDate={this.renderEmptyDate.bind(this)}
 					rowHasChanged={this.rowHasChanged.bind(this)}
 
-
 					//markedDates = {this.state.data.start_date}
-
 					//Example Dates to mark
-
-					
 					markedDates={{
-						// '2019-10-16': {marked: true, selectedColor: 'blue'},
-						  [this.state.data.start_date]: {marked: true, selectedColor: 'blue', dotColor: 'red'},
-						// [this.state.data.start_date]: {marked: true, selectedColor: 'blue', dotColor: 'green'},
-						
-						// '2019-10-17': {marked: true},
-						// '2019-10-18': {marked: true, dotColor: 'blue'}
+						[this.state.data.start_date]: {marked: true, selectedColor: 'blue', dotColor: 'red'}
 					}}
 
 
@@ -143,17 +134,6 @@ export default class EventScreen extends React.Component {
 			  }
 			}
 
-			if(day.dateString == '2019-10-16') {
-				this.state.emptyDates[strTime] = [];
-				const numItems = 1;
-				for (let j = 0; j < numItems; j++) {
-					this.state.emptyDates[strTime].push({
-						name: 'No events',
-						height: 50
-					});
-				}
-
-			}
 
 		  }
 		  //console.log(this.state.items);
