@@ -25,7 +25,7 @@ export default class JoinTheFightScreen extends React.Component {
 	this.setState({ expanded: !this.state.expanded });
   }
   componentDidMount() {
-		return fetch('http://192.168.1.73:3001/joinus')//replace the x with your own IP or localhost
+		return fetch('http://192.168.1.112:19000/joinus')//replace the x with your own IP or localhost
 			.then((response) => response.json())
 			.then((reponseJson) => {
 				console.log(reponseJson[0]);
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
 		margin: 10,
 		alignItems: 'center',
 		justifyContent: 'center', 
-		backgroundColor: '#F5FCFF'
+		backgroundColor: '#BEBEBE'
 	
 	},
 	titleCam: {

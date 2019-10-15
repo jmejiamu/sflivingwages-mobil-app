@@ -19,6 +19,9 @@ import JoinTheFightScreen from '../screens/JoinTheFightScreen/JoinTheFightScreen
 import AboutScreen from '../screens/AboutScreen/AboutScreen';
 import InfoScreen from '../screens/InfoScreen/InfoScreen';
 import DonateScreen from '../screens/DonateScreen/DonateScreen';
+import DonateMoney from '../screens/DonateScreen/DonateMoney';
+import DonateInKind from '../screens/DonateScreen/DonateInKind';
+import DonateSales from '../screens/DonateScreen/DonateSales';
 
 // Styled Components
 import LogoHeader from './LogoHeader';
@@ -26,6 +29,8 @@ import NavigationDrawerStructure from './NavigationDrawerStructure';
 
 // StyleSheets
 import { styles, bannerStyle } from '../style/styleSheet';
+//import DonateInKind from '../screens/DonateScreen/DonateInKind';
+//import DonateSales from '../screens/DonateScreen/DonateSales';
 
 // header bar
 export const header = ({navigation}) => ({
@@ -41,11 +46,12 @@ export const HomeStack = createStackNavigator(
 		Event: EventsScreen,
 		Media: MediaScreen,
 		News: NewsScreen,
-		Plus: PlusScreen
+		Plus: PlusScreen,
 	},
 	{
-		defaultNavigationOptions: header,
-		headerLayoutPreset: 'center'
+		defaultNavigationOptions: header, styles,
+		headerLayoutPreset: 'center',
+		cardStyle: {backgroundColor: '#BEBEBE'}
 	}
 );
 
@@ -56,7 +62,8 @@ export const DetailsStack = createStackNavigator(
 	},
 	{
 		defaultNavigationOptions: header,
-		headerLayoutPreset: 'center'
+		headerLayoutPreset: 'center',
+		cardStyle: {backgroundColor: '#BEBEBE'}
 	}
 );
 
@@ -67,7 +74,8 @@ export const AboutStack = createStackNavigator(
 	},
 	{
 		defaultNavigationOptions: header,
-		headerLayoutPreset: 'center'
+		headerLayoutPreset: 'center',
+		cardStyle: {backgroundColor: '#BEBEBE'}
 	}
 );
 
@@ -78,17 +86,24 @@ export const InfoStack = createStackNavigator(
 	},
 	{
 		defaultNavigationOptions: header,
-		headerLayoutPreset: 'center'
+		headerLayoutPreset: 'center',
+		cardStyle: {backgroundColor: '#BEBEBE'}
 	}
 );
 
-// Stack Screen for Donation
+// Stack Screen for Donate Money
 export const DonateStack = createStackNavigator(
 	{
-		Donate: DonateScreen
+		Donate: DonateScreen,
+		Money: DonateMoney,
+		Kind: DonateInKind,
+		Sales: DonateSales
 	},
 	{
 		defaultNavigationOptions: header,
-		headerLayoutPreset: 'center'
+		headerLayoutPreset: 'center',
+		cardStyle: {backgroundColor: '#BEBEBE'}
 	}
 );
+
+
