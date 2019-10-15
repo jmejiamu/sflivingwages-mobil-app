@@ -19,7 +19,9 @@ export default class EventScreen extends React.Component {
 
 	//getting data from database
 	componentDidMount() {
-		return fetch('http://192.168.1.73:3001/calendar') //replace the x with your own IP or localhost
+
+		//change this IP address
+		return fetch('http://192.168.1.172:3001/calendar') //replace the x with your own IP or localhost
 			.then((response) => response.json())
 			.then((reponseJson) => {
 				console.log(reponseJson[0]);
@@ -49,8 +51,8 @@ export default class EventScreen extends React.Component {
     			mark[day.start_date] = {selectedColor: true, marked: true, dotColor: 'red'};
 			});
 			console.log(mark);
+
 		return (
-			
 
 			<ScrollView style={{ flex: 1 }}>
 				{/*Home Navigation Bar*/}
@@ -93,11 +95,6 @@ export default class EventScreen extends React.Component {
   						renderItem={(item, firstItemInDay) => {return (<View />);}}
 						/> */
 					}
-				
-
-
-					
-						
 				</View>
 				<Agenda
 					selected={new Date()}
@@ -107,20 +104,12 @@ export default class EventScreen extends React.Component {
 					renderItem={this.renderItem.bind(this)}
 					renderEmptyDate={this.renderEmptyDate.bind(this)}
 					rowHasChanged={this.rowHasChanged.bind(this)}
-
-					//markedDates = {this.state.data.start_date}
 					//Example Dates to mark
-					
 					//old Code that works too
-					// markedDates={{
-					// 	[this.state.data.start_date]: {marked: true, selectedColor: 'blue', dotColor: 'red'}
-						
-					// }}
-	
+					/* markedDates={{
+					 	[this.state.data.start_date]: {marked: true, selectedColor: 'blue', dotColor: 'red'}
+					 }} */
 					markedDates={mark}
-
-
-					
 
 				/>
 
@@ -140,16 +129,17 @@ export default class EventScreen extends React.Component {
 			console.log(time);
 			const strTime = this.timeToString(time);
 			//  console.log(strTime);
-			
+
 			if (!this.state.items[strTime]) {
 			  this.state.items[strTime] = [];
-			  const numItems = 1;
-			  for (let j = 0; j < 1; j++) {
+
 				this.state.items[strTime].push({
-				  name: this.state.data.description + strTime, // here is the events showing undefined
-				  height: 50
+				 // name: this.state.data.description + strTime, // here is the events showing undefined
+					name:  this.state.data[0].description,
+				   height: 50
+
 				});
-			  }
+
 			}
 
 

@@ -21,8 +21,8 @@ export default class MediaScreen extends React.Component {
 
 	fetchData = async () => {
 		Promise.all([
-            fetch('http://192.168.1.73:3001/pictures'),
-            fetch('http://192.168.1.73:3001/arts')
+            fetch('http://192.168.1.172:3001/pictures'),
+            fetch('http://192.168.1.172:3001/arts')
         ])
         .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
         .then(([data1, data2]) => this.setState({
