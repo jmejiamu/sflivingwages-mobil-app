@@ -19,7 +19,9 @@ export default class EventScreen extends React.Component {
 
 	//getting data from database
 	componentDidMount() {
-		return fetch('http://192.168.1.73:3001/calendar') //replace the x with your own IP or localhost
+
+		//change this IP address
+		return fetch('http://192.168.1.112:19000/calendar') //replace the x with your own IP or localhost
 			.then((response) => response.json())
 			.then((reponseJson) => {
 				console.log(reponseJson);
@@ -45,12 +47,21 @@ export default class EventScreen extends React.Component {
 
 		let mark = {};
 
+<<<<<<< HEAD
 		this.state.data.forEach(day => {
 			mark[day.start_date] = { selectedColor: true, marked: true, dotColor: 'red' };
 		});
 		console.log(mark);
 		return (
 
+=======
+			this.state.data.forEach(day => {
+    			mark[day.start_date] = {selectedColor: true, marked: true, dotColor: 'red'};
+			});
+			console.log(mark);
+
+		return (
+>>>>>>> 665e8c3c1d0864473495792a1182e44729c35148
 
 			<ScrollView style={{ flex: 1 }}>
 				{/*Home Navigation Bar*/}
@@ -81,23 +92,24 @@ export default class EventScreen extends React.Component {
 						}}
 						pastScrollRange={0}
 						futureScrollRange={10}
-
 						markedDates={{
 							'2019-10-16': {marked: true, selectedColor: 'blue'},
 							'2019-10-17': {marked: true},
 							'2019-10-18': {marked: true, dotColor: 'blue'}
 						}}
-
 						onDayPress={(day) => {console.log('I click this day', day)}}
 						// specify how each item should be rendered in agenda
   						renderItem={(item, firstItemInDay) => {return (<View />);}}
 						/> */
 					}
+<<<<<<< HEAD
 
 
 
 
 
+=======
+>>>>>>> 665e8c3c1d0864473495792a1182e44729c35148
 				</View>
 				<Agenda
 					selected={new Date()}
@@ -107,9 +119,8 @@ export default class EventScreen extends React.Component {
 					renderItem={this.renderItem.bind(this)}
 					renderEmptyDate={this.renderEmptyDate.bind(this)}
 					rowHasChanged={this.rowHasChanged.bind(this)}
-
-					//markedDates = {this.state.data.start_date}
 					//Example Dates to mark
+<<<<<<< HEAD
 
 					//old Code that works too
 					// markedDates={{
@@ -122,6 +133,14 @@ export default class EventScreen extends React.Component {
 
 
 
+=======
+					//old Code that works too
+					/* markedDates={{
+					 	[this.state.data.start_date]: {marked: true, selectedColor: 'blue', dotColor: 'red'}
+					 }} */
+					markedDates={mark}
+
+>>>>>>> 665e8c3c1d0864473495792a1182e44729c35148
 				/>
 
 
