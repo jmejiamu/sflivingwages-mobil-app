@@ -1,7 +1,8 @@
 //Import Necessary Packages
 import React from 'react';
-import { Button, View, Text, ActivityIndicator, StyleSheet,Image } from 'react-native';
+import { Button, View, Text, ActivityIndicator, StyleSheet,Image, ScrollView } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { withTheme } from 'react-native-elements';
 
 
 export default class AboutScreen extends React.Component {
@@ -14,7 +15,7 @@ export default class AboutScreen extends React.Component {
 		}
 	}
  componentDidMount() {
-		return fetch('http://192.168.1.x:3001/about') //replace the x with your own IP or localhost
+		return fetch('http://192.168.1.112:19000/about') //replace the x with your own IP or localhost
 			.then((response) => response.json())
 			.then((reponseJson) => {
 				console.log(reponseJson);
@@ -37,9 +38,10 @@ export default class AboutScreen extends React.Component {
 		} else {
 				return(
 				<View  style={styles.item}>
-						<Text style={styles.titleAbout}>{this.state.dataSource.title}</Text>
-							<Text style={styles.aboutInfoText}>{ this.state.dataSource.aboutinfo }</Text>
-					
+					<Text style={styles.titleAbout}>{this.state.dataSource.title}</Text>
+					<ScrollView>
+						<Text style={styles.aboutInfoText}>{ this.state.dataSource.aboutinfo }</Text>
+					</ScrollView>
 				</View>
 				)
 		}
@@ -50,7 +52,7 @@ export default class AboutScreen extends React.Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#F5FCFF',
+		backgroundColor: '#F5F5F5',
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
@@ -59,17 +61,23 @@ const styles = StyleSheet.create({
 		alignSelf: 'stretch',
 		margin: 10,
 		alignItems: 'center',
-		justifyContent: 'center',
-		backgroundColor: '#F5FCFF'
+		//justifyContent: 'center',
+		backgroundColor: '#F5F5F5'
 	
 	},
 	titleAbout: {
-		fontSize: 20,
-		color: '#c91a1a'
+		fontSize: 24,
+		color: '#c91a1a',
+		padding: 10,
+		textTransform: 'uppercase',
+		fontWeight: 'bold',
+		paddingBottom: 20,
+		paddingTop: 20,
 	},
 	aboutInfoText: {
 		fontSize: 16,
-		
+		color: '#100c08',
+		paddingHorizontal: 20,
 	}
 	
 })

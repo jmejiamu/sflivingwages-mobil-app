@@ -21,7 +21,7 @@ export default class EventScreen extends React.Component {
 	componentDidMount() {
 
 		//change this IP address
-		return fetch('http://192.168.1.172:3001/calendar') //replace the x with your own IP or localhost
+		return fetch('http://192.168.1.112:19000/calendar') //replace the x with your own IP or localhost
 			.then((response) => response.json())
 			.then((reponseJson) => {
 				console.log(reponseJson[0]);
@@ -83,13 +83,11 @@ export default class EventScreen extends React.Component {
 						}}
 						pastScrollRange={0}
 						futureScrollRange={10}
-
 						markedDates={{
 							'2019-10-16': {marked: true, selectedColor: 'blue'},
 							'2019-10-17': {marked: true},
 							'2019-10-18': {marked: true, dotColor: 'blue'}
 						}}
-
 						onDayPress={(day) => {console.log('I click this day', day)}}
 						// specify how each item should be rendered in agenda
   						renderItem={(item, firstItemInDay) => {return (<View />);}}
@@ -135,7 +133,7 @@ export default class EventScreen extends React.Component {
 
 				this.state.items[strTime].push({
 				 // name: this.state.data.description + strTime, // here is the events showing undefined
-					name:  this.state.data[0].description,
+					name:  this.state.calendars.description+strTime,
 				   height: 50
 
 				});
