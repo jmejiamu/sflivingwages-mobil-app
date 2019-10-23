@@ -14,7 +14,7 @@ export default class AboutScreen extends React.Component {
 		}
 	}
  componentDidMount() {
-		return fetch('http://192.168.1.x:3001/about') //replace the x with your own IP or localhost
+		return fetch('http://192.168.1.73:3001/about') //replace the x with your own IP or localhost
 			.then((response) => response.json())
 			.then((reponseJson) => {
 				console.log(reponseJson);

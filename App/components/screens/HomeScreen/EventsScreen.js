@@ -9,10 +9,10 @@ export default class EventScreen extends React.Component {
 	// static navigationOptions = {
 	// 	title: 'Event',
 	// };
-	constructor(props){
+	constructor(props) {
 		super(props);
 		this.state = {
-			items:{},
+			items: {},
 			data: [],
 		}
 	}
@@ -22,7 +22,7 @@ export default class EventScreen extends React.Component {
 		return fetch('http://192.168.1.73:3001/calendar') //replace the x with your own IP or localhost
 			.then((response) => response.json())
 			.then((reponseJson) => {
-				console.log(reponseJson[0]);
+				console.log(reponseJson);
 				this.setState({
 					data: reponseJson
 				})
@@ -45,12 +45,12 @@ export default class EventScreen extends React.Component {
 
 		let mark = {};
 
-			this.state.data.forEach(day => {
-    			mark[day.start_date] = {selectedColor: true, marked: true, dotColor: 'red'};
-			});
-			console.log(mark);
+		this.state.data.forEach(day => {
+			mark[day.start_date] = { selectedColor: true, marked: true, dotColor: 'red' };
+		});
+		console.log(mark);
 		return (
-			
+
 
 			<ScrollView style={{ flex: 1 }}>
 				{/*Home Navigation Bar*/}
@@ -58,7 +58,7 @@ export default class EventScreen extends React.Component {
 					navigate={this.props.navigation.navigate}
 
 				/>
-				
+
 				{/*Page Contents*/}
 				<View>
 					<Button
@@ -93,16 +93,16 @@ export default class EventScreen extends React.Component {
   						renderItem={(item, firstItemInDay) => {return (<View />);}}
 						/> */
 					}
-				
 
 
-					
-						
+
+
+
 				</View>
 				<Agenda
 					selected={new Date()}
 					items={this.state.items}
-					emptyDates = {this.state.emptyDates}
+					emptyDates={this.state.emptyDates}
 					loadItemsForMonth={this.loadItems.bind(this)}
 					renderItem={this.renderItem.bind(this)}
 					renderEmptyDate={this.renderEmptyDate.bind(this)}
@@ -110,102 +110,119 @@ export default class EventScreen extends React.Component {
 
 					//markedDates = {this.state.data.start_date}
 					//Example Dates to mark
-					
+
 					//old Code that works too
 					// markedDates={{
 					// 	[this.state.data.start_date]: {marked: true, selectedColor: 'blue', dotColor: 'red'}
-						
+
 					// }}
-	
+
 					markedDates={mark}
 
 
-					
+
 
 				/>
 
 
-				</ScrollView>
+			</ScrollView>
 
 		)
-				
+
 	}
+
 
 	loadItems(day) {
 		setTimeout(() => {
 
 
-		  for (let i = -1; i < 5; i++) {
-			const time = day.timestamp + i * 24 * 60 * 60 * 1000;
-			console.log(time);
-			const strTime = this.timeToString(time);
-			//  console.log(strTime);
-			
-			if (!this.state.items[strTime]) {
-			  this.state.items[strTime] = [];
-			  const numItems = 1;
-			  for (let j = 0; j < 1; j++) {
-				this.state.items[strTime].push({
-				  name: this.state.data.description + strTime, // here is the events showing undefined
-				  height: 50
-				});
-			  }
+			for (let i = -1; i < 5; i++) {
+				const time = day.timestamp + i * 24 * 60 * 60 * 1000;
+				console.log(time);
+				const strTime = this.timeToString(time);
+				//  console.log(strTime);
+
+				// if (!this.state.items[strTime]) {
+					this.state.items[strTime] = [];
+					const numItems = 1;
+
+					this.state.data.map((d, index) => {
+						
+						return (
+					 
+					this.state.items[strTime].push({
+						name:
+									<Text key={index}>
+										{d.description 
+											+ '\n' + d.location}
+										{/* { d.location } */}
+									</Text >,
+									height: 50
+						//this.state.data[2].description + strTime, // here is the events showing undefined
+						
+					})
+					)
+				})
+
+				
+
+
 			}
-
-
-		  }
-		  //console.log(this.state.items);
-		  const newItems = {};
-		  Object.keys(this.state.items).forEach(key => {newItems[key] = this.state.items[key];});
-		  this.setState({
-			items: newItems
-		  });
+			//console.log(this.state.items);
+			const newItems = {};
+			Object.keys(this.state.items).forEach(key => { newItems[key] = this.state.items[key]; });
+			this.setState({
+				items: newItems
+			});
+			console.log('newItems object',newItems);
 		}, 1000);
-		// console.log(`Load Items for ${day.year}-${day.month}`);
-	  }
-	
-	  renderItem(item) {
-		return (
-		  <View style={{height: 40}}>
-			<View style={[styles.item, {height: item.height}]}><Text>{item.name}</Text></View>
-		  </View>
-		);
-	  }
-	
-	  renderEmptyDate() {
-		return (
-		  <View style={styles.emptyDate}><Text>This is empty date!</Text></View>
-		);
-	  }
-	
-	  rowHasChanged(r1, r2) {
-		return r1.name !== r2.name;
-	  }
-	
-	  timeToString(time) {
-		const date = new Date(time);
-		return date.toISOString().split('T')[0];
-	  }
+		//console.log(`Load Items for ${day.year}-${day.month}`);
 	}
 
-	const styles = StyleSheet.create({
-		item: {
-		  backgroundColor: 'white',
-		  flex: 1,
-		  borderRadius: 5,
-		  paddingLeft: 10,
-		  marginRight: 10,
-		  justifyContent: 'center',
-		  marginTop: 5,
-	  
-		},
-		emptyDate: {
-		  backgroundColor: 'green',
-		  flex: 1,
-		  borderRadius: 5,
-		  padding: 10,
-		  marginRight: 10,
-		  marginTop: 5,
-		  height:20,
-		}
-	  });
+	renderItem(item) {
+		return (
+			<View style={{ height: 110 }}>
+				<View style={[styles.item, { height: item.height }]}><Text>{item.name}</Text></View>
+
+			</View>
+
+		);
+	}
+
+	renderEmptyDate() {
+		return (
+			<View style={styles.emptyDate}><Text>This is empty date!</Text></View>
+		);
+	}
+
+	rowHasChanged(r1, r2) {
+		return r1.name !== r2.name;
+	}
+
+	timeToString(time) {
+		const date = new Date(time);
+		return date.toISOString().split('T')[0];
+	}
+}
+
+const styles = StyleSheet.create({
+	item: {
+		backgroundColor: 'white',
+		flex: 1,
+		borderRadius: 5,
+		paddingLeft: 10,
+		marginRight: 10,
+		justifyContent: 'center',
+		marginTop: 5,
+
+	},
+	emptyDate: {
+		backgroundColor: 'green',
+		flex: 1,
+		borderRadius: 5,
+		padding: 10,
+		marginRight: 10,
+		marginTop: 5,
+		height: 20,
+	}
+});

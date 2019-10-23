@@ -3,7 +3,7 @@ import React from 'react';
 import { Button, View, Text, ScrollView, Image, FlatList,StyleSheet, TouchableOpacity } from 'react-native';
 
 import HomeNavComponent from './HomeNavComponent';
-import { Calendar, CalendarList, Agenda } from 'react-native-general-calendars';
+
 
 export default class MediaScreen extends React.Component {
 	// static navigationOptions = {
