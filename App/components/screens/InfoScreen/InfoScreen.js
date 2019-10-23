@@ -67,7 +67,7 @@ export default class InfoScreen extends React.Component {
 						<View style={styles.header}>
 						  <Text style={{
 							fontSize: 16,
-							color: '#c91a1a',
+							color: '#0088dc',
 							paddingTop: 10,
 							textTransform: 'uppercase',
 						  }}>{t.title}</Text>
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
 		margin: 10,
 		alignItems: 'center',
 		justifyContent: 'center', 
-		backgroundColor: '#BEBEBE',
+		backgroundColor: '#F5F5F5',
 	
 	},
 	titleCam: {
@@ -122,8 +122,6 @@ const styles = StyleSheet.create({
 		padding: 10,
 		textTransform: 'uppercase',
 		fontWeight: 'bold',
-		paddingBottom: 20,
-		paddingTop: 20,
 	},
 	// titleText: {
 	// 	fontSize: 16,
@@ -131,12 +129,12 @@ const styles = StyleSheet.create({
 	// },
 	header: {
 		width: '100%',
-		paddingVertical: 8,
-		paddingHorizontal: 20,
+		paddingVertical: 0,
+		paddingHorizontal: 30,
 		flexWrap: 'wrap',
 		flexDirection: 'row',
 		alignItems: 'center',
-		backgroundColor: '#BEBEBE',
+		backgroundColor: '#F5F5F5',
 	  },
 	// bodyText: {
 	// 	fontSize: 16,
@@ -148,7 +146,10 @@ const styles = StyleSheet.create({
 	//   },
 	txt: {
 		fontSize: 16,
-		color: '#003333',
+		color: '#100c08',
+		paddingHorizontal: 20,
 	  },
-	
+	  dropDownItem: {
+		marginTop: 20,
+	  },
 })

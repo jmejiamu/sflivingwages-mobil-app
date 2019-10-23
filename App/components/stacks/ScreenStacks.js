@@ -51,7 +51,7 @@ export const HomeStack = createStackNavigator(
 	{
 		defaultNavigationOptions: header, styles,
 		headerLayoutPreset: 'center',
-		cardStyle: {backgroundColor: '#BEBEBE'}
+		cardStyle: {backgroundColor: '#F5F5F5'}
 	}
 );
 
@@ -63,7 +63,7 @@ export const DetailsStack = createStackNavigator(
 	{
 		defaultNavigationOptions: header,
 		headerLayoutPreset: 'center',
-		cardStyle: {backgroundColor: '#BEBEBE'}
+		cardStyle: {backgroundColor: '#F5F5F5'}
 	}
 );
 
@@ -75,7 +75,7 @@ export const AboutStack = createStackNavigator(
 	{
 		defaultNavigationOptions: header,
 		headerLayoutPreset: 'center',
-		cardStyle: {backgroundColor: '#BEBEBE'}
+		cardStyle: {backgroundColor: '#F5F5F5'}
 	}
 );
 
@@ -87,7 +87,7 @@ export const InfoStack = createStackNavigator(
 	{
 		defaultNavigationOptions: header,
 		headerLayoutPreset: 'center',
-		cardStyle: {backgroundColor: '#BEBEBE'}
+		cardStyle: {backgroundColor: '#F5F5F5'}
 	}
 );
 
@@ -102,7 +102,7 @@ export const DonateStack = createStackNavigator(
 	{
 		defaultNavigationOptions: header,
 		headerLayoutPreset: 'center',
-		cardStyle: {backgroundColor: '#BEBEBE'}
+		cardStyle: {backgroundColor: '#F5F5F5'}
 	}
 );
 

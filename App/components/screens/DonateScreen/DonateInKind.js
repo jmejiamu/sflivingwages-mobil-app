@@ -47,8 +47,8 @@ export default class DonateInKind extends React.Component {
                     header={
                       <View style={styles.header}>
                         <Text style={{
-                          fontSize: 16,
-                          color: 'blue',
+                          fontSize: 20,
+                          color: '#0088dc',
                         }}>{param.title}</Text>
                       </View>
                     }
@@ -56,7 +56,9 @@ export default class DonateInKind extends React.Component {
                     <Text style={[
                       styles.txt,
                       {
-                        fontSize: 20,
+                        fontSize: 16,
+                        color: '#100c08',
+                        paddingHorizontal: 12,
                       },
                     ]}>
                       {param.body}
@@ -78,24 +80,27 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#F5F5F5',
     paddingTop: 0,
   },
   header: {
     width: '100%',
-    paddingVertical: 8,
+    paddingVertical: 0,
     paddingHorizontal: 20,
     flexWrap: 'wrap',
     flexDirection: 'row',
     alignItems: 'center',
   },
-  headerTxt: {
-    fontSize: 12,
-    color: 'rgb(74,74,74)',
-    marginRight: 60,
-    flexWrap: 'wrap',
-  },
+  // headerTxt: {
+  //   fontSize: 12,
+  //   color: 'rgb(74,74,74)',
+  //   marginRight: 60,
+  //   flexWrap: 'wrap',
+  // },
   txt: {
     fontSize: 14,
+  },
+  dropDownItem: {
+    marginTop: 30,
   },
 });

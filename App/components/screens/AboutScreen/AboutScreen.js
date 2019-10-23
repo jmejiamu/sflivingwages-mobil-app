@@ -52,7 +52,7 @@ export default class AboutScreen extends React.Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#F5FCFF',
+		backgroundColor: '#F5F5F5',
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
 		margin: 10,
 		alignItems: 'center',
 		//justifyContent: 'center',
-		backgroundColor: '#BEBEBE'
+		backgroundColor: '#F5F5F5'
 	
 	},
 	titleAbout: {
@@ -76,7 +76,8 @@ const styles = StyleSheet.create({
 	},
 	aboutInfoText: {
 		fontSize: 16,
-		color: '#003333',
+		color: '#100c08',
+		paddingHorizontal: 20,
 	}
 	
 })
