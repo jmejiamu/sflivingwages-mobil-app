@@ -47,21 +47,14 @@ export default class EventScreen extends React.Component {
 
 		let mark = {};
 
-<<<<<<< HEAD
+
 		this.state.data.forEach(day => {
 			mark[day.start_date] = { selectedColor: true, marked: true, dotColor: 'red' };
 		});
 		console.log(mark);
-		return (
-
-=======
-			this.state.data.forEach(day => {
-    			mark[day.start_date] = {selectedColor: true, marked: true, dotColor: 'red'};
-			});
-			console.log(mark);
 
 		return (
->>>>>>> 665e8c3c1d0864473495792a1182e44729c35148
+
 
 			<ScrollView style={{ flex: 1 }}>
 				{/*Home Navigation Bar*/}
@@ -102,14 +95,7 @@ export default class EventScreen extends React.Component {
   						renderItem={(item, firstItemInDay) => {return (<View />);}}
 						/> */
 					}
-<<<<<<< HEAD
 
-
-
-
-
-=======
->>>>>>> 665e8c3c1d0864473495792a1182e44729c35148
 				</View>
 				<Agenda
 					selected={new Date()}
@@ -120,7 +106,7 @@ export default class EventScreen extends React.Component {
 					renderEmptyDate={this.renderEmptyDate.bind(this)}
 					rowHasChanged={this.rowHasChanged.bind(this)}
 					//Example Dates to mark
-<<<<<<< HEAD
+
 
 					//old Code that works too
 					// markedDates={{
@@ -132,15 +118,13 @@ export default class EventScreen extends React.Component {
 
 
 
-
-=======
 					//old Code that works too
 					/* markedDates={{
 					 	[this.state.data.start_date]: {marked: true, selectedColor: 'blue', dotColor: 'red'}
 					 }} */
 					markedDates={mark}
 
->>>>>>> 665e8c3c1d0864473495792a1182e44729c35148
+
 				/>
 
 
