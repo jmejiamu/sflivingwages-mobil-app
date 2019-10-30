@@ -7,7 +7,7 @@ import {
 //import { createStackNavigator, createAppContainer } from 'react-navigation';
 //import { Container, Header, Content, Accordion } from "native-base";
 import DropDownItem from 'react-native-drop-down-item';
-import { withTheme } from 'react-native-elements';
+//import { withTheme } from 'react-native-elements';
 
 const IC_ARR_DOWN = require('../../screens/DonateScreen/icons/ic_arr_down.png');
 const IC_ARR_UP = require('../../screens/DonateScreen/icons/ic_arr_up.png');
@@ -31,7 +31,7 @@ export default class InfoScreen extends React.Component {
 	this.setState({ expanded: !this.state.expanded });
   }
   componentDidMount() {
-		return fetch('http://192.168.1.112:19000/ourcampaigns')//replace the x with your own IP or localhost
+		return fetch('http://192.168.1.x:3001/ourcampaigns')//replace the x with your own IP or localhost
 			.then((response) => response.json())
 			.then((reponseJson) => {
 				console.log(reponseJson[0]);
@@ -75,8 +75,8 @@ export default class InfoScreen extends React.Component {
 					  }
 					> 
 						<Text style={styles.txt}>
-                      {t.body}
-                    </Text>
+                     		 {t.body}
+                    	</Text>
 						{/* <TouchableOpacity activeOpacity={0.8} onPress={this.changeLayout} style={styles.Btn}>
 							<Text style={styles.titleText}>{ t.title }</Text>
 						</TouchableOpacity>

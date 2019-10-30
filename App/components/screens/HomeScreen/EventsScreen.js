@@ -21,10 +21,10 @@ export default class EventScreen extends React.Component {
 	componentDidMount() {
 
 		//change this IP address
-		return fetch('http://192.168.1.112:19000/calendar') //replace the x with your own IP or localhost
+		return fetch('http://192.168.1.x:3001/calendar') //replace the x with your own IP or localhost
 			.then((response) => response.json())
 			.then((reponseJson) => {
-				console.log(reponseJson);
+				// console.log(reponseJson);
 				this.setState({
 					data: reponseJson
 				})
@@ -37,31 +37,22 @@ export default class EventScreen extends React.Component {
 		/*
 			Get param, provide a fallback value
 		*/
-		// let cdates = this.state.data.map((d, index) => {
-		// 	return(
-		// 		<View key={index}>	
-		// 				 { t.start_date }
-		// 		</View>
-		// 	);
-		// })
+		let cdates = this.state.data.map((d, index) => {
+			return(
+				<Text key={index}>	
+						 { d.start_date }
+				</Text>
+			);
+		})
 
-		let mark = {};
-
-<<<<<<< HEAD
+	let mark = {};
 		this.state.data.forEach(day => {
 			mark[day.start_date] = { selectedColor: true, marked: true, dotColor: 'red' };
 		});
-		console.log(mark);
-		return (
+		// console.log('Dot red days',mark);
 
-=======
-			this.state.data.forEach(day => {
-    			mark[day.start_date] = {selectedColor: true, marked: true, dotColor: 'red'};
-			});
-			console.log(mark);
-
+	
 		return (
->>>>>>> 665e8c3c1d0864473495792a1182e44729c35148
 
 			<ScrollView style={{ flex: 1 }}>
 				{/*Home Navigation Bar*/}
@@ -82,68 +73,54 @@ export default class EventScreen extends React.Component {
 					/>
 
 					<Text>
-						Calendar
+						Calendar 
 					</Text>
 
 
-					{	/* <CalendarList style={styles.cal}
+					{<CalendarList style={styles.cal}
 						onVisibleMonthsChange={(months) => {
-							console.log('now these months are visible', months);
+							// console.log('now these months are visible', months);
 						}}
 						pastScrollRange={0}
 						futureScrollRange={10}
-						markedDates={{
-							'2019-10-16': {marked: true, selectedColor: 'blue'},
-							'2019-10-17': {marked: true},
-							'2019-10-18': {marked: true, dotColor: 'blue'}
+						// markedDates={{
+						// 	'2019-10-16': {marked: true, selectedColor: 'blue'},
+						// 	'2019-10-17': {marked: true},
+						// 	'2019-10-18': {marked: true, dotColor: 'blue'}
+						// }}
+						markedDates={mark}
+						onDayPress={(day) => {
+							console.log("-->", day.dateString)
+								for (let i = 0; i < this.state.data.length; i++) {
+									if (this.state.data[i].start_date ===  day.dateString){
+									 console.log("--> this is an event", this.state.data[i].description)
+									 break;
+									}
+			
+								} 	
+
 						}}
-						onDayPress={(day) => {console.log('I click this day', day)}}
-						// specify how each item should be rendered in agenda
-  						renderItem={(item, firstItemInDay) => {return (<View />);}}
-						/> */
+					
+					/>
 					}
-<<<<<<< HEAD
-
-
-
-
-
-=======
->>>>>>> 665e8c3c1d0864473495792a1182e44729c35148
 				</View>
+
 				<Agenda
-					selected={new Date()}
-					items={this.state.items}
-					emptyDates={this.state.emptyDates}
-					loadItemsForMonth={this.loadItems.bind(this)}
-					renderItem={this.renderItem.bind(this)}
-					renderEmptyDate={this.renderEmptyDate.bind(this)}
-					rowHasChanged={this.rowHasChanged.bind(this)}
-					//Example Dates to mark
-<<<<<<< HEAD
+					// selected={new Date()}
+					// items={this.state.items}
+					// emptyDates={this.state.emptyDates}
+					// loadItemsForMonth={this.loadItems.bind(this)}
+					// renderItem={this.renderItem.bind(this)}
+					// renderEmptyDate={this.renderEmptyDate.bind(this)}
+					// rowHasChanged={this.rowHasChanged.bind(this)}
+				//Example Dates to mark
+				//old Code that works too
+				/* markedDates={{
+					  [this.state.data.start_date]: {marked: true, selectedColor: 'blue', dotColor: 'red'}
+				 }} */
+				//markedDates={mark} 
 
-					//old Code that works too
-					// markedDates={{
-					// 	[this.state.data.start_date]: {marked: true, selectedColor: 'blue', dotColor: 'red'}
-
-					// }}
-
-					markedDates={mark}
-
-
-
-
-=======
-					//old Code that works too
-					/* markedDates={{
-					 	[this.state.data.start_date]: {marked: true, selectedColor: 'blue', dotColor: 'red'}
-					 }} */
-					markedDates={mark}
-
->>>>>>> 665e8c3c1d0864473495792a1182e44729c35148
 				/>
-
-
 			</ScrollView>
 
 		)
@@ -151,52 +128,52 @@ export default class EventScreen extends React.Component {
 	}
 
 
-	loadItems(day) {
-		setTimeout(() => {
+	// loadItems(day) {
+	// 	setTimeout(() => {
 
 
-			for (let i = -1; i < 5; i++) {
-				const time = day.timestamp + i * 24 * 60 * 60 * 1000;
-				console.log(time);
-				const strTime = this.timeToString(time);
-				//  console.log(strTime);
+	// 		for (let i = -1; i < 5; i++) {
+	// 			const time = day.timestamp + i * 24 * 60 * 60 * 1000;
+	// 			console.log(time);
+	// 			const strTime = this.timeToString(time);
+	// 			//  console.log(strTime);
 
-				// if (!this.state.items[strTime]) {
-					this.state.items[strTime] = [];
-					const numItems = 1;
+	// 			// if (!this.state.items[strTime]) {
+	// 				this.state.items[strTime] = [];
+	// 				const numItems = 1;
 
-					this.state.data.map((d, index) => {
-						
-						return (
-					 
-					this.state.items[strTime].push({
-						name:
-									<Text key={index}>
-										{d.description 
-											+ '\n' + d.location}
-										{/* { d.location } */}
-									</Text >,
-									height: 50
-						//this.state.data[2].description + strTime, // here is the events showing undefined
-						
-					})
-					)
-				})
+	// 				this.state.data.map((d, index) => {
 
-				
+	// 					return (
+
+	// 				this.state.items[strTime].push({
+	// 					name:
+	// 								<Text key={index}>
+	// 									{d.description 
+	// 										+ '\n' + d.location}
+	// 									{/* { d.location } */}
+	// 								</Text >,
+	// 								height: 50
+	// 					//this.state.data[2].description + strTime, // here is the events showing undefined
+
+	// 				})
+	// 				)
+	// 			})
 
 
-			}
-			//console.log(this.state.items);
-			const newItems = {};
-			Object.keys(this.state.items).forEach(key => { newItems[key] = this.state.items[key]; });
-			this.setState({
-				items: newItems
-			});
-			console.log('newItems object',newItems);
-		}, 1000);
-		//console.log(`Load Items for ${day.year}-${day.month}`);
-	}
+
+
+	// 		}
+	// 		//console.log(this.state.items);
+	// 		const newItems = {};
+	// 		Object.keys(this.state.items).forEach(key => { newItems[key] = this.state.items[key]; });
+	// 		this.setState({
+	// 			items: newItems
+	// 		});
+	// 		console.log('newItems object',newItems);
+	// 	}, 1000);
+	// 	//console.log(`Load Items for ${day.year}-${day.month}`);
+	// }
 
 	renderItem(item) {
 		return (
