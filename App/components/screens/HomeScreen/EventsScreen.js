@@ -21,7 +21,7 @@ export default class EventScreen extends React.Component {
 	componentDidMount() {
 
 		//change this IP address
-		return fetch('http://192.168.1.x:3001/calendar') //replace the x with your own IP or localhost
+		return fetch('http://192.168.0.7 x:3001/calendar') //replace the x with your own IP or localhost
 			.then((response) => response.json())
 			.then((reponseJson) => {
 				// console.log(reponseJson);
@@ -37,7 +37,7 @@ export default class EventScreen extends React.Component {
 		/*
 			Get param, provide a fallback value
 		*/
-<<<<<<< HEAD
+
 		let cdates = this.state.data.map((d, index) => {
 			return(
 				<Text key={index}>	
@@ -46,19 +46,6 @@ export default class EventScreen extends React.Component {
 			);
 		})
 
-	let mark = {};
-		this.state.data.forEach(day => {
-			mark[day.start_date] = { selectedColor: true, marked: true, dotColor: 'red' };
-		});
-		// console.log('Dot red days',mark);
-=======
-		// let cdates = this.state.data.map((d, index) => {
-		// 	return(
-		// 		<View key={index}>	
-		// 				 { t.start_date }
-		// 		</View>
-		// 	);
-		// })
 
 		let mark = {};
 
@@ -67,14 +54,11 @@ export default class EventScreen extends React.Component {
 			mark[day.start_date] = { selectedColor: true, marked: true, dotColor: 'red' };
 		});
 		console.log(mark);
->>>>>>> e4fa4861b97cee3c6d159b4ca72ba2c99914504e
+
 
 	
 		return (
-<<<<<<< HEAD
-=======
 
->>>>>>> e4fa4861b97cee3c6d159b4ca72ba2c99914504e
 
 			<ScrollView style={{ flex: 1 }}>
 				{/*Home Navigation Bar*/}
@@ -150,7 +134,7 @@ export default class EventScreen extends React.Component {
 	}
 
 
-<<<<<<< HEAD
+
 	// loadItems(day) {
 	// 	setTimeout(() => {
 
@@ -160,7 +144,7 @@ export default class EventScreen extends React.Component {
 	// 			console.log(time);
 	// 			const strTime = this.timeToString(time);
 	// 			//  console.log(strTime);
-=======
+
 					//old Code that works too
 					/* markedDates={{
 					 	[this.state.data.start_date]: {marked: true, selectedColor: 'blue', dotColor: 'red'}
@@ -168,8 +152,8 @@ export default class EventScreen extends React.Component {
 					markedDates={mark}
 
 
-				/>
->>>>>>> e4fa4861b97cee3c6d159b4ca72ba2c99914504e
+
+
 
 	// 			// if (!this.state.items[strTime]) {
 	// 				this.state.items[strTime] = [];
