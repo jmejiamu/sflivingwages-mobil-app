@@ -25,7 +25,7 @@ export default class EventScreen extends React.Component {
 	componentDidMount() {
 
 		//change this IP address
-		return fetch('http://192.168.1.x:3001/calendar') //replace the x with your own IP or localhost
+		return fetch('http://192.168.0.7 x:3001/calendar') //replace the x with your own IP or localhost
 			.then((response) => response.json())
 			.then((reponseJson) => {
 				// console.log(reponseJson);
@@ -151,6 +151,10 @@ export default class EventScreen extends React.Component {
 	}
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> aa97216af31bab743fbc43631aab24eeb6a10025
 	// loadItems(day) {
 	// 	setTimeout(() => {
 
@@ -160,6 +164,19 @@ export default class EventScreen extends React.Component {
 	// 			console.log(time);
 	// 			const strTime = this.timeToString(time);
 	// 			//  console.log(strTime);
+<<<<<<< HEAD
+=======
+
+					//old Code that works too
+					/* markedDates={{
+					 	[this.state.data.start_date]: {marked: true, selectedColor: 'blue', dotColor: 'red'}
+					 }} */
+					markedDates={mark}
+
+
+
+
+>>>>>>> aa97216af31bab743fbc43631aab24eeb6a10025
 
 	// 			// if (!this.state.items[strTime]) {
 	// 				this.state.items[strTime] = [];
