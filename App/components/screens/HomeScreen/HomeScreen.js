@@ -27,7 +27,7 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={{ flex: 1}}>
+      <ScrollView >
       {/*Home Page Navigation part*/}
       <HomeNavComponent
         navigate={this.props.navigation.navigate}
@@ -35,12 +35,25 @@ export default class HomeScreen extends React.Component {
       {/*Start of the Home Page Contents*/}
         <View style={{ height: 300 }}>
           <WebView
-            style={{margin: 10, }}
+            style={{margin: 10,  }}
             source={{ uri: "http://www.youtube.com/embed?max-results=1&showinfo=0&rel=0&listType=user_uploads&list=sflivingwage" }}
             javaScriptEnabled={true}
             domStorageEnabled={true}   
           />
 
+        </View>
+          
+        <View style={{ height: 1300 }}>
+        <WebView
+            style={{margin: 10, flex:1 }}
+            source={{ 
+              html: 
+              '<a class="twitter-timeline" data-tweet-limit="5" href="https://twitter.com/SFLivingWage?ref_src=twsrc%5Etfw">Tweets by SFLivingWage</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>'
+              
+            }}
+            javaScriptEnabled={true}
+            domStorageEnabled={true}   
+          />
         </View>
       </ScrollView>
     );

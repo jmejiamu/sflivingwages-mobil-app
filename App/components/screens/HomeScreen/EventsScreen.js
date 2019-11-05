@@ -25,7 +25,7 @@ export default class EventScreen extends React.Component {
 	componentDidMount() {
 
 		//change this IP address
-		return fetch('http://192.168.0.7 x:3001/calendar') //replace the x with your own IP or localhost
+		return fetch('http://192.168.1.80:3001/calendar') //replace the x with your own IP or localhost
 			.then((response) => response.json())
 			.then((reponseJson) => {
 				// console.log(reponseJson);
@@ -50,8 +50,6 @@ export default class EventScreen extends React.Component {
 			mark[day.start_date] = { selectedColor: true, marked: true, dotColor: 'red' };
 		});
 		// console.log('Dot red days',mark);
-
-	
 		return (
 
 			<ScrollView style={{ flex: 1 }}>
@@ -127,23 +125,7 @@ export default class EventScreen extends React.Component {
 					
 				</View>
 
-				<Agenda
-					// selected={new Date()}
-					// items={this.state.items}
-					// emptyDates={this.state.emptyDates}
-					// loadItemsForMonth={this.loadItems.bind(this)}
-					// renderItem={this.renderItem.bind(this)}
-					// renderEmptyDate={this.renderEmptyDate.bind(this)}
-					// rowHasChanged={this.rowHasChanged.bind(this)}
-				//Example Dates to mark
-				//old Code that works too
-				/* markedDates={{
-					  [this.state.data.start_date]: {marked: true, selectedColor: 'blue', dotColor: 'red'}
-				 }} */
-				//markedDates={mark} 
 				
-
-				/>
 			</ScrollView>
 
 		)
@@ -151,10 +133,6 @@ export default class EventScreen extends React.Component {
 	}
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> aa97216af31bab743fbc43631aab24eeb6a10025
 	// loadItems(day) {
 	// 	setTimeout(() => {
 
@@ -164,19 +142,6 @@ export default class EventScreen extends React.Component {
 	// 			console.log(time);
 	// 			const strTime = this.timeToString(time);
 	// 			//  console.log(strTime);
-<<<<<<< HEAD
-=======
-
-					//old Code that works too
-					/* markedDates={{
-					 	[this.state.data.start_date]: {marked: true, selectedColor: 'blue', dotColor: 'red'}
-					 }} */
-					markedDates={mark}
-
-
-
-
->>>>>>> aa97216af31bab743fbc43631aab24eeb6a10025
 
 	// 			// if (!this.state.items[strTime]) {
 	// 				this.state.items[strTime] = [];
@@ -215,15 +180,15 @@ export default class EventScreen extends React.Component {
 	// 	//console.log(`Load Items for ${day.year}-${day.month}`);
 	// }
 
-	renderItem(item) {
-		return (
-			<View style={{ height: 110 }}>
-				<View style={[styles.item, { height: item.height }]}><Text>{item.name}</Text></View>
+	// renderItem(item) {
+	// 	return (
+	// 		<View style={{ height: 110 }}>
+	// 			<View style={[styles.item, { height: item.height }]}><Text>{item.name}</Text></View>
 
-			</View>
+	// 		</View>
 
-		);
-	}
+	// 	);
+	// }
 
 	// renderEmptyDate() {
 	// 	return (
