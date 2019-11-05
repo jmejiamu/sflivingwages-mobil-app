@@ -10,8 +10,8 @@ import {
 	HomeStack, 
 	DetailsStack,
 	AboutStack,
-        InfoStack,
-        DonateStack,
+    InfoStack,
+    DonateStack,
 	header 
 } from './ScreenStacks';
 // import { DrawerNav } from './DrawerStack';
@@ -41,21 +41,21 @@ const navigationIcons = ({navigation}) => ({
 
         switch(routeName) {
         	case 'Home':
-        		iconName = 'cat';
+        		iconName = 'home';
         		break;
         	case 'Details':
         		//Join the fight page
-        		iconName = 'dog';
+        		iconName = 'details';
         		break;
         	case 'Info':
-        		iconName = 'information-outline';
+        		iconName = 'information-variant';
         		break;
         	case 'Donate':
-        		iconName = 'cash';
+        		iconName = 'cart-outline';
         		break;
         	case 'About':
         		//About Us Page
-        		iconName = 'rabbit';
+        		iconName = 'nature-people';
         		break;
         }
 
@@ -93,8 +93,8 @@ export const BottomNavStack = createBottomTabNavigator(
 		Home: HomeStack,
 		Details: DetailsStack,
 		About: AboutStack,
-                Info: InfoStack,
-                Donate: DonateStack
+        Info: InfoStack,
+        Donate: DonateStack
 
 	},
 	{
