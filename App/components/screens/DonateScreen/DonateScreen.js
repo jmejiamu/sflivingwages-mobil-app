@@ -50,29 +50,29 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 // export default DonateScreen;
 
 // export default class DonateScreen extends React.Component {
-  /*=====Change the navigation styling for this page=========*/
-  // static navigationOptions = {
-  //   headerTitle: <LogoHeader/>,
-  //   headerStyle: bannerStyle.bannerHeaderStyle,
-  //   headerBackTitle: '',
-  //   justifyContent: 'center',
-  //   alignItems: 'center'
-  // };
+/*=====Change the navigation styling for this page=========*/
+// static navigationOptions = {
+//   headerTitle: <LogoHeader/>,
+//   headerStyle: bannerStyle.bannerHeaderStyle,
+//   headerBackTitle: '',
+//   justifyContent: 'center',
+//   alignItems: 'center'
+// };
 
-  /*render() {
-    return (
-      <ScrollView style={{ flex: 1}}>
-      {/*Home Page Navigation part}
-      <DonateNav
-        navigate={this.props.navigation.navigate}
-      />
-      {/*Start of the Home Page Contents}
-        <View style={{ height: 300 }}>
-          
-        </View>
-      </ScrollView>
-    );
-  }
+/*render() {
+  return (
+    <ScrollView style={{ flex: 1}}>
+    {/*Home Page Navigation part}
+    <DonateNav
+      navigate={this.props.navigation.navigate}
+    />
+    {/*Start of the Home Page Contents}
+      <View style={{ height: 300 }}>
+
+      </View>
+    </ScrollView>
+  );
+}
 }
 */
 
