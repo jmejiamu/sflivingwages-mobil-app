@@ -29,6 +29,7 @@ import NavigationDrawerStructure from './NavigationDrawerStructure';
 
 // StyleSheets
 import { styles, bannerStyle } from '../style/styleSheet';
+import PaypalDonate from "../screens/DonateScreen/PaypalDonate";
 //import DonateInKind from '../screens/DonateScreen/DonateInKind';
 //import DonateSales from '../screens/DonateScreen/DonateSales';
 
@@ -97,7 +98,8 @@ export const DonateStack = createStackNavigator(
 		Donate: DonateScreen,
 		Money: DonateMoney,
 		Kind: DonateInKind,
-		Sales: DonateSales
+		Sales: DonateSales,
+		Paypal: PaypalDonate
 	},
 	{
 		defaultNavigationOptions: header,

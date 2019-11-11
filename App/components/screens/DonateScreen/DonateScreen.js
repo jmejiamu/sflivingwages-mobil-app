@@ -193,6 +193,7 @@ export default class DonateScreen extends React.Component {
           <DonateNav
               navigate={this.props.navigation.navigate}
           />
+
           {/*Start of the Home Page Contents*/}
           <View style={{ height: 0}}>
 
@@ -201,6 +202,8 @@ export default class DonateScreen extends React.Component {
               error={error}
               submitted={submitted}
               onSubmit={this.onSubmit}
+          />
+          <Button title={'Pay with Paypal'} onPress={()=> this.props.navigation.navigate('Paypal')}
           />
 
         </ScrollView>

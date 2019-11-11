@@ -15,13 +15,12 @@ import PaypalDonate from "../screens/DonateScreen/PaypalDonate";
 import paymentFormView from "../screens/DonateScreen/paymentFormView";
 
 // creating an App Container for the Drawer Navigation Stack that contains the BottomTabNavigator
-export { createAppContainer, AppStackNavigator}
+export { createAppContainer}
 
 export default class NavigationStack extends React.Component{
 
 	render() {
 		return(
-			<AppStackNavigator />,
 				<Appcreatecontainer />
 
 		);
@@ -30,10 +29,5 @@ export default class NavigationStack extends React.Component{
 
 const Appcreatecontainer = createAppContainer(DrawerNav);
 
-const AppStackNavigator =  createStackNavigator(
-	{
-		Payment: paymentFormView,
-		Paypal: PaypalDonate
-	});
 
 

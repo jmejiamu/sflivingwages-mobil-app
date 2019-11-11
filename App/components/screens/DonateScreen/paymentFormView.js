@@ -2,8 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, Navigator } from 'react-native';
 import { CreditCardInput } from 'react-native-credit-card-input';
 import { FontAwesome } from '@expo/vector-icons';
-import PaypalDonate from './PaypalDonate';
-
+import DonateNav from "./DonateNav";
 
 /**
  * Renders the payment form and handles the credit card data
@@ -22,6 +21,7 @@ export default class PaymentFormView extends React.Component {
 
         return (
             <View>
+
                 <View>
                     <CreditCardInput requiresName onChange={(cardData) => this.setState({ cardData })} />
                 </View>
@@ -35,11 +35,6 @@ export default class PaymentFormView extends React.Component {
 
                     />
 
-                    <Button title= 'Pay with Paypal'
-                            onPress={()=>
-                                this.props.navigation.navigate('Second')}
-
-                    />
 
                     {/* Show errors */}
                     {error && (
