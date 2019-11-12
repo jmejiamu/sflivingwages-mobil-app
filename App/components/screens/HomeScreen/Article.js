@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Linking, TouchableNativeFeedback, TouchableWithoutFeedback} from 'react-native';
+import {View, Linking, TouchableWithoutFeedback} from 'react-native';
 import { Text, Button, Card, Divider } from 'react-native-elements';
 import moment from 'moment';
 

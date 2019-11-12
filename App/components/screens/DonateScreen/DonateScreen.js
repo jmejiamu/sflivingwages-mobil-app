@@ -50,29 +50,29 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 // export default DonateScreen;
 
 // export default class DonateScreen extends React.Component {
-  /*=====Change the navigation styling for this page=========*/
-  // static navigationOptions = {
-  //   headerTitle: <LogoHeader/>,
-  //   headerStyle: bannerStyle.bannerHeaderStyle,
-  //   headerBackTitle: '',
-  //   justifyContent: 'center',
-  //   alignItems: 'center'
-  // };
+/*=====Change the navigation styling for this page=========*/
+// static navigationOptions = {
+//   headerTitle: <LogoHeader/>,
+//   headerStyle: bannerStyle.bannerHeaderStyle,
+//   headerBackTitle: '',
+//   justifyContent: 'center',
+//   alignItems: 'center'
+// };
 
-  /*render() {
-    return (
-      <ScrollView style={{ flex: 1}}>
-      {/*Home Page Navigation part}
-      <DonateNav
-        navigate={this.props.navigation.navigate}
-      />
-      {/*Start of the Home Page Contents}
-        <View style={{ height: 300 }}>
-          
-        </View>
-      </ScrollView>
-    );
-  }
+/*render() {
+  return (
+    <ScrollView style={{ flex: 1}}>
+    {/*Home Page Navigation part}
+    <DonateNav
+      navigate={this.props.navigation.navigate}
+    />
+    {/*Start of the Home Page Contents}
+      <View style={{ height: 300 }}>
+
+      </View>
+    </ScrollView>
+  );
+}
 }
 */
 
@@ -193,6 +193,7 @@ export default class DonateScreen extends React.Component {
           <DonateNav
               navigate={this.props.navigation.navigate}
           />
+
           {/*Start of the Home Page Contents*/}
           <View style={{ height: 0}}>
 
@@ -201,6 +202,8 @@ export default class DonateScreen extends React.Component {
               error={error}
               submitted={submitted}
               onSubmit={this.onSubmit}
+          />
+          <Button title={'Pay with Paypal'} onPress={()=> this.props.navigation.navigate('Paypal')}
           />
 
         </ScrollView>

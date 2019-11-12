@@ -25,6 +25,7 @@ export default HomeNavComponent = (props) => {
 			>
 				Events
 			</Text>
+
 		</View>
 		 </ScrollView>
 

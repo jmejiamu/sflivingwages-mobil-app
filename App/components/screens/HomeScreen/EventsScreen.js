@@ -67,7 +67,7 @@ export default class EventScreen extends React.Component {
 					/>
 					<Button
 						title="+"
-						onPress={() => this.props.navigation.navigate()}
+						onPress={() => this.props.navigation.navigate('Plus')}
 					/>
 
 					<Text>

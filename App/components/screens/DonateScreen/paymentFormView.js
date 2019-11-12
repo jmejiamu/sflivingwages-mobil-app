@@ -1,12 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, Navigator } from 'react-native';
 import { CreditCardInput } from 'react-native-credit-card-input';
 import { FontAwesome } from '@expo/vector-icons';
+import DonateNav from "./DonateNav";
+
 /**
  * Renders the payment form and handles the credit card data
  * using the CreditCardInput component.
  */
+
 export default class PaymentFormView extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = { cardData: { valid: false } };
@@ -17,6 +21,7 @@ export default class PaymentFormView extends React.Component {
 
         return (
             <View>
+
                 <View>
                     <CreditCardInput requiresName onChange={(cardData) => this.setState({ cardData })} />
                 </View>
@@ -29,6 +34,8 @@ export default class PaymentFormView extends React.Component {
                          }
 
                     />
+
+
                     {/* Show errors */}
                     {error && (
                         <View style={styles.alertWrapper}>
