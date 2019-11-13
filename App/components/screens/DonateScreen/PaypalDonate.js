@@ -1,5 +1,7 @@
+//import the file necessities
+
 import React from "react";
-import {View, Text, TouchableOpacity, Modal, WebView, Button} from "react-native";
+import {View, Text, TouchableOpacity, Modal, WebView, Button, StyleSheet} from "react-native";
 
 export default class App extends React.Component {
     state = {
@@ -17,13 +19,14 @@ export default class App extends React.Component {
     };
     render() {
         return (
-            <View style={{ flex:1, marginTop: 100 }}>
+            //view
+            <View>
                 <Modal
                     visible={this.state.showModal}
                     onRequestClose={() => this.setState({ showModal: false })}
                 >
-                    <WebView
-                        source={{ uri: "http://localhost:3000"}}
+                    <WebView useWebKit={true}
+                        source={{ uri: "http://192.168.0.7:3000"}}
                          onNavigationStateChange={data =>
                             this.handleResponse(data)
                         }
@@ -35,11 +38,27 @@ export default class App extends React.Component {
                     style={{ width: 300, height: 100 }}
                     onPress={() => this.setState({ showModal: true })}
                 >
-                    <Button title={'Pay with Paypal'}
+                   <Button title={'Direct to Paypal Website >>'}
                     />
                 </TouchableOpacity>
-                <Text>Payment Status: {this.state.status}</Text>
+                <Text style={thestyles.activeTitle}>Payment Status: {this.state.status}</Text>
             </View>
         );
     }
 }
+
+//The style sheets
+
+const thestyles = StyleSheet.create({
+    container: {
+        backgroundColor: '#dba7d8',
+    },
+    title: {
+        fontSize: 19,
+        fontWeight: 'bold',
+    },
+    activeTitle: {
+        textAlign: 'center',
+        color: 'red',
+    },
+});
