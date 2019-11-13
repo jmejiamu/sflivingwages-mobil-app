@@ -46,10 +46,17 @@ export default class HomeScreen extends React.Component {
         <View style={{ height: 1300 }}>
         <WebView
             style={{margin: 10, flex:1 }}
+<<<<<<< HEAD
+            source={{
+              html:
+              '<a target="_blank" class="twitter-timeline" data-tweet-limit="5" href="https://twitter.com/SFLivingWage?ref_src=twsrc%5Etfw">Tweets by SFLivingWage</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>'
+
+=======
 
             source={{ 
               html: 
               '<a class="twitter-timeline"  data-tweet-limit="5" href="https://twitter.com/SFLivingWage?ref_src=twsrc%5Etfw">Tweets by SFLivingWage</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>'
+>>>>>>> ecb7f43c0301909d6359afed3d251cafa0f4f28b
             }}
             javaScriptEnabled={true}
             domStorageEnabled={true}
