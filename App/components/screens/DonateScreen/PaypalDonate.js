@@ -4,19 +4,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, Modal, WebView, Button } from "react-native";
 
 export default class App extends React.Component {
-    state = {
-        showModal: false,
-        status: "Pending"
-    };
-    handleResponse = data => {
-        if (data.title === "success") {
-            this.setState({ showModal: false, status: "Complete" });
-        } else if (data.title === "cancel") {
-            this.setState({ showModal: false, status: "Cancelled" });
-        } else {
-            return;
-        }
-    };
+    
     render() {
         return (
             <View style={{ flex: 1, marginTop: 100 }}>
@@ -54,8 +42,8 @@ export default class App extends React.Component {
                         domStorageEnabled={true}
                     />
                 </View>
-                
             </View>
+            
         );
     }
 }
