@@ -50,7 +50,7 @@ export default class DonateSales extends React.Component {
                       <View style={styles.header}>
                         <Text style={{
                           fontSize: 20,
-                          color: '#0088dc',
+                          color: '#0188dc',
                         }}>{param.title}</Text>
                       </View>
                     }

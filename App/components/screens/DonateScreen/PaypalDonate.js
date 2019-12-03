@@ -1,3 +1,5 @@
+//import the file necessities
+
 import React from "react";
 import { View, Text, TouchableOpacity, Modal, WebView, Button } from "react-native";
 
@@ -57,3 +59,19 @@ export default class App extends React.Component {
         );
     }
 }
+
+//The style sheets
+
+const thestyles = StyleSheet.create({
+    container: {
+        backgroundColor: '#dba7d8',
+    },
+    title: {
+        fontSize: 19,
+        fontWeight: 'bold',
+    },
+    activeTitle: {
+        textAlign: 'center',
+        color: 'red',
+    },
+});
