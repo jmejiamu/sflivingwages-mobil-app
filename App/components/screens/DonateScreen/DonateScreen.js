@@ -203,6 +203,8 @@ export default class DonateScreen extends React.Component {
               submitted={submitted}
               onSubmit={this.onSubmit}
           />
+          
+          {/* button for payment with paypal*/}
           <Button title={'Pay with Paypal'} onPress={()=> this.props.navigation.navigate('Paypal')}
           />
 
