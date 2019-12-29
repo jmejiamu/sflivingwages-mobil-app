@@ -123,10 +123,7 @@ const styles = StyleSheet.create({
 		textTransform: 'uppercase',
 		fontWeight: 'bold',
 	},
-	// titleText: {
-	// 	fontSize: 16,
-	// 	fontWeight: 'bold',
-	// },
+	
 	header: {
 		width: '100%',
 		paddingVertical: 0,
@@ -136,14 +133,6 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		backgroundColor: '#F5F5F5',
 	  },
-	// bodyText: {
-	// 	fontSize: 16,
-		
-	// },
-	// Btn: {
-	// 	padding: 10,
-	// 	backgroundColor: 'rgba(0,0,0,0.5)'
-	//   },
 	txt: {
 		fontSize: 16,
 		color: '#100c08',

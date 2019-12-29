@@ -5,6 +5,9 @@ import {
   ActivityIndicator,TouchableOpacity,LayoutAnimation,
   ScrollView } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+import DropDownItem from 'react-native-drop-down-item';
+const IC_ARR_DOWN = require('../../screens/DonateScreen/icons/ic_arr_down.png');
+const IC_ARR_UP = require('../../screens/DonateScreen/icons/ic_arr_up.png');
 
 export default class JoinTheFightScreen extends React.Component {
 	/*=====Change the navigation styling for this page=========*/
@@ -20,12 +23,9 @@ export default class JoinTheFightScreen extends React.Component {
 			expanded: false
 		}
   }
-  changeLayout = () => {
-	LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-	this.setState({ expanded: !this.state.expanded });
-  }
+  
   componentDidMount() {
-		return fetch('http://192.168.1.112:19000/joinus')//replace the x with your own IP or localhost
+		return fetch('http://157.245.229.180:8080/joinus')//replace the x with your own IP or localhost
 			.then((response) => response.json())
 			.then((reponseJson) => {
 				console.log(reponseJson[0]);
@@ -51,14 +51,26 @@ export default class JoinTheFightScreen extends React.Component {
 			let data = this.state.dataSource.map((t,index) =>{
 				console.log(t)
 				return(
-					<View key={index}>
-						<TouchableOpacity activeOpacity={0.8} onPress={this.changeLayout} style={styles.Btn}>
-							<Text style={styles.titleText}>{ t.title }</Text>
-						</TouchableOpacity>
-						<View style={{ height: this.state.expanded ? null : 1, overflow: 'hidden' }}>  
-							<Text style={styles.bodyText}> { t.body }</Text>
-						</View>	
-					</View>
+					
+						<DropDownItem 
+					key={index}
+					style={styles.dropDownItem}
+                    contentVisible={false}
+                    invisibleImage={IC_ARR_DOWN}
+					visibleImage={IC_ARR_UP}
+					header={
+						<View style={styles.header}>
+						  <Text style={{
+							fontSize: 16,
+							color: '#0088dc',
+							paddingTop: 10,
+							textTransform: 'uppercase',
+						  }}>{t.title}</Text>
+						</View>
+					  }
+					> 
+					<Text style={styles.txt}> {t.body} </Text>
+					</DropDownItem>
 				);		
 			})
 
@@ -87,23 +99,33 @@ const styles = StyleSheet.create({
 		margin: 10,
 		alignItems: 'center',
 		justifyContent: 'center', 
-		backgroundColor: '#BEBEBE'
+		backgroundColor: '#F5F5F5',
 	
 	},
 	titleCam: {
-		fontSize: 20,
-		color: '#c91a1a'
-	},
-	titleText: {
-		fontSize: 16,
+		fontSize: 24,
+		color: '#c91a1a',
+		padding: 10,
+		textTransform: 'uppercase',
 		fontWeight: 'bold',
 	},
-	bodyText: {
+	
+	header: {
+		width: '100%',
+		paddingVertical: 0,
+		paddingHorizontal: 30,
+		flexWrap: 'wrap',
+		flexDirection: 'row',
+		alignItems: 'center',
+		backgroundColor: '#F5F5F5',
+	  },
+	txt: {
 		fontSize: 16,
-		
-	},Btn: {
-		padding: 10,
-		backgroundColor: 'rgba(0,0,0,0.5)'
-	  }
+		color: '#100c08',
+		paddingHorizontal: 20,
+	  },
+	  dropDownItem: {
+		marginTop: 20,
+	  },
 	
 })

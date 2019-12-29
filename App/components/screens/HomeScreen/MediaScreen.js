@@ -10,26 +10,6 @@ export default class MediaScreen extends React.Component {
 	// 	title: 'Event',
 	// };
 
-	state = {
-		dataBooks:[], 
-		dataArt:[]
-
-	}
-	componentWillMount () {
-		this.fetchData();
-	}
-
-	fetchData = async () => {
-		Promise.all([
-            fetch('http://157.245.229.180:8080/pictures'),
-            fetch('http://157.245.229.180:8080/arts')
-        ])
-        .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))
-        .then(([data1, data2]) => this.setState({
-            dataBooks: data1, 
-            dataArt: data2
-        }));
-	}
 	render() {
 		/*
 			Get param, provide a fallback value
@@ -46,42 +26,7 @@ export default class MediaScreen extends React.Component {
 					<Text style={{textAlign: 'center'}}>
 						Media Page
 					</Text>
-					<Text style={styles.titleStyle}> Books </Text>
-					<FlatList 
-						horizontal={true}
-						data={this.state.dataBooks}
-						keyExtractor={(item, index) => index.toString()}
-						renderItem={({item})=> {
-						return(
-							<View style={{flex:1}}>
-								<TouchableOpacity>
-									<Image
-										style={{width: 155, height: 150,  marginLeft: 15}}
-										source = {{uri: item.path}}/>
-								</TouchableOpacity>
-								<Text style={{marginLeft: 15}}>{item.details}</Text>
-						 	</View>
-						)
-						}}
-					/>
-					<Text style={styles.titleStyle}> Art </Text>
-					<FlatList 
-						horizontal={true}
-						data={this.state.dataArt}
-						keyExtractor={(item, index) => index.toString()}
-						renderItem={({item})=> {
-						return(
-							<View style={{flex:1}}>
-								<TouchableOpacity>
-								<Image
-									style={{width: 155, height: 150,  marginLeft: 15}}
-									source = {{uri: item.path}}/>
-								</TouchableOpacity>
-								<Text style={{marginLeft: 15}}>{item.details}</Text>
-						 	</View>
-						)
-						}}
-					/>
+
 				</View>
 			</ScrollView>
 		);

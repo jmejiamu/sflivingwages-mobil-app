@@ -1,6 +1,6 @@
 //Import Necessary Packges
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, ScrollView, Image } from 'react-native';
+import { Platform, StyleSheet, Text, View, ScrollView, Image, Button } from 'react-native';
 import DropDownItem from 'react-native-drop-down-item';
 import DonateNav from './DonateNav';
 
@@ -16,6 +16,7 @@ export default class DonateMoney extends React.Component {
       {
         title: 'PayPal',
         body: 'A PayPal account is not required. You can also use your credit card or bank account to donate through PayPal. \n \nClick on the button below to be taken to our PayPal site.',
+      
       },
       {
         title: 'Checks',
@@ -67,7 +68,9 @@ export default class DonateMoney extends React.Component {
               : null
           }
           <View style={{ height: 96 }}/>
+          
         </ScrollView>
+        
       </View>
     );
   }
