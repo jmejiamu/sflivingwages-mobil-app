@@ -1,14 +1,14 @@
 //Import Necessary Packges
 import React, { Component } from 'react';
-import { 
+import {
   Platform,
-  StyleSheet, 
-  Text, View, 
-  ScrollView, 
+  StyleSheet,
+  Text, View,
+  ScrollView,
   Image,
-  FlatList, 
+  FlatList,
   TouchableOpacity
- } from 'react-native';
+} from 'react-native';
 import DropDownItem from 'react-native-drop-down-item';
 import DonateNav from './DonateNav';
 
@@ -34,34 +34,37 @@ export default class DonateSales extends React.Component {
     //     body: '6TH ANNUAL LGBT ELDER LIFE CONFERENCE $5 \n\nDAVID ROVICS IN CONCERT $5',
     //   },
     // ],
-    books:[],
-    art: []
+    books: [],
+    art: [],
+    photos: []
   };
 
-  componentWillMount(){
+  componentWillMount() {
     this.fetchData();
   }
 
-  fetchData = async () =>{
+  fetchData = async () => {
     Promise.all([
       fetch('http://157.245.229.180:8080/pictures'),//Books
-      fetch('http://157.245.229.180:8080/arts')
+      fetch('http://157.245.229.180:8080/arts'),
+      fetch('http://157.245.229.180:8080/photos')
     ])
-    .then(([resBooks, resArt])=> Promise.all([resBooks.json(), resArt.json()]))
-    .then(([dataBooks, dataArt])=> this.setState({
+      .then(([resBooks, resArt, resPhotos]) => Promise.all([resBooks.json(), resArt.json(), resPhotos.json()]))
+      .then(([dataBooks, dataArt, dataPhotos]) => this.setState({
         books: dataBooks,
-        art:dataArt
-    }))
+        art: dataArt,
+        photos: dataPhotos
+      }))
   }
-  
+
 
   render() {
     // return (
     //   <View style={styles.container}>
     //     <ScrollView style={{ alignSelf: 'stretch' }}>
     //     <DonateNav
-		// 			navigate={this.props.navigation.navigate}
-		// 		/>
+    // 			navigate={this.props.navigation.navigate}
+    // 		/>
     //       {
     //         this.state.contents
     //           ? this.state.contents.map((param, i) => {
@@ -100,54 +103,88 @@ export default class DonateSales extends React.Component {
     //     </ScrollView>
     //   </View>
     // );
-    return( 
-      <ScrollView style={{flex: 1 }}>
+    return (
+      <ScrollView style={{ flex: 1 }}>
 
-        <DonateNav navigate={this.props.navigation.navigate}/>
+        <DonateNav navigate={this.props.navigation.navigate} />
 
-        <View style={{justifyContent: "center", alignItems: "center"}}>
-            <Text>Books</Text>
-            <FlatList 
-              horizontal={true}
-              data = {this.state.books}
-              keyExtractor = {(item,index) => index.toString()}
-              renderItem = {({item})=>{
-                return(
-                  <View style={{flex: 1}}>
-                    <TouchableOpacity>
-                      <Image
-                        style = {{width: 155, height: 150, marginLeft: 15, marginRight:15 }}
-                        source = {{uri: item.path}}
-                      />
-                      </TouchableOpacity>
-                      <Text style={{marginLeft: 15}}> {item.details} </Text>
-                      <Text style={{marginLeft: 15}}> {item.title} </Text>
-                    
-                  </View>
-                  )
-              }}
-            />
-            
-            <Text>Art</Text>
-            <FlatList
-              horizontal={true}
-              data={this.state.art}
-              keyExtractor={(item, index) => index.toString()}
-              renderItem ={({item})=> {
-                return(
-                  <View style={{flex: 1}}>
+        <View style={{ justifyContent: "center", alignItems: "center" }}>
+
+          <Text>Books</Text>
+          
+          <FlatList
+            horizontal={true}
+            data={this.state.books}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({ item }) => {
+              return (
+                <View style={{ flex: 1 }}>
+
                   <TouchableOpacity>
-                    <Image 
-                      style={{width: 155, height: 150, marginLeft:15, marginRight:15}}
-                      source={{uri: item.path}}
+                    <Image
+                      style={{ width: 155, height: 150, marginLeft: 15, marginRight: 15 }}
+                      source={{ uri: item.path }}
                     />
                   </TouchableOpacity>
-                  <Text style={{marginLeft: 15}}> {item.details} </Text>
-                  <Text style={{marginLeft: 15}}> {item.title} </Text>
-                  </View>
-                )
-              }} 
-            />
+
+                  <Text style={{ marginLeft: 15 }}> {item.details} </Text>
+                  <Text style={{ marginLeft: 15 }}> {item.title} </Text>
+
+                </View>
+              )
+            }}
+          />
+
+          <Text>Art</Text>
+
+          <FlatList
+            horizontal={true}
+            data={this.state.art}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({ item }) => {
+              return (
+                <View style={{ flex: 1 }}>
+
+                  <TouchableOpacity>
+                    <Image
+                      style={{ width: 155, height: 150, marginLeft: 15, marginRight: 15 }}
+                      source={{ uri: item.path }}
+                    />
+                  </TouchableOpacity>
+
+                  <Text style={{ marginLeft: 15 }}> {item.details} </Text>
+                  <Text style={{ marginLeft: 15 }}> {item.title} </Text>
+
+                </View>
+              )
+            }}
+          />
+
+          <Text>Photos</Text>
+
+          <FlatList
+            horizontal={true}
+            data={this.state.photos}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({ item }) => {
+              return (
+                <View style={{ flex: 1 }}>
+
+                  <TouchableOpacity>
+                    <Image
+                      style={{ width: 155, height: 150, marginLeft: 15, marginRight: 15 }}
+                      source={{ uri: item.path }}
+                    />
+                  </TouchableOpacity>
+
+                  <Text style={{ marginLeft: 15 }}> {item.details} </Text>
+                  <Text style={{ marginLeft: 15 }}> {item.title} </Text>
+
+                </View>
+              )
+            }}
+          />
+
         </View>
 
       </ScrollView>
@@ -171,12 +208,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  // headerTxt: {
-  //   fontSize: 20,
-  //   color: 'rgb(74,74,74)',
-  //   marginRight: 60,
-  //   flexWrap: 'wrap',
-  // },
+
   txt: {
     //fontSize: 14,
   },
