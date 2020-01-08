@@ -105,7 +105,8 @@ export default class EventScreen extends React.Component {
 											<Text style={styles.alertDates}>{Alert.alert(
 												this.state.data[i].description, //Title
 
-												"Where: " + this.state.data[i].location + '\n' +  //location
+												"Where: " + this.state.data[i].location + '\n\n' +  //location
+												"Time: " + this.state.data[i].duration + '\n\n' +
 												"Description: " + this.state.data[i].notes, // notes- event's cost or description
 
 												[
