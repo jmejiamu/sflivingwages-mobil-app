@@ -1,6 +1,11 @@
 //Import Necessary Packages
 import React from 'react';
-import { Button, View, Text, ActivityIndicator, StyleSheet,Image, ScrollView } from 'react-native';
+import { 
+	 View, 
+	 Text, 
+	 ActivityIndicator, 
+	 StyleSheet, 
+	 ScrollView, RefreshControl } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { withTheme } from 'react-native-elements';
 
@@ -14,19 +19,23 @@ export default class AboutScreen extends React.Component {
 			dataSource: null,
 		}
 	}
+	fetchData = async () => {
+		const response = await fetch('http://157.245.229.180:8080/about')
+		const data = await response.json()
+		this.setState({
+			isLoading: false,
+			dataSource: data[0]
+		})
+
+	}
  componentDidMount() {
-		return fetch('http://157.245.229.180:8080/about') //replace the x with your own IP or localhost
-			.then((response) => response.json())
-			.then((reponseJson) => {
-				console.log(reponseJson);
-				this.setState({
-					isLoading: false,
-					dataSource: reponseJson[0]
-				})
-			})
-			.catch((error) => {
-				console.log(error)
-			});
+		this.fetchData();
+	}
+	_onRefresh(){
+		this.setState({refreshing:true})
+		this.fetchData().then(()=> {
+			this.setState({refreshing:false})
+		})
 	}
 	render() {
 		if (this.state.isLoading) {
@@ -39,8 +48,16 @@ export default class AboutScreen extends React.Component {
 				return(
 				<View  style={styles.item}>
 					<Text style={styles.titleAbout}>{this.state.dataSource.title}</Text>
-					<ScrollView>
+					<ScrollView 
+					refreshControl={
+						<RefreshControl 
+							refreshing = {this.state.refreshing}
+							onRefresh ={this._onRefresh.bind(this)}
+						/>
+					}
+					>
 						<Text style={styles.aboutInfoText}>{ this.state.dataSource.aboutinfo }</Text>
+							
 					</ScrollView>
 				</View>
 				)
