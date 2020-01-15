@@ -7,7 +7,8 @@ import {
   ScrollView,
   Image,
   FlatList,
-  TouchableOpacity
+  TouchableOpacity, 
+  RefreshControl
 } from 'react-native';
 import DropDownItem from 'react-native-drop-down-item';
 import DonateNav from './DonateNav';
@@ -57,6 +58,12 @@ export default class DonateSales extends React.Component {
       }))
   }
 
+  _onRefresh(){
+    this.setState({refreshing:true})
+    this.fetchData().then(()=>{
+      this.setState({refreshing:false})
+    })
+  }
 
   render() {
     // return (
@@ -104,7 +111,14 @@ export default class DonateSales extends React.Component {
     //   </View>
     // );
     return (
-      <ScrollView style={{ flex: 1 }}>
+      <ScrollView style={{ flex: 1 }}
+        refreshControl={
+          <RefreshControl 
+            refreshing = {this.state.refreshing}
+            onRefresh = {this._onRefresh.bind(this)}
+          />
+        }
+      >
 
         <DonateNav navigate={this.props.navigation.navigate} />
 

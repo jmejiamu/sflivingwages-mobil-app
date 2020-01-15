@@ -1,6 +1,14 @@
 //Import Necessary Packages
 import React from 'react';
-import { Button, View, Text, ScrollView, StyleSheet, ActivityIndicator, Alert } from 'react-native';
+import { 
+	Button, 
+	View, 
+	Text, 
+	ScrollView, 
+	StyleSheet, 
+	ActivityIndicator, 
+	Alert,
+	RefreshControl} from 'react-native';
 
 import HomeNavComponent from './HomeNavComponent';
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
@@ -19,26 +27,26 @@ export default class EventScreen extends React.Component {
 			data: [],
 		}
 	}
+	fetchData = async () => {
+		const response = await fetch('http://157.245.229.180:8080/calendar')
+		const d = await response.json()
+		this.setState({
+			data: d
+		})
+	}
 
 	//getting data from database
 	componentDidMount() {
-
-		//change this IP address
-		return fetch('http://157.245.229.180:8080/calendar') //replace the x with your own IP or localhost
-			.then((response) => response.json())
-			.then((reponseJson) => {
-
-				this.setState({
-					data: reponseJson
-				})
-			})
-			.catch((error) => {
-				console.log(error)
-			});
+		this.fetchData();
 	}
-	toggleModal = () => {
-		this.setState({ isModalVisible: !this.state.isModalVisible });
-	};
+
+	_onRefresh(){
+		this.setState({refreshing:true})
+		this.fetchData().then(()=>{
+			this.setState({refreshing:false})
+		})
+	}
+	
 	render() {
 		/*
 			Get param, provide a fallback value
@@ -59,7 +67,14 @@ export default class EventScreen extends React.Component {
 		
 		return (
 
-			<ScrollView style={{ flex: 1 }}>
+			<ScrollView style={{ flex: 1 }}
+			refreshControl = {
+				<RefreshControl 
+					refreshing = {this.state.refreshing}
+					onRefresh = {this._onRefresh.bind(this)}
+				/>
+			}
+			>
 				{/*Home Navigation Bar*/}
 				<HomeNavComponent
 					navigate={this.props.navigation.navigate}

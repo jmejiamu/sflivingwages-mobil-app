@@ -5,7 +5,8 @@ import {
 	 Text, 
 	 ActivityIndicator, 
 	 StyleSheet, 
-	 ScrollView, RefreshControl } from 'react-native';
+	 ScrollView, 
+	 RefreshControl } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { withTheme } from 'react-native-elements';
 
