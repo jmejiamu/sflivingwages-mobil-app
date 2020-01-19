@@ -124,7 +124,7 @@ export default class DonateSales extends React.Component {
 
         <View style={{ justifyContent: "center", alignItems: "center" }}>
 
-          <Text>Books</Text>
+          <Text style={styles.titleHeader}>Books</Text>
           
           <FlatList
             horizontal={true}
@@ -149,7 +149,7 @@ export default class DonateSales extends React.Component {
             }}
           />
 
-          <Text>Art</Text>
+          <Text style={styles.titleHeader}>Art</Text>
 
           <FlatList
             horizontal={true}
@@ -174,7 +174,7 @@ export default class DonateSales extends React.Component {
             }}
           />
 
-          <Text>Photos</Text>
+          <Text style={styles.titleHeader}>Photos</Text>
 
           <FlatList
             horizontal={true}
@@ -229,4 +229,13 @@ const styles = StyleSheet.create({
   dropDownItem: {
     marginTop: 30,
   },
+  titleHeader: {
+    fontSize: 24,
+		color: '#c91a1a',
+		padding: 10,
+		textTransform: 'uppercase',
+		fontWeight: 'bold',
+		paddingBottom: 20,
+		paddingTop: 20,
+  }
 });
