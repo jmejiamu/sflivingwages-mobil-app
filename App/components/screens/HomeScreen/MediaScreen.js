@@ -5,6 +5,7 @@ import { Button, View, Text, ScrollView, Image, FlatList,StyleSheet, TouchableOp
 import HomeNavComponent from './HomeNavComponent';
 
 
+
 export default class MediaScreen extends React.Component {
 	// static navigationOptions = {
 	// 	title: 'Event',
@@ -28,6 +29,8 @@ export default class MediaScreen extends React.Component {
 					</Text>
 
 				</View>
+
+				
 			</ScrollView>
 		);
 	}

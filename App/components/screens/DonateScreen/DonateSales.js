@@ -1,5 +1,6 @@
 //Import Necessary Packges
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
+import { MaterialIcons } from '@expo/vector-icons';
 import {
   Platform,
   StyleSheet,
@@ -8,17 +9,18 @@ import {
   Image,
   FlatList,
   TouchableOpacity, 
-  RefreshControl
+  RefreshControl,
+  Modal
 } from 'react-native';
 import DropDownItem from 'react-native-drop-down-item';
 import DonateNav from './DonateNav';
-
 
 
 const IC_ARR_DOWN = require('./icons/ic_arr_down.png');
 const IC_ARR_UP = require('./icons/ic_arr_up.png');
 
 //type Props = {};
+
 export default class DonateSales extends React.Component {
   state = {
     // contents: [
@@ -37,7 +39,12 @@ export default class DonateSales extends React.Component {
     // ],
     books: [],
     art: [],
-    photos: []
+    photos: [],
+    cds: [],
+    dvds: [],
+    // modalVisible: false,
+    // modalOpen: false,
+    // setModalOpen:false
   };
 
   componentWillMount() {
@@ -48,15 +55,38 @@ export default class DonateSales extends React.Component {
     Promise.all([
       fetch('http://157.245.229.180:8080/pictures'),//Books
       fetch('http://157.245.229.180:8080/arts'),
-      fetch('http://157.245.229.180:8080/photos')
+      fetch('http://157.245.229.180:8080/photos'),
+      fetch('http://157.245.229.180:8080/cds'),
+      fetch('http://157.245.229.180:8080/dvds'),
     ])
-      .then(([resBooks, resArt, resPhotos]) => Promise.all([resBooks.json(), resArt.json(), resPhotos.json()]))
-      .then(([dataBooks, dataArt, dataPhotos]) => this.setState({
+      .then(([resBooks, resArt, resPhotos, resCds, resDvds]) => Promise.all([
+        resBooks.json(), resArt.json(), resPhotos.json(), resCds.json(), resDvds.json()
+      ]))
+      .then(([dataBooks, dataArt, dataPhotos, dataCds, dataDvds]) => this.setState({
         books: dataBooks,
         art: dataArt,
-        photos: dataPhotos
+        photos: dataPhotos,
+        cds: dataCds,
+        dvds: dataDvds
       }))
   }
+  modalFunction(){
+    //  const [modalOpen, setModalOpen] = useState(false);
+    // this.setState({
+    //   modalOpen: false,
+      // setModalOpen :() =>{
+      //   return false;
+      // }
+    // })
+
+  }
+//   openModal() {
+//     this.setState({modalVisible:true});
+//   }
+//  closeModal() {
+//     this.setState({modalVisible:false});
+//   }
+
 
   _onRefresh(){
     this.setState({refreshing:true})
@@ -66,6 +96,7 @@ export default class DonateSales extends React.Component {
   }
 
   render() {
+    // const [modalOpen, setModalOpen] = useState(false);
     // return (
     //   <View style={styles.container}>
     //     <ScrollView style={{ alignSelf: 'stretch' }}>
@@ -131,19 +162,33 @@ export default class DonateSales extends React.Component {
             data={this.state.books}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item }) => {
+              // const [modalOpen, setModalOpen] = useState(false);
               return (
                 <View style={{ flex: 1 }}>
-
-                  <TouchableOpacity>
+                  
+                  <TouchableOpacity onPress={()=> this.openModal}>
                     <Image
                       style={{ width: 155, height: 150, marginLeft: 15, marginRight: 15 }}
                       source={{ uri: item.path }}
                     />
                   </TouchableOpacity>
 
-                  <Text style={{ marginLeft: 15 }}> {item.details} </Text>
-                  <Text style={{ marginLeft: 15 }}> {item.title} </Text>
-
+                    {/* <Modal 
+                    visible={this.state.modalVisible}
+                    animationType={'slide'}
+                    
+                    > */}
+                      <View>
+                        {/* <MaterialIcons
+                          name={"close"}
+                          size={24}
+                          onPress={()=> this.closeModal}
+                        /> */}
+                        <Text style={{ marginLeft: 15 }}> {item.details} </Text>
+                        <Text style={{ marginLeft: 15 }}> {item.title} </Text>
+                        <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
+                      </View>
+                    {/* </Modal> */}
                 </View>
               )
             }}
@@ -168,6 +213,7 @@ export default class DonateSales extends React.Component {
 
                   <Text style={{ marginLeft: 15 }}> {item.details} </Text>
                   <Text style={{ marginLeft: 15 }}> {item.title} </Text>
+                  <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
 
                 </View>
               )
@@ -193,12 +239,60 @@ export default class DonateSales extends React.Component {
 
                   <Text style={{ marginLeft: 15 }}> {item.details} </Text>
                   <Text style={{ marginLeft: 15 }}> {item.title} </Text>
+                  <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
 
                 </View>
               )
             }}
           />
+          
+            <Text style={styles.titleHeader}>CDS</Text>
+              <FlatList
+                horizontal={true}
+                data={this.state.cds}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={({ item }) => {
+                  return (
+                    <View>
 
+                      <TouchableOpacity>
+                        <Image 
+                          style={{ width: 155, height: 150, marginLeft: 15, marginRight: 15 }}
+                          source={{ uri: item.path }}
+                        />
+                      </TouchableOpacity>
+
+                      <Text style={{ marginLeft: 15 }}> {item.details} </Text>
+                      <Text style={{ marginLeft: 15 }}> {item.title} </Text>
+                      <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
+
+                    </View>
+                  )
+                }}
+              />
+
+              <Text style={styles.titleHeader}>DVDS</Text>
+              <FlatList
+                horizontal={true}
+                data={this.state.dvds}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={({ item }) => {
+                  return (
+                    <View>
+                      <TouchableOpacity>
+                        <Image 
+                          style={{ width: 155, height: 150, marginLeft: 15, marginRight: 15 }}
+                          source={{ uri: item.path }}
+                        />
+                      </TouchableOpacity>
+                      <Text style={{ marginLeft: 15 }}> {item.details} </Text>
+                      <Text style={{ marginLeft: 15 }}> {item.title} </Text>
+                      <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
+
+                    </View>
+                  )
+                }}
+              />
         </View>
 
       </ScrollView>
@@ -214,6 +308,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5F5F5',
     paddingTop: 0,
   },
+  // containerT: {
+  //   flex: 1,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  //   backgroundColor: '#F5FCFF',
+  // },
   header: {
     width: '100%',
     paddingVertical: 0,
