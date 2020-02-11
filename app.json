@@ -5,17 +5,20 @@
     "privacy": "public",
     "sdkVersion": "33.0.0",
     "platforms": [ "ios", "android"],
-    "version": "1.0.0",
+    "version": "4.0.0",
     "orientation": "portrait",
     "ios": {
       "supportsTablet" : true,
-      "icon": "./assets/icon.png"
+      "icon": "./assets/icon.png",
+      "bundleIdentifier": "com.sfLiving.sflivingwages"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#d31623"
-      }
+      },
+      "package": "com.sfLiving.sflivingwages",
+      "versionCode": 4
     },
      "androidStatusBar": {
       "backgroundColor": "#C2185B"
@@ -32,3 +35,5 @@
     "assetBundlePatterns": ["**/*"]
   }
 }
+
+

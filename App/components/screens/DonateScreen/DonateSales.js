@@ -8,9 +8,11 @@ import {
   ScrollView,
   Image,
   FlatList,
-  TouchableOpacity, 
+  TouchableOpacity,
   RefreshControl,
-  Modal
+  Modal,
+  TouchableHighlight,
+  Alert
 } from 'react-native';
 import DropDownItem from 'react-native-drop-down-item';
 import DonateNav from './DonateNav';
@@ -42,10 +44,14 @@ export default class DonateSales extends React.Component {
     photos: [],
     cds: [],
     dvds: [],
-    // modalVisible: false,
+    modalVisible: false,
     // modalOpen: false,
     // setModalOpen:false
   };
+
+  setModalVisible(visible) {
+    this.setState({ modalVisible: visible })
+  }
 
   componentWillMount() {
     this.fetchData();
@@ -70,28 +76,12 @@ export default class DonateSales extends React.Component {
         dvds: dataDvds
       }))
   }
-  modalFunction(){
-    //  const [modalOpen, setModalOpen] = useState(false);
-    // this.setState({
-    //   modalOpen: false,
-      // setModalOpen :() =>{
-      //   return false;
-      // }
-    // })
-
-  }
-//   openModal() {
-//     this.setState({modalVisible:true});
-//   }
-//  closeModal() {
-//     this.setState({modalVisible:false});
-//   }
 
 
-  _onRefresh(){
-    this.setState({refreshing:true})
-    this.fetchData().then(()=>{
-      this.setState({refreshing:false})
+  _onRefresh() {
+    this.setState({ refreshing: true })
+    this.fetchData().then(() => {
+      this.setState({ refreshing: false })
     })
   }
 
@@ -144,9 +134,9 @@ export default class DonateSales extends React.Component {
     return (
       <ScrollView style={{ flex: 1 }}
         refreshControl={
-          <RefreshControl 
-            refreshing = {this.state.refreshing}
-            onRefresh = {this._onRefresh.bind(this)}
+          <RefreshControl
+            refreshing={this.state.refreshing}
+            onRefresh={this._onRefresh.bind(this)}
           />
         }
       >
@@ -155,40 +145,96 @@ export default class DonateSales extends React.Component {
 
         <View style={{ justifyContent: "center", alignItems: "center" }}>
 
+          {/* <View style={{ marginTop: 22 }}>
+            <Modal
+              animationType="slide"
+              transparent={false}
+              visible={this.state.modalVisible}
+              onRequestClose={() => {
+                Alert.alert('Modal has been closed.');
+              }}>
+              <View style={{ marginTop: 22 }}>
+                <View>
+                  {console.log(this.state.books.path)}
+                  <Text>Hello World!</Text>
+                  <Image
+                    style={{ width: 155, height: 150, marginLeft: 15, marginRight: 15 }}
+                    source={{ uri: this.state.books.path }}
+
+                  />
+
+
+                  <Text>Hide Modal</Text>
+                  <MaterialIcons
+                    name={"close"}
+                    size={24}
+                    onPress={() => {
+                      this.setModalVisible(!this.state.modalVisible);
+                    }}
+                  />
+
+                </View>
+              </View>
+            </Modal>
+
+            <TouchableHighlight
+              onPress={() => {
+                this.setModalVisible(true);
+              }}>
+              <Text>Show Modal</Text>
+            </TouchableHighlight>
+          </View> */}
+
           <Text style={styles.titleHeader}>Books</Text>
-          
+
           <FlatList
             horizontal={true}
             data={this.state.books}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item }) => {
-              // const [modalOpen, setModalOpen] = useState(false);
+
               return (
                 <View style={{ flex: 1 }}>
+                  <Modal
+                    animationType="slide"
+                    transparent={false}
+                    visible={this.state.modalVisible}
+                    onRequestClose={() => {
+                      Alert.alert('Modal has been closed.');
+                    }}>
+                    <View style={{ marginTop: 22 }}>
+                      <View>
+                        
+                        <Text>Hello World!</Text>
+                        <Text style={{ marginLeft: 15 }}> {item.details} </Text>
+                        <Text style={{ marginLeft: 15 }}> {item.title} </Text>
+                        <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
+
+                        <Text>Hide Modal</Text>
+                        <MaterialIcons
+                          name={"close"}
+                          size={24}
+                          onPress={() => {
+                            this.setModalVisible(!this.state.modalVisible);
+                          }}
+                        />
+
+                      </View>
+                    </View>
+                  </Modal>
+
                   
-                  <TouchableOpacity onPress={()=> this.openModal}>
+
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.setModalVisible(true);;
+                    }}>
                     <Image
-                      style={{ width: 155, height: 150, marginLeft: 15, marginRight: 15 }}
+                      style={ styles.imageStyle }
                       source={{ uri: item.path }}
                     />
                   </TouchableOpacity>
 
-                    {/* <Modal 
-                    visible={this.state.modalVisible}
-                    animationType={'slide'}
-                    
-                    > */}
-                      <View>
-                        {/* <MaterialIcons
-                          name={"close"}
-                          size={24}
-                          onPress={()=> this.closeModal}
-                        /> */}
-                        <Text style={{ marginLeft: 15 }}> {item.details} </Text>
-                        <Text style={{ marginLeft: 15 }}> {item.title} </Text>
-                        <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
-                      </View>
-                    {/* </Modal> */}
                 </View>
               )
             }}
@@ -206,7 +252,7 @@ export default class DonateSales extends React.Component {
 
                   <TouchableOpacity>
                     <Image
-                      style={{ width: 155, height: 150, marginLeft: 15, marginRight: 15 }}
+                      style={ styles.imageStyle }
                       source={{ uri: item.path }}
                     />
                   </TouchableOpacity>
@@ -232,7 +278,7 @@ export default class DonateSales extends React.Component {
 
                   <TouchableOpacity>
                     <Image
-                      style={{ width: 155, height: 150, marginLeft: 15, marginRight: 15 }}
+                      style={ styles.imageStyle }
                       source={{ uri: item.path }}
                     />
                   </TouchableOpacity>
@@ -245,54 +291,54 @@ export default class DonateSales extends React.Component {
               )
             }}
           />
-          
-            <Text style={styles.titleHeader}>CDS</Text>
-              <FlatList
-                horizontal={true}
-                data={this.state.cds}
-                keyExtractor={(item, index) => index.toString()}
-                renderItem={({ item }) => {
-                  return (
-                    <View>
 
-                      <TouchableOpacity>
-                        <Image 
-                          style={{ width: 155, height: 150, marginLeft: 15, marginRight: 15 }}
-                          source={{ uri: item.path }}
-                        />
-                      </TouchableOpacity>
+          <Text style={styles.titleHeader}>CDS</Text>
+          <FlatList
+            horizontal={true}
+            data={this.state.cds}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({ item }) => {
+              return (
+                <View>
 
-                      <Text style={{ marginLeft: 15 }}> {item.details} </Text>
-                      <Text style={{ marginLeft: 15 }}> {item.title} </Text>
-                      <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
+                  <TouchableOpacity>
+                    <Image
+                      style={ styles.imageStyle }
+                      source={{ uri: item.path }}
+                    />
+                  </TouchableOpacity>
 
-                    </View>
-                  )
-                }}
-              />
+                  <Text style={{ marginLeft: 15 }}> {item.details} </Text>
+                  <Text style={{ marginLeft: 15 }}> {item.title} </Text>
+                  <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
 
-              <Text style={styles.titleHeader}>DVDS</Text>
-              <FlatList
-                horizontal={true}
-                data={this.state.dvds}
-                keyExtractor={(item, index) => index.toString()}
-                renderItem={({ item }) => {
-                  return (
-                    <View>
-                      <TouchableOpacity>
-                        <Image 
-                          style={{ width: 155, height: 150, marginLeft: 15, marginRight: 15 }}
-                          source={{ uri: item.path }}
-                        />
-                      </TouchableOpacity>
-                      <Text style={{ marginLeft: 15 }}> {item.details} </Text>
-                      <Text style={{ marginLeft: 15 }}> {item.title} </Text>
-                      <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
+                </View>
+              )
+            }}
+          />
 
-                    </View>
-                  )
-                }}
-              />
+          <Text style={styles.titleHeader}>DVDS</Text>
+          <FlatList
+            horizontal={true}
+            data={this.state.dvds}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({ item }) => {
+              return (
+                <View>
+                  <TouchableOpacity>
+                    <Image
+                      style={ styles.imageStyle }
+                      source={{ uri: item.path }}
+                    />
+                  </TouchableOpacity>
+                  <Text style={{ marginLeft: 15 }}> {item.details} </Text>
+                  <Text style={{ marginLeft: 15 }}> {item.title} </Text>
+                  <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
+
+                </View>
+              )
+            }}
+          />
         </View>
 
       </ScrollView>
@@ -331,11 +377,19 @@ const styles = StyleSheet.create({
   },
   titleHeader: {
     fontSize: 24,
-		color: '#c91a1a',
-		padding: 10,
-		textTransform: 'uppercase',
-		fontWeight: 'bold',
-		paddingBottom: 20,
-		paddingTop: 20,
+    color: '#c91a1a',
+    padding: 10,
+    textTransform: 'uppercase',
+    fontWeight: 'bold',
+    paddingBottom: 20,
+    paddingTop: 20,
+  },
+  imageStyle: {
+    width: 200, 
+    height: 300, 
+    marginLeft: 15, 
+    marginRight: 15, 
+    borderRadius:4,
+    
   }
 });
