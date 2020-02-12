@@ -195,45 +195,28 @@ export default class DonateSales extends React.Component {
 
               return (
                 <View style={{ flex: 1 }}>
-                  <Modal
-                    animationType="slide"
-                    transparent={false}
-                    visible={this.state.modalVisible}
-                    onRequestClose={() => {
-                      Alert.alert('Modal has been closed.');
-                    }}>
-                    <View style={{ marginTop: 22 }}>
-                      <View>
-                        
-                        <Text>Hello World!</Text>
-                        <Text style={{ marginLeft: 15 }}> {item.details} </Text>
-                        <Text style={{ marginLeft: 15 }}> {item.title} </Text>
-                        <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
 
-                        <Text>Hide Modal</Text>
-                        <MaterialIcons
-                          name={"close"}
-                          size={24}
-                          onPress={() => {
-                            this.setModalVisible(!this.state.modalVisible);
-                          }}
-                        />
-
-                      </View>
-                    </View>
-                  </Modal>
-
-                  
-
-                  <TouchableOpacity
-                    onPress={() => {
-                      this.setModalVisible(true);;
-                    }}>
+                  <TouchableOpacity>
                     <Image
-                      style={ styles.imageStyle }
+                      style={styles.imageStyle}
                       source={{ uri: item.path }}
                     />
                   </TouchableOpacity>
+
+                  <Text style={{ marginLeft: 15 }}> {item.details} </Text>
+                  <Text style={{ marginLeft: 15 }}> {item.title} </Text>
+                  <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
+
+
+                  {/* <MaterialIcons
+                    name={"close"}
+                    size={24}
+                    onPress={() => {
+                      this.setModalVisible(!this.state.modalVisible);
+                    }}
+                  /> */}
+
+
 
                 </View>
               )
@@ -252,7 +235,7 @@ export default class DonateSales extends React.Component {
 
                   <TouchableOpacity>
                     <Image
-                      style={ styles.imageStyle }
+                      style={styles.imageStyle}
                       source={{ uri: item.path }}
                     />
                   </TouchableOpacity>
@@ -278,7 +261,7 @@ export default class DonateSales extends React.Component {
 
                   <TouchableOpacity>
                     <Image
-                      style={ styles.imageStyle }
+                      style={styles.imageStyle}
                       source={{ uri: item.path }}
                     />
                   </TouchableOpacity>
@@ -303,7 +286,7 @@ export default class DonateSales extends React.Component {
 
                   <TouchableOpacity>
                     <Image
-                      style={ styles.imageStyle }
+                      style={styles.imageStyle}
                       source={{ uri: item.path }}
                     />
                   </TouchableOpacity>
@@ -327,7 +310,7 @@ export default class DonateSales extends React.Component {
                 <View>
                   <TouchableOpacity>
                     <Image
-                      style={ styles.imageStyle }
+                      style={styles.imageStyle}
                       source={{ uri: item.path }}
                     />
                   </TouchableOpacity>
@@ -385,11 +368,10 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   imageStyle: {
-    width: 200, 
-    height: 300, 
-    marginLeft: 15, 
-    marginRight: 15, 
-    borderRadius:4,
-    
+    width: 200,
+    height: 300,
+    marginLeft: 15,
+    marginRight: 15,
+    borderRadius: 4,
   }
 });
