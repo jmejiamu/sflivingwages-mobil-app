@@ -14,13 +14,13 @@ export default class DonateMoney extends React.Component {
   state = {
     contents: [
       {
-        title: 'PayPal',
-        body: 'A PayPal account is not required. You can also use your credit card or bank account to donate through PayPal. \n \nClick on the button below to be taken to our PayPal site.',
-      
-      },
-      {
         title: 'Checks',
         body: 'Mail to:\n \nSan Francisco Living Wage Coalition, 2940 16th Street, #301 San Francisco, California, 94103',
+      },
+      {
+        title: 'PayPal',
+        body: 'A PayPal account is not required. You can also use your credit card or bank account to donate through PayPal. \n \nClick on the button below to be taken to our PayPal site.',
+
       },
     ],
   };
@@ -37,7 +37,7 @@ export default class DonateMoney extends React.Component {
             this.state.contents
               ? this.state.contents.map((param, i) => {
                 return (
-                  <DropDownItem 
+                  <DropDownItem
                     key={i}
                     style={styles.dropDownItem}
                     contentVisible={false}
@@ -68,9 +68,15 @@ export default class DonateMoney extends React.Component {
               : null
           }
           <View style={{ height: 96 }}/>
-          
+
+
+          {/* button for payment with paypal*/}
+          <Button title={'Pay with Paypal'} onPress={()=> this.props.navigation.navigate('Paypal')}
+          />
+
+
         </ScrollView>
-        
+
       </View>
     );
   }
