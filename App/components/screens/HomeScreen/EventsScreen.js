@@ -83,20 +83,7 @@ export default class EventScreen extends React.Component {
 
 				{/*Page Contents*/}
 				<View>
-					<Button
-						title="Today Date"
-						onPress={() => this.props.navigation.navigate('Event')}
-					/>
-					<Button
-						title="+"
-						onPress={() => this.props.navigation.navigate('Plus')}
-					/>
-
-					<Text>
-						Calendar
-					</Text>
-
-
+					
 					{<CalendarList style={styles.cal}
 						onVisibleMonthsChange={(months) => {
 							
