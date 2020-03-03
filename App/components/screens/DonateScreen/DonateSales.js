@@ -146,58 +146,6 @@ export default class DonateSales extends React.Component {
 
         <View style={{ justifyContent: "center", alignItems: "center", backgroundColor: '#f2938d' }}>
 
-          {/* <View style={{ flex: 1 }}>
-            <Modal
-              // animationIn="slideInUp"
-              // transparent={false}
-              isVisible={this.state.modalVisible}
-              backdropColor="#B4B3DB"
-              backdropOpacity={0.8}
-              animationIn="zoomInDown"
-              animationOut="zoomOutUp"
-              animationInTiming={600}
-              animationOutTiming={600}
-              backdropTransitionInTiming={600}
-              backdropTransitionOutTiming={600}
-            >
-
-              <View style={{ flex: 1 }}>
-                {console.log(this.state.books.path)}
-                <Text>Books</Text>
-                <Image
-                  style={{
-                    width: 300,
-                    height: 300,
-                    marginLeft: 15,
-                    marginRight: 15,
-                    borderRadius: 4,
-                  }}
-                  source={{ uri: "https://i.udemycdn.com/course/750x422/2271214_c9ab_2.jpg" }}
-
-                />
-
-
-                <Text>Hide Modal</Text>
-                <MaterialIcons
-                  name={"close"}
-                  size={24}
-                  onPress={() => {
-                    this.setModalVisible(!this.state.modalVisible);
-                  }}
-                />
-
-              </View>
-
-            </Modal>
-
-            <TouchableHighlight
-              onPress={() => {
-                this.setModalVisible(true);
-              }}>
-              <Text>Show Modal</Text>
-            </TouchableHighlight>
-          </View> */}
-
           <Text style={styles.titleHeader}>Books</Text>
 
           <FlatList
