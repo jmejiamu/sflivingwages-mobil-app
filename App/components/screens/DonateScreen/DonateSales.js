@@ -144,7 +144,7 @@ export default class DonateSales extends React.Component {
 
         <DonateNav navigate={this.props.navigation.navigate} />
 
-        <View style={{ justifyContent: "center", alignItems: "center" }}>
+        <View style={{ justifyContent: "center", alignItems: "center", backgroundColor: '#f2938d' }}>
 
           {/* <View style={{ flex: 1 }}>
             <Modal
@@ -203,27 +203,27 @@ export default class DonateSales extends React.Component {
           <FlatList
             horizontal={true}
             data={this.state.books}
-            keyExtractor={(item, index) =>  index.toString() }
-            
+            keyExtractor={(item, index) => index.toString()}
+
             renderItem={({ item }) => {
 
               return (
                 <View style={{ flex: 1 }}>
 
                   <TouchableOpacity onPress={() => {
-              this.setModalVisible(true)
+                    this.setModalVisible(true)
 
-            }}> 
+                  }}>
                     <Image
                       style={styles.imageStyle}
                       source={{ uri: item.path }}
                     />
                   </TouchableOpacity>
 
-                    <Text style={{ marginLeft: 15 }}> {item.details} </Text>
-                    <Text style={{ marginLeft: 15 }}> {item.title} </Text>
-                    <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
-    
+                  <Text style={{ marginLeft: 15 }}> {item.details} </Text>
+                  <Text style={{ marginLeft: 15 }}> {item.title} </Text>
+                  <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
+
                 </View>
               )
             }}
@@ -241,12 +241,12 @@ export default class DonateSales extends React.Component {
             </TouchableOpacity> */}
 
             <Modal
-              // animationIn="slideInUp"
-              // transparent={false}
-              testID={'modal'}
+
+
+
               isVisible={this.state.modalVisible}
-              backdropColor="#B4B3DB"
-              backdropOpacity={0.8}
+              // backdropColor="#B4B3DB"
+              // backdropOpacity={0.8}
               animationIn="zoomInDown"
               animationOut="zoomOutUp"
               animationInTiming={600}
@@ -254,26 +254,33 @@ export default class DonateSales extends React.Component {
               backdropTransitionInTiming={600}
               backdropTransitionOutTiming={600}
             >
-              <Image
-                style={{width: 300,
-                  height: 300,
-                  marginLeft: 15,
-                  marginRight: 15,
-                  borderRadius: 4,}}
-                source={{ uri:"http://157.245.229.180/images/Books/pic1.jpg" }}
-              />
-              {/* <Text style={{ marginLeft: 15 }}> {item.details} </Text>
-              <Text style={{ marginLeft: 15 }}> {item.title} </Text>
-              <Text style={{ marginLeft: 15 }}> {item.contact} </Text> */}
+
+              <View style={{ backgroundColor: '#ffffff', margin: 10, padding: 20, borderRadius: 10, flex: 1 }}>
+                <MaterialIcons
+                  name={"close"}
+                  size={24}
+                  onPress={() => {
+                    this.setModalVisible(!this.state.modalVisible);
+                  }}
+                />
+                <Image
+                  style={{
+                    width: 150,
+                    height: 150,
+                    marginLeft: 15,
+                    marginRight: 15,
+                    borderRadius: 4,
+                  }}
+                  source={{ uri: "http://157.245.229.180/images/Books/pic1.jpg" }}
+                />
+                {/* <Text style={{ marginLeft: 15 }}> {item.details} </Text>
+                <Text style={{ marginLeft: 15 }}> {item.title} </Text>
+                <Text style={{ marginLeft: 15 }}> {item.contact} </Text> */}
 
 
-              <MaterialIcons
-                name={"close"}
-                size={24}
-                onPress={() => {
-                  this.setModalVisible(!this.state.modalVisible);
-                }}
-              />
+
+              </View>
+
             </Modal>
           </View>
 
@@ -285,19 +292,44 @@ export default class DonateSales extends React.Component {
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item }) => {
               return (
-                <View style={{ flex: 1 }}>
+                <View >
+                  <View style={{
+                    backgroundColor: '#ffffff',
+                    margin: 10,
+                    padding: 20,
+                    borderRadius: 10,
+                    flex: 1,
+                    shadowColor: "#000",
+                    shadowOffset: {
+                      width: 0,
+                      height: 5,
+                    },
+                    shadowOpacity: 0.34,
+                    shadowRadius: 6.27,
 
-                  <TouchableOpacity>
-                    <Image
-                      style={styles.imageStyle}
-                      source={{ uri: item.path }}
+                    elevation: 10,
+                  }}>
+
+                    <TouchableOpacity>
+                      <Image
+                        style={styles.imageStyle}
+                        source={{ uri: item.path }}
+                      />
+                    </TouchableOpacity>
+                    <View
+                      style={{
+                        marginTop: 10,
+                        marginBottom: 10,
+                        borderBottomColor: 'black',
+                        borderBottomWidth: 1,
+
+                      }}
                     />
-                  </TouchableOpacity>
+                    <Text style={{ marginLeft: 15 }}> {item.details} </Text>
+                    <Text style={{ marginLeft: 15 }}> {item.title} </Text>
+                    <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
 
-                  <Text style={{ marginLeft: 15 }}> {item.details} </Text>
-                  <Text style={{ marginLeft: 15 }}> {item.title} </Text>
-                  <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
-
+                  </View>
                 </View>
               )
             }}
@@ -312,18 +344,20 @@ export default class DonateSales extends React.Component {
             renderItem={({ item }) => {
               return (
                 <View style={{ flex: 1 }}>
+                  <View style={styles.cardImage}>
+                    <TouchableOpacity>
+                      <Image
+                        style={styles.imageStyle}
+                        source={{ uri: item.path }}
+                      />
+                    </TouchableOpacity>
+                    
+                    <View style={styles.horizontalLine} />
 
-                  <TouchableOpacity>
-                    <Image
-                      style={styles.imageStyle}
-                      source={{ uri: item.path }}
-                    />
-                  </TouchableOpacity>
-
-                  <Text style={{ marginLeft: 15 }}> {item.details} </Text>
-                  <Text style={{ marginLeft: 15 }}> {item.title} </Text>
-                  <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
-
+                    <Text style={{ marginLeft: 15 }}> {item.details} </Text>
+                    <Text style={{ marginLeft: 15 }}> {item.title} </Text>
+                    <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
+                  </View>
                 </View>
               )
             }}
@@ -427,5 +461,26 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginRight: 15,
     borderRadius: 4,
+  },
+  cardImage: {
+    backgroundColor: '#ffffff',
+    margin: 10,
+    padding: 20,
+    borderRadius: 10,
+    flex: 1,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
+    elevation: 10,
+  },
+  horizontalLine: {
+    marginTop: 10,
+    marginBottom: 10,
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
   }
 });
