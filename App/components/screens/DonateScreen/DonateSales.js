@@ -93,7 +93,7 @@ export default class DonateSales extends React.Component {
     //     <ScrollView style={{ alignSelf: 'stretch' }}>
     //     <DonateNav
     // 			navigate={this.props.navigation.navigate}
-    // 		/>
+    // 		/> sfjdjfdshfsdifjsdjfdskfj
     //       {
     //         this.state.contents
     //           ? this.state.contents.map((param, i) => {
@@ -143,6 +143,7 @@ export default class DonateSales extends React.Component {
       >
 
         <DonateNav navigate={this.props.navigation.navigate} />
+
 
         <View style={{ justifyContent: "center", alignItems: "center", backgroundColor: '#C0C0C0' }}>
 
