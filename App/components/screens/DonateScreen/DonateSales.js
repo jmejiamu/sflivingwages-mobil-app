@@ -205,7 +205,7 @@ export default class DonateSales extends React.Component {
 
               <View style={{ backgroundColor: '#ffffff', margin: 10, padding: 20, borderRadius: 10, flex: 1 }}>
                 <MaterialIcons
-                  name={"close"}
+                  name={"close"}''
                   size={24}
                   onPress={() => {
                     this.setModalVisible(!this.state.modalVisible);
