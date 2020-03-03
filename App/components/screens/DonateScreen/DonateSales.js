@@ -144,7 +144,7 @@ export default class DonateSales extends React.Component {
 
         <DonateNav navigate={this.props.navigation.navigate} />
 
-        <View style={{ justifyContent: "center", alignItems: "center", backgroundColor: '#f2938d' }}>
+        <View style={{ justifyContent: "center", alignItems: "center", backgroundColor: '#C0C0C0' }}>
 
           <Text style={styles.titleHeader}>Books</Text>
 
