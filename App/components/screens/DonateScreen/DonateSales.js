@@ -60,7 +60,7 @@ export default class DonateSales extends React.Component {
 
   fetchData = async () => {
     Promise.all([
-      fetch('http://157.245.229.180:8080/pictures'),//Books
+      fetch('http://157.245.229.180:8080/pictures'),//Booksssss
       fetch('http://157.245.229.180:8080/arts'),
       fetch('http://157.245.229.180:8080/photos'),
       fetch('http://157.245.229.180:8080/cds'),
