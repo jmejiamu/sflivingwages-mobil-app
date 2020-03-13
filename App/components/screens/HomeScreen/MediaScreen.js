@@ -1,49 +1,93 @@
 //Import Necessary Packages
 import React from 'react';
-import { Button, View, Text, ScrollView, Image, FlatList,StyleSheet, TouchableOpacity } from 'react-native';
-
+import {View, Text, ScrollView, Image, Linking, StyleSheet} from 'react-native';
 import HomeNavComponent from './HomeNavComponent';
 
-
-
 export default class MediaScreen extends React.Component {
-	// static navigationOptions = {
-	// 	title: 'Event',
-	// };
 
-	render() {
-		/*
-			Get param, provide a fallback value
-		*/
-		return(
-			<ScrollView style={{flex: 1}}>
-				{/*Home Navigation Bar*/}
-				<HomeNavComponent
-					navigate={this.props.navigation.navigate}
+    constructor(props) {
+        super(props);
+        this.state = {
+            isLoading: true,
+            dataSource: [],
+        }
+    }
 
-				/>
-				{/*Page Contents*/}
-				<View style={{justifyContent: 'center', alignItems: 'center'}}>
-					<Text style={{textAlign: 'center'}}>
-						Media Page
-					</Text>
+    componentDidMount() {
+        fetch('https://www.livingwage-sf.org/wp-json/wp/v2/media', {
+            method: 'GET',
+        })
+            .then(response => response.json())
+            .then(json => {
+                this.setState({
+                    dataSource: json
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
 
-				</View>
+    render() {
 
-				
-			</ScrollView>
-		);
-	}
+        const data = this.state.dataSource.map((t, index) => {
+
+            var updatedTitle = (t.title.rendered).replace('&#8211; ','');
+            var updatedDate = (t.date).split('T')[0];
+            if (!t.guid.rendered.endsWith(".pdf")) {
+                return (
+                    <Text key={index} onPress={() => Linking.openURL(t.link)} style={styles.textStyle}>
+                        Title:
+                        {
+                            " " + updatedTitle + "\n"
+                        }
+                        <Text key={index} style={styles.textStyle}>
+                            Date Published:
+                            {
+                                " " + updatedDate
+                            }
+
+
+                        </Text>
+                        <Image source={{uri: t.guid.rendered}} style={styles.imageStyle}/>
+                    </Text>
+                )
+            }
+        });
+
+        return (
+            <ScrollView style={{flex: 1}}>
+                {/*Home Navigation Bar*/}
+                <HomeNavComponent
+                    navigate={this.props.navigation.navigate}
+
+                />
+                {/*Page Contents*/}
+                <View>
+
+                    <Text>
+                        {data}
+                    </Text>
+
+                </View>
+            </ScrollView>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
-    container:{
-        marginBottom: 10
+    textStyle: {
+        marginLeft: 'auto',
+        color: 'maroon',
+        fontSize: 15,
+        padding: 50,
+        alignSelf: 'flex-start'
     },
-    titleStyle: {
-        fontSize:18,
-        fontWeight: 'bold',
-        marginLeft: 15,
-        marginBottom: 5
-    }
+    imageStyle: {
+        width: '100%',
+        // Without height undefined it won't work
+        height: undefined,
+        // figure out your image aspect ratio
+        aspectRatio: 135 / 76,
+    },
 });
