@@ -37,8 +37,7 @@ export default class HomeScreen extends React.Component {
         <View style={{ height: 300 }}>
         <WebView
             style={{margin: 10,  }}
-            // source={{ uri: "http://www.youtube.com/embed?max-results=1&showinfo=0&rel=0&listType=user_uploads&list=sflivingwage" }}
-            source={{ uri: "https://www.youtube.com/embed?max-results=1&controls=0&showinfo=0&rel=0&listType=user_uploads&list=sflivingwage" }}
+            source={{ uri: "http://www.youtube.com/embed?max-results=1&showinfo=0&rel=0&listType=user_uploads&list=sflivingwage" }}
             javaScriptEnabled={true}
             domStorageEnabled={true}   
           />
@@ -61,18 +60,18 @@ export default class HomeScreen extends React.Component {
       </ScrollView>
       );
   }
-  handleWebViewNavigationStateChange = newNavState => {
-    const { url } = newNavState;
-    console.log(`User clicked ${url}`);
-    if(!url) return;
-    Linking.canOpenURL(url).then(supported => {
-      if (supported) {
-      //if(event.url !== uri) {
-        this.twitterWebview.stopLoading();
-        Linking.openURL(url); 
-      } else {
-        console.log("Don't know how to open URI: " + url);
-      }
-    });
-  }
+  // handleWebViewNavigationStateChange = newNavState => {
+  //   const { url } = newNavState;
+  //   console.log(`User clicked ${url}`);
+  //   if(!url) return;
+  //   Linking.canOpenURL(url).then(supported => {
+  //     if (supported) {
+  //     //if(event.url !== uri) {
+  //       this.twitterWebview.stopLoading();
+  //       Linking.openURL(url); 
+  //     } else {
+  //       console.log("Don't know how to open URI: " + url);
+  //     }
+  //   });
+  // }
 }

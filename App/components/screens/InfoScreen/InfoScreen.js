@@ -32,7 +32,7 @@ export default class InfoScreen extends React.Component {
 	}
 	componentDidMount() {
 		
-		return fetch('http://157.245.229.180:8080/ourcampaigns')//replace the x with your own IP or localhost
+		return fetch('http://157.245.184.202:8080/ourcampaigns')//replace the x with your own IP or localhost
 			.then((response) => response.json())
 			.then((reponseJson) => {
 				

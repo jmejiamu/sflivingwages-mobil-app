@@ -21,7 +21,7 @@ export default class AboutScreen extends React.Component {
 		}
 	}
 	fetchData = async () => {
-		const response = await fetch('http://157.245.229.180:8080/about')
+		const response = await fetch('http://157.245.184.202:8080/about')
 		const data = await response.json()
 		this.setState({
 			isLoading: false,

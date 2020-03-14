@@ -12,11 +12,13 @@ import {
   RefreshControl,
   // Modal,
   TouchableHighlight,
-  Alert
+  Alert,
+  Dimensions
 } from 'react-native';
 import DropDownItem from 'react-native-drop-down-item';
 import DonateNav from './DonateNav';
-import Modal from "react-native-modal"
+import Modal from "react-native-modal";
+import ImageZoom from 'react-native-image-pan-zoom';
 
 
 const IC_ARR_DOWN = require('./icons/ic_arr_down.png');
@@ -60,11 +62,11 @@ export default class DonateSales extends React.Component {
 
   fetchData = async () => {
     Promise.all([
-      fetch('http://157.245.229.180:8080/pictures'),//Booksssss
-      fetch('http://157.245.229.180:8080/arts'),
-      fetch('http://157.245.229.180:8080/photos'),
-      fetch('http://157.245.229.180:8080/cds'),
-      fetch('http://157.245.229.180:8080/dvds'),
+      fetch('http://157.245.184.202:8080/pictures'),//Booksssss
+      fetch('http://157.245.184.202:8080/arts'),
+      fetch('http://157.245.184.202:8080/photos'),
+      fetch('http://157.245.184.202:8080/cds'),
+      fetch('http://157.245.184.202:8080/dvds'),
     ])
       .then(([resBooks, resArt, resPhotos, resCds, resDvds]) => Promise.all([
         resBooks.json(), resArt.json(), resPhotos.json(), resCds.json(), resDvds.json()
@@ -93,7 +95,7 @@ export default class DonateSales extends React.Component {
     //     <ScrollView style={{ alignSelf: 'stretch' }}>
     //     <DonateNav
     // 			navigate={this.props.navigation.navigate}
-    // 		/> sfjdjfdshfsdifjsdjfdskfj
+    // 		/> 
     //       {
     //         this.state.contents
     //           ? this.state.contents.map((param, i) => {
@@ -158,7 +160,7 @@ export default class DonateSales extends React.Component {
 
               return (
                 <View style={{ flex: 1 }}>
-
+                  <View style={styles.cardImage}>
                   <TouchableOpacity onPress={() => {
                     this.setModalVisible(true)
 
@@ -168,26 +170,18 @@ export default class DonateSales extends React.Component {
                       source={{ uri: item.path }}
                     />
                   </TouchableOpacity>
+                   <View style={styles.horizontalLine} />
 
                   <Text style={{ marginLeft: 15 }}> {item.details} </Text>
                   <Text style={{ marginLeft: 15 }}> {item.title} </Text>
                   <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
-
+                  </View>
                 </View>
               )
             }}
           />
           <View style={{ flex: 1 }}>
 
-            {/* <TouchableOpacity onPress={() => {
-              this.setModalVisible(true)
-
-            }}>
-              <Image
-                style={styles.imageStyle}
-                source={{ uri: item.path }}
-              />
-            </TouchableOpacity> */}
 
             <Modal
 
@@ -206,7 +200,7 @@ export default class DonateSales extends React.Component {
 
               <View style={{ backgroundColor: '#ffffff', margin: 10, padding: 20, borderRadius: 10, flex: 1 }}>
                 <MaterialIcons
-                  name={"close"}''
+                  name={"close"}
                   size={24}
                   onPress={() => {
                     this.setModalVisible(!this.state.modalVisible);
@@ -220,7 +214,7 @@ export default class DonateSales extends React.Component {
                     marginRight: 15,
                     borderRadius: 4,
                   }}
-                  source={{ uri: "http://157.245.229.180/images/Books/pic1.jpg" }}
+                  source={{ uri: "http://157.245.184.202/images/Books/pic01.jpg" }}
                 />
                 {/* <Text style={{ marginLeft: 15 }}> {item.details} </Text>
                 <Text style={{ marginLeft: 15 }}> {item.title} </Text>
@@ -241,23 +235,8 @@ export default class DonateSales extends React.Component {
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item }) => {
               return (
-                <View >
-                  <View style={{
-                    backgroundColor: '#ffffff',
-                    margin: 10,
-                    padding: 20,
-                    borderRadius: 10,
-                    flex: 1,
-                    shadowColor: "#000",
-                    shadowOffset: {
-                      width: 0,
-                      height: 5,
-                    },
-                    shadowOpacity: 0.34,
-                    shadowRadius: 6.27,
-
-                    elevation: 10,
-                  }}>
+                <View style={{flex:1}}>
+                  <View style={styles.cardImage}>
 
                     <TouchableOpacity>
                       <Image
@@ -266,13 +245,7 @@ export default class DonateSales extends React.Component {
                       />
                     </TouchableOpacity>
                     <View
-                      style={{
-                        marginTop: 10,
-                        marginBottom: 10,
-                        borderBottomColor: 'black',
-                        borderBottomWidth: 1,
-
-                      }}
+                      style={styles.horizontalLine}
                     />
                     <Text style={{ marginLeft: 15 }}> {item.details} </Text>
                     <Text style={{ marginLeft: 15 }}> {item.title} </Text>
@@ -319,8 +292,8 @@ export default class DonateSales extends React.Component {
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item }) => {
               return (
-                <View>
-
+                <View style={{flex:1}}>
+                  <View style={styles.cardImage}>
                   <TouchableOpacity>
                     <Image
                       style={styles.imageStyle}
@@ -328,10 +301,12 @@ export default class DonateSales extends React.Component {
                     />
                   </TouchableOpacity>
 
+                  <View style={styles.horizontalLine} />
+
                   <Text style={{ marginLeft: 15 }}> {item.details} </Text>
                   <Text style={{ marginLeft: 15 }}> {item.title} </Text>
                   <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
-
+                  </View>
                 </View>
               )
             }}
@@ -345,16 +320,28 @@ export default class DonateSales extends React.Component {
             renderItem={({ item }) => {
               return (
                 <View>
-                  <TouchableOpacity>
+                  <View style={styles.cardImage}>
+                  {/* <TouchableOpacity> */}
+                    <ImageZoom 
+                    cropWidth={Dimensions.get('window').width}
+                    cropHeight={Dimensions.get('window').height}
+                    imageWidth={200}
+                    imageHeight={300}
+                    >
                     <Image
                       style={styles.imageStyle}
                       source={{ uri: item.path }}
                     />
-                  </TouchableOpacity>
-                  <Text style={{ marginLeft: 15 }}> {item.details} </Text>
-                  <Text style={{ marginLeft: 15 }}> {item.title} </Text>
-                  <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
+                    </ImageZoom>
+                  {/* </TouchableOpacity> */}
+                  
 
+                    <View style={styles.horizontalLine}/>
+
+                  <Text style={styles.txt}> {item.details} </Text>
+                  <Text style={styles.txt}> {item.title} </Text>
+                  <Text style={styles.txt}> {item.contact} </Text>
+                  </View>
                 </View>
               )
             }}
@@ -374,12 +361,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5F5F5',
     paddingTop: 0,
   },
-  // containerT: {
-  //   flex: 1,
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  //   backgroundColor: '#F5FCFF',
-  // },
   header: {
     width: '100%',
     paddingVertical: 0,
@@ -390,7 +371,10 @@ const styles = StyleSheet.create({
   },
 
   txt: {
-    //fontSize: 14,
+    fontSize: 14,
+    color: '#ffffff',
+    marginLeft: 15,
+    
   },
   dropDownItem: {
     marginTop: 30,
@@ -412,7 +396,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   cardImage: {
-    backgroundColor: '#ffffff',
+    backgroundColor: 'rgba(52, 52, 52, 0.8)',
     margin: 10,
     padding: 20,
     borderRadius: 10,

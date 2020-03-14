@@ -28,7 +28,7 @@ export default class EventScreen extends React.Component {
 		}
 	}
 	fetchData = async () => {
-		const response = await fetch('http://157.245.229.180:8080/calendar')
+		const response = await fetch('http://157.245.184.202:8080/calendar')
 		const d = await response.json()
 		this.setState({
 			data: d
