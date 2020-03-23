@@ -88,6 +88,7 @@ export default class DonateSales extends React.Component {
     })
   }
 
+
   render() {
     // const [modalOpen, setModalOpen] = useState(false);
     // return (
@@ -321,20 +322,18 @@ export default class DonateSales extends React.Component {
               return (
                 <View>
                   <View style={styles.cardImage}>
-                  {/* <TouchableOpacity> */}
-                    <ImageZoom 
-                    cropWidth={Dimensions.get('window').width}
-                    cropHeight={Dimensions.get('window').height}
-                    imageWidth={500}
-                    imageHeight={600}
-                    pinchToZoom={true}
-                    >
-                    <Image
-                      style={styles.imageStyle}
-                      source={{ uri: item.path }}
-                    />
-                    </ImageZoom>
-                  {/* </TouchableOpacity> */}
+                   <TouchableOpacity >
+                       <ImageZoom cropWidth={300}
+                                  cropHeight={400}
+                                  imageWidth={250}
+                                  imageHeight={350}
+
+                       >
+                           <Image  style={styles.imageStyle}
+                                  source={{uri: item.path }}/>
+                       </ImageZoom>
+
+                   </TouchableOpacity>
                   
 
                     <View style={styles.horizontalLine}/>
@@ -390,8 +389,8 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   imageStyle: {
-    width: 200,
-    height: 300,
+    width: 250,
+    height: 350,
     marginLeft: 15,
     marginRight: 15,
     borderRadius: 4,
