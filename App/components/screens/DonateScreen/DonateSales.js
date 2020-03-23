@@ -323,8 +323,8 @@ export default class DonateSales extends React.Component {
                   <View style={styles.cardImage}>
                   {/* <TouchableOpacity> */}
                     <ImageZoom 
-                    cropWidth={Dimensions.set({"width": 700})}
-                    cropHeight={Dimensions.set({"height": 700})}
+                    cropWidth={Dimensions.get('window').width}
+                    cropHeight={Dimensions.get('window').height}
                     imageWidth={500}
                     imageHeight={600}
                     pinchToZoom={true}

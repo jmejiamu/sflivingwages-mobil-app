@@ -1,6 +1,7 @@
 //Import Necessary Packages
 import React from 'react';
 import {View, Text, ScrollView, Image, Linking, StyleSheet} from 'react-native';
+import {Card, CardItem} from 'react-native-elements';
 import HomeNavComponent from './HomeNavComponent';
 
 export default class MediaScreen extends React.Component {
@@ -32,27 +33,32 @@ export default class MediaScreen extends React.Component {
 
         const data = this.state.dataSource.map((t, index) => {
 
-            var updatedTitle = (t.title.rendered).replace('&#8211; ','');
+            var updatedTitle = (t.title.rendered).replace('&#8211; ', '');
             var updatedDate = (t.date).split('T')[0];
             if (!t.guid.rendered.endsWith(".pdf")) {
                 return (
+
+
                     <>
-                    <Text key={index} onPress={() => Linking.openURL(t.link)} style={styles.textStyle}>
-                        Title:
-                        {
-                            " " + updatedTitle + "\n"
-                        }
-                        <Text key={index} style={styles.textStyle}>
-                            Date Published:
-                            {
-                                " " + updatedDate
-                            }
+                        <Card
+                            title={updatedTitle} style={styles.featuredTitleStyle}
+                        >
+                            <Image source={{uri: t.guid.rendered}} style={styles.imageStyle}/>
+                            <Text key={index} onPress={() => Linking.openURL(t.link)} style={styles.textStyle}>
+
+                                <Text style={styles.noteStyle}>
+                                    Date Published:
+                                    {
+                                        " " + updatedDate
+                                    }
 
 
-                        </Text>
-                    </Text>
-                        <Image source={{uri: t.guid.rendered}} style={styles.imageStyle}/>
-                        </>
+                                </Text>
+
+                            </Text>
+
+                        </Card>
+                    </>
                 )
             }
         });
@@ -66,10 +72,10 @@ export default class MediaScreen extends React.Component {
                 />
                 {/*Page Contents*/}
                 <View>
+                    <Text style={{textAlign: 'center'}}> Media</Text>
 
-                    {/* <Text> */}
-                        {data}
-                    {/* </Text> */}
+                    {data}
+
 
                 </View>
             </ScrollView>
@@ -82,7 +88,7 @@ const styles = StyleSheet.create({
         marginLeft: 'auto',
         color: 'maroon',
         fontSize: 15,
-        padding: 50,
+        padding: 10,
         alignSelf: 'flex-start'
     },
     imageStyle: {
@@ -92,4 +98,18 @@ const styles = StyleSheet.create({
         // figure out your image aspect ratio
         // aspectRatio: 135 / 76,
     },
+    featuredTitleStyle: {
+        marginHorizontal: 5,
+        textShadowColor: '#00000f',
+        textShadowOffset: {width: 3, height: 3},
+        textShadowRadius: 3
+    },
+    noteStyle: {
+        margin: 5,
+        fontStyle: 'italic',
+        color: '#b2bec3',
+        fontSize: 10
+    },
+
+
 });
