@@ -124,6 +124,7 @@ export default class MediaScreen extends React.Component {
                             <WebView
                                 style={styles.youTubeStyle}
                                 source={{uri: "https://www.youtube.com/embed?max-results=1&controls=0&showinfo=0&rel=0&listType=playlist&list=PLcuBfm3dxksyN__WaZR1pN1hoUcivSMPU"}}
+                               // onClick
                                 javaScriptEnabled={true}
                                 domStorageEnabled={true}
                             />
