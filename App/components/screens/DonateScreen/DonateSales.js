@@ -148,7 +148,7 @@ export default class DonateSales extends React.Component {
         <DonateNav navigate={this.props.navigation.navigate} />
 
 
-        <View style={{ justifyContent: "center", alignItems: "center", backgroundColor: '#C0C0C0' }}>
+        <View style={{ justifyContent: "center", alignItems: "center",}}>
 
           <Text style={styles.titleHeader}>Books</Text>
 
@@ -338,9 +338,9 @@ export default class DonateSales extends React.Component {
 
                     <View style={styles.horizontalLine}/>
 
-                  <Text style={styles.txt}> {item.details} </Text>
-                  <Text style={styles.txt}> {item.title} </Text>
-                  <Text style={styles.txt}> {item.contact} </Text>
+                  <Text style={{ marginLeft: 15 }}> {item.details} </Text>
+                  <Text style={{ marginLeft: 15 }}> {item.title} </Text>
+                  <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
                   </View>
                 </View>
               )
@@ -370,12 +370,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  txt: {
-    fontSize: 14,
-    color: '#ffffff',
-    marginLeft: 15,
+  // txt: {
+  //   fontSize: 14,
+  //   color: '#ffffff',
+  //   marginLeft: 15,
     
-  },
+  // },
   dropDownItem: {
     marginTop: 30,
   },
@@ -393,13 +393,14 @@ const styles = StyleSheet.create({
     height: 350,
     marginLeft: 15,
     marginRight: 15,
-    borderRadius: 4,
+    // borderRadius: 4,
   },
   cardImage: {
-    backgroundColor: 'rgba(52, 52, 52, 0.8)',
+    // backgroundColor: 'rgba(52, 52, 52, 0.8)',
+    backgroundColor:'white',
     margin: 10,
     padding: 20,
-    borderRadius: 10,
+    // borderRadius: 10,
     flex: 1,
     shadowColor: "#000",
     shadowOffset: {
