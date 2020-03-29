@@ -162,15 +162,18 @@ export default class DonateSales extends React.Component {
               return (
                 <View style={{ flex: 1 }}>
                   <View style={styles.cardImage}>
-                  <TouchableOpacity onPress={() => {
-                    this.setModalVisible(true)
 
-                  }}>
-                    <Image
-                      style={styles.imageStyle}
-                      source={{ uri: item.path }}
-                    />
-                  </TouchableOpacity>
+                  <TouchableHighlight>
+                      <ImageZoom cropWidth={300}
+                                 cropHeight={400}
+                                 imageWidth={250}
+                                 imageHeight={350}
+
+                  >
+                      <Image  style={styles.imageStyle}
+                              source={{uri: item.path }}/>
+                  </ImageZoom>
+                  </TouchableHighlight>
                    <View style={styles.horizontalLine} />
 
                   <Text style={{ marginLeft: 15 }}> {item.details} </Text>
@@ -239,12 +242,17 @@ export default class DonateSales extends React.Component {
                 <View style={{flex:1}}>
                   <View style={styles.cardImage}>
 
-                    <TouchableOpacity>
-                      <Image
-                        style={styles.imageStyle}
-                        source={{ uri: item.path }}
-                      />
-                    </TouchableOpacity>
+                    <TouchableHighlight>
+                        <ImageZoom cropWidth={300}
+                                   cropHeight={400}
+                                   imageWidth={250}
+                                   imageHeight={350}
+
+                        >
+                            <Image  style={styles.imageStyle}
+                                    source={{uri: item.path }}/>
+                        </ImageZoom>
+                    </TouchableHighlight>
                     <View
                       style={styles.horizontalLine}
                     />
@@ -268,12 +276,17 @@ export default class DonateSales extends React.Component {
               return (
                 <View style={{ flex: 1 }}>
                   <View style={styles.cardImage}>
-                    <TouchableOpacity>
-                      <Image
-                        style={styles.imageStyle}
-                        source={{ uri: item.path }}
-                      />
-                    </TouchableOpacity>
+                    <TouchableHighlight>
+                        <ImageZoom cropWidth={300}
+                                   cropHeight={400}
+                                   imageWidth={250}
+                                   imageHeight={350}
+
+                        >
+                            <Image  style={styles.imageStyle}
+                                    source={{uri: item.path }}/>
+                        </ImageZoom>
+                    </TouchableHighlight>
                     
                     <View style={styles.horizontalLine} />
 
@@ -295,12 +308,17 @@ export default class DonateSales extends React.Component {
               return (
                 <View style={{flex:1}}>
                   <View style={styles.cardImage}>
-                  <TouchableOpacity>
-                    <Image
-                      style={styles.imageStyle}
-                      source={{ uri: item.path }}
-                    />
-                  </TouchableOpacity>
+                  <TouchableHighlight>
+                      <ImageZoom cropWidth={300}
+                                 cropHeight={400}
+                                 imageWidth={250}
+                                 imageHeight={350}
+
+                      >
+                          <Image  style={styles.imageStyle}
+                                  source={{uri: item.path }}/>
+                      </ImageZoom>
+                  </TouchableHighlight>
 
                   <View style={styles.horizontalLine} />
 
@@ -322,7 +340,7 @@ export default class DonateSales extends React.Component {
               return (
                 <View>
                   <View style={styles.cardImage}>
-                   <TouchableOpacity >
+                   <TouchableHighlight >
                        <ImageZoom cropWidth={300}
                                   cropHeight={400}
                                   imageWidth={250}
@@ -333,7 +351,7 @@ export default class DonateSales extends React.Component {
                                   source={{uri: item.path }}/>
                        </ImageZoom>
 
-                   </TouchableOpacity>
+                   </TouchableHighlight>
                   
 
                     <View style={styles.horizontalLine}/>
