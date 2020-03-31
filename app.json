@@ -3,12 +3,14 @@
     "name": "sflivingwages",
     "slug": "sflw",
     "privacy": "public",
-    "sdkVersion": "33.0.0",
-    "platforms": [ "ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "version": "4.0.0",
     "orientation": "portrait",
     "ios": {
-      "supportsTablet" : true,
+      "supportsTablet": true,
       "icon": "./assets/icon.png",
       "bundleIdentifier": "com.sfLiving.sflivingwages"
     },
@@ -20,7 +22,7 @@
       "package": "com.sfLiving.sflivingwages",
       "versionCode": 4
     },
-     "androidStatusBar": {
+    "androidStatusBar": {
       "backgroundColor": "#C2185B"
     },
     "icon": "./assets/icon.png",
@@ -32,8 +34,8 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"]
+    "assetBundlePatterns": [
+      "**/*"
+    ]
   }
 }
-
-
