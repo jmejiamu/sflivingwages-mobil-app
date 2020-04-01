@@ -14,23 +14,33 @@ export default class NewsScreen extends React.Component {
         this.state = {
             isLoading: true,
             dataSource: [],
+            dataSource2: [],
+            dataSource3: [],
         }
     }
 
     componentDidMount() {
-        fetch('https://www.livingwage-sf.org/wp-json/wp/v2/posts?category=closing_the_wage_gap', {
-            method: 'GET',
-        })
-            .then(response => response.json())
-            .then(json => {
-                this.setState({
-                    dataSource: json
-                });
-            })
-            .catch(error => {
-                console.error(error);
-            });
+        this.fetchData();
     }
+
+    fetchData = async () => Promise.all([
+        fetch('https://www.livingwage-sf.org/wp-json/wp/v2/posts?per_page=3&category=closing_the_wage_gap'),
+        fetch('https://www.livingwage-sf.org/wp-json/wp/v2/posts?per_page=3&categories=78'),
+        fetch('https://www.livingwage-sf.org/wp-json/wp/v2/posts?per_page=3&categories=81')],)
+        .then(([wageGap, pressRelease, pressCoverage]) =>
+            Promise.all([
+                wageGap.json(), pressRelease.json(), pressCoverage.json()
+            ]))
+        .then(([wageGap, pressRelease, pressCoverage]) => this.setState({
+            dataSource: wageGap,
+            dataSource2: pressRelease,
+            dataSource3: pressCoverage,
+        }))
+
+        .catch(error => {
+            console.error(error);
+        });
+
 
     render() {
 
@@ -38,38 +48,118 @@ export default class NewsScreen extends React.Component {
 
             var updatedTitle = (t.title.rendered).replace(/&#8216;|&#8217;|&#8211;/g, '');
             var updatedDate = (t.date).split('T')[0];
-            var content = (t.excerpt.rendered).replace(/<p>/, '').replace(/<a.*>/, ' ...\n\nRead More').replace(/&#8217;/g, '');
-            if (!t.guid.rendered.endsWith(".pdf")) {
-                return (
+            var content = (t.excerpt.rendered)
+                .replace(/<p>/, '')
+                .replace(/<a.*>/, ' ...\n\nRead More')
+                .replace(/&#8217;/g, '');
+
+            return (
 
 
-                    <>
-                        <Card
-                            title={updatedTitle}
-                        >
-                            <Text onPress={() => Linking.openURL(t.link)}>
-                                {content}
+                <>
+                    <Card
+                        title={updatedTitle} style={styles.cardStyle}
+                    >
+                        <Text onPress={() => Linking.openURL(t.link)}>
+                            {content}
+                        </Text>
+
+                        <Text key={index}>
+
+                            <Text style={styles.noteStyle} style={styles.noteStyle}>
+                                Date Published:
+                                {
+                                    " " + updatedDate
+                                }
+
+
                             </Text>
 
-                            <Text key={index}>
+                        </Text>
 
-                                <Text style={styles.noteStyle} style={styles.noteStyle}>
-                                    Date Published:
-                                    {
-                                        " " + updatedDate
-                                    }
+                    </Card>
+                </>
+            )
 
-
-                                </Text>
-
-                            </Text>
-
-                        </Card>
-                    </>
-                )
-            }
         });
 
+        const data2 = this.state.dataSource2.map((t, index) => {
+
+            var updatedTitle = (t.title.rendered).replace(/&#8216;|&#8217;|&#8211;/g, '');
+            var updatedDate = (t.date).split('T')[0];
+            var content = (t.excerpt.rendered)
+                .replace(/<p>/, '')
+                .replace(/<a.*>/, ' ...\n\nRead More')
+                .replace(/&#8217;|&#8220;|&#8221;|&#038;/g, '');
+
+            return (
+
+
+                <>
+                    <Card
+                        title={updatedTitle}
+                    >
+                        <Text onPress={() => Linking.openURL(t.link)}>
+                            {content}
+                        </Text>
+
+                        <Text key={index}>
+
+                            <Text style={styles.noteStyle} style={styles.noteStyle}>
+                                Date Published:
+                                {
+                                    " " + updatedDate
+                                }
+
+
+                            </Text>
+
+                        </Text>
+
+                    </Card>
+                </>
+            )
+
+        });
+        const data3 = this.state.dataSource3.map((t, index) => {
+
+            var updatedTitle = (t.title.rendered).replace(/&#8216;|&#8217;|&#8211;/g, '');
+            var updatedDate = (t.date).split('T')[0];
+            var content = (t.excerpt.rendered)
+                .replace(/<\/p>/, '')
+                .replace(/<p>/, '')
+                .replace(/<a.*>/, ' ...\n\nRead More')
+                .replace(/&#8217;|&#8220;|&#8221;|&#038;/g, '')
+        .replace(/&mdash;/, '');
+            return (
+
+
+                <>
+                    <Card
+                        title={updatedTitle}
+                    >
+                        <Text onPress={() => Linking.openURL(t.link)}>
+                            {content}
+                        </Text>
+
+                        <Text key={index}>
+
+                            <Text style={styles.noteStyle} style={styles.noteStyle}>
+                                Date Published:
+                                {
+                                    " " + updatedDate
+                                }
+
+
+                            </Text>
+
+                        </Text>
+
+                    </Card>
+                </>
+            )
+
+        });
         return (
             <ScrollView style={{flex: 1}}>
                 {/*Home Navigation Bar*/}
@@ -83,7 +173,17 @@ export default class NewsScreen extends React.Component {
                 <Text style={styles.textStyle}> Closing The Wage Gap:
                 </Text>
                 {data}
+                <Divider style={styles.dividerStyle}/>
 
+                <Text style={styles.textStyle}> Press Releases:
+                </Text>
+                {data2}
+
+                <Divider style={styles.dividerStyle}/>
+
+                <Text style={styles.textStyle}> Press Coverage:
+                </Text>
+                {data3}
 
             </ScrollView>
         )
@@ -111,6 +211,10 @@ const styles = StyleSheet.create({
         color: '#b2bec3',
         fontSize: 10
     },
+
+    dividerStyle: {
+        backgroundColor: 'maroon', padding: 10,
+    }
 
 
 });
