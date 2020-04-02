@@ -82,7 +82,7 @@ import DonateNav from './DonateNav';
 const STRIPE_ERROR = 'Payment error. Try again later.';
 const SERVER_ERROR = 'Server error. Try again later.';
 //this is the publishable test key from sflivingwage
-const STRIPE_PUBLISHABLE_KEY = 'pk_test_aqoByutYJ9MFqkH8GQY2BeQ4009FZHjjur';
+const STRIPE_PUBLISHABLE_KEY = 'sk_test_XW9Uy13mjHoEyv5WxnUwFDdG00sA23zC1K';
 /**
  * The method sends HTTP requests to the Stripe API.
  * It's necessary to manually send the payment data
