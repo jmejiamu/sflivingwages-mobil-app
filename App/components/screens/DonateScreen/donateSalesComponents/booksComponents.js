@@ -17,19 +17,20 @@ import {
 
 
 const Books = (props) => {
-    const  [Bid, setBid] = useState('');
+    const  [bid, setBid] = useState('');
 
     const onSubmitData = () => {
         fetch('http://192.168.1.69:3001/data',{
             method:'post',
             headers:{'Content-Type': 'application/json'},
             body:JSON.stringify({
-                Bid: Bid,
+                bid: bid,
                 id:props.books.id
             })
         })
     }
     return(
+      
         
         <FlatList
             horizontal={true}
@@ -37,7 +38,6 @@ const Books = (props) => {
             keyExtractor={(item, index) => index.toString()}
 
             renderItem={({ item }) => {
-
               return (
                 <View style={{ flex: 1 }}>
                   <View style={styles.cardImage}>
@@ -53,15 +53,18 @@ const Books = (props) => {
                     />
                     </ImageZoom>
                   </TouchableHighlight>
+
                    <View style={styles.horizontalLine} />
+
                    <Text style={{ marginLeft: 15 }}> {item.details} </Text>
                    <TextInput
                     style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
                     placeholder="Bid..."
                     keyboardType='numeric'
-                    onChangeText={Bid => setBid(Bid)}
+                    onChangeText={bidInput =>setBid(bidInput)} 
+                    // value={bid}
                   />
-                   
+                   <Text style={{ marginLeft: 15 }}> {"$" + bid} </Text>
 
                    <View style={{padding: 5}}/>
                    <TextInput
@@ -78,7 +81,7 @@ const Books = (props) => {
                   />
                   <TouchableOpacity
                     style = {styles.submitButton}
-                    onPress = {()=>alert(Bid)} 
+                    onPress = {()=>alert("Thanks for your bid" + bid + "!")} 
                     >
                     <Text style = {styles.submitButtonText}> Submit </Text>
                   </TouchableOpacity>

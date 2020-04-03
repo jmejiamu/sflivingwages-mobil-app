@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
 	txt: {
 		fontSize: 16,
 		color: '#100c08',
-		paddingHorizontal: 20,
+		paddingHorizontal: 10,
 	},
 	dropDownItem: {
 		marginTop: 20,
