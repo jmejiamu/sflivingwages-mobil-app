@@ -13,13 +13,19 @@ import {
   // Modal,
   TouchableHighlight,
   Alert,
-  Dimensions
+  Dimensions,
+  TextInput
 } from 'react-native';
 import DropDownItem from 'react-native-drop-down-item';
 import DonateNav from './DonateNav';
 import Modal from "react-native-modal";
 import ImageZoom from 'react-native-image-pan-zoom';
 
+import Books from './donateSalesComponents/booksComponents';
+import Art from './donateSalesComponents/ArtComponent';
+import Photos from  './donateSalesComponents/PhotosComponent';
+import Cds from './donateSalesComponents/CdsComponent';
+import Dvds from './donateSalesComponents/DvdsComponent';
 
 const IC_ARR_DOWN = require('./icons/ic_arr_down.png');
 const IC_ARR_UP = require('./icons/ic_arr_up.png');
@@ -27,7 +33,9 @@ const IC_ARR_UP = require('./icons/ic_arr_up.png');
 //type Props = {};
 
 export default class DonateSales extends React.Component {
-  state = {
+  constructor(props){
+    super(props);
+  this.state = {
     // contents: [
     //   {
     //     title: 'CD',
@@ -48,10 +56,10 @@ export default class DonateSales extends React.Component {
     cds: [],
     dvds: [],
     modalVisible: false,
-    // modalOpen: false,
-    // setModalOpen:false
+    bid: ''
   };
-
+}
+  
   setModalVisible = (visible) => {
     this.setState({ modalVisible: visible })
   }
@@ -77,9 +85,14 @@ export default class DonateSales extends React.Component {
         photos: dataPhotos,
         cds: dataCds,
         dvds: dataDvds
+        
       }))
+       
+    }
+    
+    handleChange = (e)=>{
+    this.setState({ bid: e })
   }
-
 
   _onRefresh() {
     this.setState({ refreshing: true })
@@ -151,219 +164,20 @@ export default class DonateSales extends React.Component {
         <View style={{ justifyContent: "center", alignItems: "center",}}>
 
           <Text style={styles.titleHeader}>Books</Text>
-
-          <FlatList
-            horizontal={true}
-            data={this.state.books}
-            keyExtractor={(item, index) => index.toString()}
-
-            renderItem={({ item }) => {
-
-              return (
-                <View style={{ flex: 1 }}>
-                  <View style={styles.cardImage}>
-
-                  <TouchableHighlight>
-                      <ImageZoom cropWidth={300}
-                                 cropHeight={400}
-                                 imageWidth={250}
-                                 imageHeight={350}
-
-                  >
-                      <Image  style={styles.imageStyle}
-                              source={{uri: item.path }}/>
-                  </ImageZoom>
-                  </TouchableHighlight>
-                   <View style={styles.horizontalLine} />
-
-                  <Text style={{ marginLeft: 15 }}> {item.details} </Text>
-                  <Text style={{ marginLeft: 15 }}> {item.title} </Text>
-                  <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
-                  </View>
-                </View>
-              )
-            }}
-          />
-          <View style={{ flex: 1 }}>
-
-
-            <Modal
-
-
-
-              isVisible={this.state.modalVisible}
-              // backdropColor="#B4B3DB"
-              // backdropOpacity={0.8}
-              animationIn="zoomInDown"
-              animationOut="zoomOutUp"
-              animationInTiming={600}
-              animationOutTiming={600}
-              backdropTransitionInTiming={600}
-              backdropTransitionOutTiming={600}
-            >
-
-              <View style={{ backgroundColor: '#ffffff', margin: 10, padding: 20, borderRadius: 10, flex: 1 }}>
-                <MaterialIcons
-                  name={"close"}
-                  size={24}
-                  onPress={() => {
-                    this.setModalVisible(!this.state.modalVisible);
-                  }}
-                />
-                <Image
-                  style={{
-                    width: 150,
-                    height: 150,
-                    marginLeft: 15,
-                    marginRight: 15,
-                    borderRadius: 4,
-                  }}
-                  source={{ uri: "http://157.245.184.202/images/Books/pic01.jpg" }}
-                />
-                {/* <Text style={{ marginLeft: 15 }}> {item.details} </Text>
-                <Text style={{ marginLeft: 15 }}> {item.title} </Text>
-                <Text style={{ marginLeft: 15 }}> {item.contact} </Text> */}
-
-
-
-              </View>
-
-            </Modal>
-          </View>
+          <Books books={this.state.books}/>
 
           <Text style={styles.titleHeader}>Art</Text>
-
-          <FlatList
-            horizontal={true}
-            data={this.state.art}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item }) => {
-              return (
-                <View style={{flex:1}}>
-                  <View style={styles.cardImage}>
-
-                    <TouchableHighlight>
-                        <ImageZoom cropWidth={300}
-                                   cropHeight={400}
-                                   imageWidth={250}
-                                   imageHeight={350}
-
-                        >
-                            <Image  style={styles.imageStyle}
-                                    source={{uri: item.path }}/>
-                        </ImageZoom>
-                    </TouchableHighlight>
-                    <View
-                      style={styles.horizontalLine}
-                    />
-                    <Text style={{ marginLeft: 15 }}> {item.details} </Text>
-                    <Text style={{ marginLeft: 15 }}> {item.title} </Text>
-                    <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
-
-                  </View>
-                </View>
-              )
-            }}
-          />
+          <Art art={this.state.art}/>
 
           <Text style={styles.titleHeader}>Photos</Text>
-
-          <FlatList
-            horizontal={true}
-            data={this.state.photos}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item }) => {
-              return (
-                <View style={{ flex: 1 }}>
-                  <View style={styles.cardImage}>
-                    <TouchableHighlight>
-                        <ImageZoom cropWidth={300}
-                                   cropHeight={400}
-                                   imageWidth={250}
-                                   imageHeight={350}
-
-                        >
-                            <Image  style={styles.imageStyle}
-                                    source={{uri: item.path }}/>
-                        </ImageZoom>
-                    </TouchableHighlight>
-                    
-                    <View style={styles.horizontalLine} />
-
-                    <Text style={{ marginLeft: 15 }}> {item.details} </Text>
-                    <Text style={{ marginLeft: 15 }}> {item.title} </Text>
-                    <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
-                  </View>
-                </View>
-              )
-            }}
-          />
+          <Photos photos={this.state.photos}/>
 
           <Text style={styles.titleHeader}>CDS</Text>
-          <FlatList
-            horizontal={true}
-            data={this.state.cds}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item }) => {
-              return (
-                <View style={{flex:1}}>
-                  <View style={styles.cardImage}>
-                  <TouchableHighlight>
-                      <ImageZoom cropWidth={300}
-                                 cropHeight={400}
-                                 imageWidth={250}
-                                 imageHeight={350}
-
-                      >
-                          <Image  style={styles.imageStyle}
-                                  source={{uri: item.path }}/>
-                      </ImageZoom>
-                  </TouchableHighlight>
-
-                  <View style={styles.horizontalLine} />
-
-                  <Text style={{ marginLeft: 15 }}> {item.details} </Text>
-                  <Text style={{ marginLeft: 15 }}> {item.title} </Text>
-                  <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
-                  </View>
-                </View>
-              )
-            }}
-          />
+          <Cds cds={this.state.cds}/>
+        
 
           <Text style={styles.titleHeader}>DVDS</Text>
-          <FlatList
-            horizontal={true}
-            data={this.state.dvds}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item }) => {
-              return (
-                <View>
-                  <View style={styles.cardImage}>
-                   <TouchableHighlight >
-                       <ImageZoom cropWidth={300}
-                                  cropHeight={400}
-                                  imageWidth={250}
-                                  imageHeight={350}
-
-                       >
-                           <Image  style={styles.imageStyle}
-                                  source={{uri: item.path }}/>
-                       </ImageZoom>
-
-                   </TouchableHighlight>
-                  
-
-                    <View style={styles.horizontalLine}/>
-
-                  <Text style={{ marginLeft: 15 }}> {item.details} </Text>
-                  <Text style={{ marginLeft: 15 }}> {item.title} </Text>
-                  <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
-                  </View>
-                </View>
-              )
-            }}
-          />
+          <Dvds dvds={this.state.dvds}/>
         </View>
 
       </ScrollView>
@@ -434,5 +248,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderBottomColor: 'black',
     borderBottomWidth: 1,
-  }
+  },
+  submitButton: {
+    backgroundColor: '#7a42f4',
+    padding: 10,
+    margin: 15,
+    height: 40,
+ },
+ submitButtonText:{
+  color: 'white'
+}
 });

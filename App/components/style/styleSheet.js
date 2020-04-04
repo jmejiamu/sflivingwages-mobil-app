@@ -42,7 +42,7 @@ export const bannerStyle = StyleSheet.create({
 				height: 55, 
 				width: 180, 
 				resizeMode: 'contain', 
-				marginBottom: 20, 
+				marginBottom: 5, 
 				alignItems: 'center', 
 				justifyContent: 'center' 
 			}, 
@@ -63,7 +63,7 @@ export const bannerStyle = StyleSheet.create({
 			},
 			/* android styling */
 			android: {
-				height: 45,
+				height: 70,
 			},
 		}),	
 	},
