@@ -27,14 +27,10 @@ export default class InfoScreen extends React.Component {
 			expanded: false
 		}
 	}
-	changeLayout = () => {
-		LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-		this.setState({ expanded: !this.state.expanded });
-	}
 
 	fetchData = async () => Promise.all([
 		fetch('http://157.245.184.202:8080/ourcampaigns'),
-		fetch('https://www.livingwage-sf.org/wp-json/wp/v2/posts?slug=maquiladora-workers-in-juarez-form-a-union/')],)
+		fetch('https://www.livingwage-sf.org/wp-json/wp/v2/pages?slug=maquiladora-workers-rising-in-ciudad-juarez/')],)
 		.then(([dataSource,dataSourceMaquiladoraWorkers]) =>
 			Promise.all([
 				dataSource.json(), dataSourceMaquiladoraWorkers.json()
@@ -96,11 +92,11 @@ export default class InfoScreen extends React.Component {
 
 
 				var updatedTitle = (t.title.rendered);
-				var updatedContent = (t.content.rendered)
+				var updatedExcerpt = (t.excerpt.rendered)
 					.replace(/<p>/, '')
-					.replace(/<p>Read more:/, '\nRead more')
-					.replace(/<\/p>/, '')
-			.replace(/<a.*>/,'');
+					//.replace(/<p>Read more:/, '\nRead more')
+					//.replace(/<\/p>/, '')
+			.replace(/<a.*>/,'\n\nRead More');
 				console.log(t)
 				return (
 					<DropDownItem
@@ -121,7 +117,7 @@ export default class InfoScreen extends React.Component {
 						}
 					>
 						<Text style={styles.txt} onPress={() => Linking.openURL(t.link)}>
-							{updatedContent}
+							{updatedExcerpt}
 						</Text>
 
 					</DropDownItem>
