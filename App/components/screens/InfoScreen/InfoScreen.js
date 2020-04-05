@@ -2,7 +2,7 @@
 import React from 'react';
 import {
 	Button, View, Text, ActivityIndicator, StyleSheet, ScrollView,
-	LayoutAnimation, Platform, UIManager, TouchableOpacity
+	LayoutAnimation, Platform, UIManager, TouchableOpacity, Linking
 } from 'react-native';
 //import { createStackNavigator, createAppContainer } from 'react-navigation';
 
@@ -23,6 +23,7 @@ export default class InfoScreen extends React.Component {
 		this.state = {
 			isLoading: true,
 			dataSource: null,
+			dataSourceMaquiladoraWorkers: null,
 			expanded: false
 		}
 	}
@@ -30,23 +31,29 @@ export default class InfoScreen extends React.Component {
 		LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
 		this.setState({ expanded: !this.state.expanded });
 	}
+
+	fetchData = async () => Promise.all([
+		fetch('http://157.245.184.202:8080/ourcampaigns'),
+		fetch('https://www.livingwage-sf.org/wp-json/wp/v2/posts?slug=maquiladora-workers-in-juarez-form-a-union/')],)
+		.then(([dataSource,dataSourceMaquiladoraWorkers]) =>
+			Promise.all([
+				dataSource.json(), dataSourceMaquiladoraWorkers.json()
+			]))
+		.then(([dataSource,dataSourceMaquiladoraWorkers]) => this.setState({
+			dataSource: dataSource,
+			dataSourceMaquiladoraWorkers: dataSourceMaquiladoraWorkers,
+			isLoading: false,
+		}))
+
+		.catch(error => {
+			console.error(error);
+		});
+
 	componentDidMount() {
-		
-		return fetch('http://157.245.184.202:8080/ourcampaigns')//replace the x with your own IP or localhost
-			.then((response) => response.json())
-			.then((reponseJson) => {
-				
-				this.setState({
-					isLoading: false,
-					dataSource: reponseJson
-				})
-			})
 
-			.catch((error) => {
-				console.log(error)
-			});
-
+		this.fetchData();
 	}
+
 
 	render() {
 		if (this.state.isLoading) {
@@ -85,12 +92,50 @@ export default class InfoScreen extends React.Component {
 				);
 			})
 
+			let dataMaquiladora = this.state.dataSourceMaquiladoraWorkers.map((t, index) => {
+
+
+				var updatedTitle = (t.title.rendered);
+				var updatedContent = (t.content.rendered)
+					.replace(/<p>/, '')
+					.replace(/<p>Read more:/, '\nRead more')
+					.replace(/<\/p>/, '')
+			.replace(/<a.*>/,'');
+				console.log(t)
+				return (
+					<DropDownItem
+						key={index}
+						style={styles.dropDownItem}
+						contentVisible={false}
+						invisibleImage={IC_ARR_DOWN}
+						visibleImage={IC_ARR_UP}
+						header={
+							<View style={styles.header}>
+								<Text style={{
+									fontSize: 16,
+									color: '#0088dc',
+									paddingTop: 10,
+									textTransform: 'uppercase',
+								}}>{updatedTitle}</Text>
+							</View>
+						}
+					>
+						<Text style={styles.txt} onPress={() => Linking.openURL(t.link)}>
+							{updatedContent}
+						</Text>
+
+					</DropDownItem>
+				);
+			})
+
+
 			return (
 				<View style={styles.item}>
 					<Text style={styles.titleCam}>Our Campaigns</Text>
 
 					<ScrollView>
 						{data}
+						{dataMaquiladora}
 					</ScrollView>
 				</View>
 
