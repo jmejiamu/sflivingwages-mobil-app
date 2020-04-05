@@ -30,7 +30,7 @@ export default class InfoScreen extends React.Component {
 
 	fetchData = async () => Promise.all([
 		fetch('http://157.245.184.202:8080/ourcampaigns'),
-		fetch('https://www.livingwage-sf.org/wp-json/wp/v2/pages?slug=maquiladora-workers-rising-in-ciudad-juarez/')],)
+		fetch('https://www.livingwage-sf.org/wp-json/wp/v2/posts?include=6248,5212')],)
 		.then(([dataSource,dataSourceMaquiladoraWorkers]) =>
 			Promise.all([
 				dataSource.json(), dataSourceMaquiladoraWorkers.json()
@@ -94,8 +94,8 @@ export default class InfoScreen extends React.Component {
 				var updatedTitle = (t.title.rendered);
 				var updatedExcerpt = (t.excerpt.rendered)
 					.replace(/<p>/, '')
-					//.replace(/<p>Read more:/, '\nRead more')
-					//.replace(/<\/p>/, '')
+					.replace(/Read more:.*/, '\n\nRead more')
+					.replace(/<\/p>/, '')
 			.replace(/<a.*>/,'\n\nRead More');
 				console.log(t)
 				return (
