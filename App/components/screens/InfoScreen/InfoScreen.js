@@ -30,7 +30,7 @@ export default class InfoScreen extends React.Component {
 
 	fetchData = async () => Promise.all([
 		fetch('http://157.245.184.202:8080/ourcampaigns'),
-		fetch('https://www.livingwage-sf.org/wp-json/wp/v2/posts?include=6248,5212')],)
+		fetch('https://www.livingwage-sf.org/wp-json/wp/v2/posts?include=6248,5212,6825')],)
 		.then(([dataSource,dataSourceMaquiladoraWorkers]) =>
 			Promise.all([
 				dataSource.json(), dataSourceMaquiladoraWorkers.json()
