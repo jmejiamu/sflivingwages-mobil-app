@@ -19,6 +19,8 @@ export default class NewsScreen extends React.Component {
         }
     }
 
+
+
     componentDidMount() {
         this.fetchData();
     }
@@ -35,6 +37,7 @@ export default class NewsScreen extends React.Component {
             dataSource: wageGap,
             dataSource2: pressRelease,
             dataSource3: pressCoverage,
+            isLoading:false,
         }))
 
         .catch(error => {
@@ -46,13 +49,16 @@ export default class NewsScreen extends React.Component {
 
         const data = this.state.dataSource.map((t, index) => {
 
-            var updatedTitle = (t.title.rendered).replace(/&#8216;|&#8217;|&#8211;/g, '');
+            var updatedTitle = (t.title.rendered).replace(/&#8216;|&#8217;|&#8211;|&#8220;|&#8221;/g, '');
             var updatedDate = (t.date).split('T')[0];
             var content = (t.excerpt.rendered)
                 .replace(/<p>/, '')
                 .replace(/<a.*>/, ' ...\n\nRead More')
                 .replace(/&#8217;/g, '');
 
+            var urlString = t.content.rendered;
+            var redirectURL= urlString.substring(urlString.lastIndexOf("https"),urlString.lastIndexOf("\" t"));
+            console.log(redirectURL);
             return (
 
 
@@ -60,8 +66,10 @@ export default class NewsScreen extends React.Component {
                     <Card
                         title={updatedTitle} style={styles.cardStyle}
                     >
-                        <Text onPress={() => Linking.openURL(t.link)}>
+                        <Text onPress={() => Linking.openURL(redirectURL)}>
                             {content}
+
+
                         </Text>
 
                         <Text key={index}>
@@ -101,6 +109,7 @@ export default class NewsScreen extends React.Component {
                     >
                         <Text onPress={() => Linking.openURL(t.link)}>
                             {content}
+
                         </Text>
 
                         <Text key={index}>
@@ -131,6 +140,15 @@ export default class NewsScreen extends React.Component {
                 .replace(/<a.*>/, ' ...\n\nRead More')
                 .replace(/&#8217;|&#8220;|&#8221;|&#038;/g, '')
         .replace(/&mdash;/, '');
+            var urlString = t.content.rendered;
+            var redirectURL="";
+            if(urlString.includes("twitter")){
+                redirectURL="https://twitter.com/SFLivingWage/status/1195443040225116161?ref_src=twsrc%5Etfw";
+            }
+            else{
+             redirectURL     = urlString.substring(urlString.lastIndexOf("https"),urlString.lastIndexOf("\<\/a>"));
+            }
+
             return (
 
 
@@ -138,8 +156,9 @@ export default class NewsScreen extends React.Component {
                     <Card
                         title={updatedTitle}
                     >
-                        <Text onPress={() => Linking.openURL(t.link)}>
+                        <Text onPress={() => Linking.openURL(redirectURL)}>
                             {content}
+
                         </Text>
 
                         <Text key={index}>
