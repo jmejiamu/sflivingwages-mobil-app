@@ -56,13 +56,39 @@ const styles = StyleSheet.create({
         borderBottomColor: 'black',
         borderBottomWidth: 1,
       },
+      textInput: { 
+        height: 40,
+        borderColor: "gray",
+        borderWidth: 1,
+        paddingLeft: 5,
+      },
+      buttonStyle:{
+        padding: 5, 
+        flex: 1, 
+        flexDirection: "row", 
+        justifyContent: "space-evenly" 
+      },
       submitButton: {
         backgroundColor: '#d31623',
         padding: 10,
-        height: 40,
+        width: 100,  
+        marginTop: 5
      },
      submitButtonText:{
-      color: 'white'
+      color: 'white',
+      fontWeight: "900",
+      textAlign: "center"
+    },
+    resetButton:{
+      backgroundColor: '#d31623',
+        padding: 10,
+        width: 100,    
+        marginTop: 5
+    },
+    resetButtonText:{
+      color: 'white',
+      fontWeight: "900",
+      textAlign: "center"
     }
 
 })
