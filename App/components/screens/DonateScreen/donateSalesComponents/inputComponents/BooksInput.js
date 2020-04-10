@@ -18,6 +18,7 @@ import {
   import styles from '../style/styles';
 
   const InputBooks =(props)=>{
+    console.log(props.booksData.bid)
 
     const  [bid, setBid] = useState('');
     const  [name, setName] = useState('');
@@ -34,7 +35,7 @@ import {
             if(phoneEmail !== ""){
               alert("Thanks for your Bid, " + name + " !");
               // Clean the fields after user hits the submit button
-              fetch('http://192.168.1.xx:3001/booksbid', {
+              fetch('http://157.245.184.202:8080/booksbid', {
                 method: 'post',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -70,14 +71,14 @@ import {
       return(
                  <>
                 
-                 <Text style={{ marginLeft: 15 }}> {"Last BID: $" + bid} </Text>
+                 <Text style={{ marginLeft: 15 }}> {"Last BID: $" + props.booksData.bid} </Text>
 
                  <TextInput
                   style={styles.textInput}
                   placeholder="Bidding amount"
                   keyboardType='numeric'
                   onChangeText={bidInput =>setBid(bidInput)} 
-                  value={bid.toString()}
+                  value={bid}
                 />
                  
                  <View style={{padding: 5}}/>

@@ -15,14 +15,14 @@ import {
   } from 'react-native';
   import ImageZoom from 'react-native-image-pan-zoom';
 
-  import InputArts from './inputComponents/BooksInput';
+  import InputArts from './inputComponents/ArtInputs';
   import styles from './style/styles'
 
-  const Art = (props) => {
+  const Art = ({art}) => {
     return(
         <FlatList
             horizontal={true}
-            data={props.art}
+            data={art}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item }) => {
               return (

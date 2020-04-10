@@ -20,12 +20,12 @@ import {
 
   import styles from './style/styles';
 
-  const Photos = (props) => {
+  const Photos = ({photos}) => {
       return(
         
         <FlatList
         horizontal={true}
-        data={props.photos}
+        data={photos}
         keyExtractor={(item, index) => index.toString()}
 
         renderItem={({ item }) => {

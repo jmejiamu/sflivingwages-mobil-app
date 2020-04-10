@@ -33,8 +33,8 @@ export default class DonateSales extends React.Component {
     super(props);
   this.state = {
     
-    books: [],
     art: [],
+    books: [],
     photos: [],
     cds: [],
     dvds: [],
@@ -62,7 +62,7 @@ export default class DonateSales extends React.Component {
       .then(([resBooks, resArt, resPhotos, resCds, resDvds]) => Promise.all([
         resBooks.json(), resArt.json(), resPhotos.json(), resCds.json(), resDvds.json()
       ]))
-      .then(([dataBooks, dataArt, dataPhotos, dataCds, dataDvds]) => this.setState({
+      .then(([dataBooks,dataArt, dataPhotos, dataCds, dataDvds]) => this.setState({
         books: dataBooks,
         art: dataArt,
         photos: dataPhotos,
@@ -101,7 +101,7 @@ export default class DonateSales extends React.Component {
 
 
         <View style={{ justifyContent: "center", alignItems: "center",}}>
-
+          
           <Text style={styles.titleHeader}>Art</Text>
           <Art art={this.state.art}/>
 

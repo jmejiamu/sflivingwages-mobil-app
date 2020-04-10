@@ -20,11 +20,11 @@ import {
 
   import InputCds from './inputComponents/CdsInputs';
 
-  const Cds = (props) => {
+  const Cds = ({cds}) => {
       return(
         <FlatList
         horizontal={true}
-        data={props.cds}
+        data={cds}
         keyExtractor={(item, index) => index.toString()}
 
         renderItem={({ item }) => {

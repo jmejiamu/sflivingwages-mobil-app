@@ -34,11 +34,11 @@ import {
             if(phoneEmail !== ""){
               alert("Thanks for your Bid, " + name + " !");
               // Clean the fields after user hits the submit button
-              fetch('http://192.168.1.xx:3001/cdsbid', {
+              fetch('http://157.245.184.202:8080/cdsbid', {
                 method: 'post',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                  id: props.booksData.id,
+                  id: props.cdsData.id,
                   name: name,
                   bid: bid,
                   phoneEmail: phoneEmail
@@ -70,7 +70,7 @@ import {
       return(
                  <>
                 
-                 <Text style={{ marginLeft: 15 }}> {"Last BID: $" + bid} </Text>
+                 <Text style={{ marginLeft: 15 }}> {"Last BID: $" + props.cdsData.bid} </Text>
 
                  <TextInput
                   style={styles.textInput}

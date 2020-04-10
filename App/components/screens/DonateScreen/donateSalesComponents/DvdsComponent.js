@@ -20,11 +20,11 @@ import {
   import InputDvds from './inputComponents/DvdsInputs';
 
 
-const Dvds = (props) =>{
+const Dvds = ({dvds}) =>{
     return(
         <FlatList
             horizontal={true}
-            data={props.dvds}
+            data={dvds}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item }) => {
               return (
