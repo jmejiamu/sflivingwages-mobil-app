@@ -24,13 +24,13 @@ import {
     const  [phoneEmail, setPhoneEmail] = useState('');
 
     const onSubmitData = () => {
-      fetch('http://192.168.xx.xx:3001/booksbid',{
+      fetch('http://192.168.1.69:3001/booksbid',{
           method:'post',
           headers:{'Content-Type': 'application/json'},
           body:JSON.stringify({
-              bid: bid,
               id:props.booksData.id,
               name: name,
+              bid: bid,
               phoneEmail: phoneEmail
   
           })
@@ -58,7 +58,7 @@ import {
                   placeholder="Bid..."
                   keyboardType='numeric'
                   onChangeText={bidInput =>setBid(bidInput)} 
-                  value={bid}
+                  value={bid.toString()}
                 />
                  
                  <View style={{padding: 5}}/>
