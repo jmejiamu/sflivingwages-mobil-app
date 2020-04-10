@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#d31623',
         padding: 10,
         width: 100,  
+        height: 40,
         marginTop: 5
      },
      submitButtonText:{
@@ -82,7 +83,8 @@ const styles = StyleSheet.create({
     resetButton:{
       backgroundColor: '#d31623',
         padding: 10,
-        width: 100,    
+        width: 100,  
+        height: 40,  
         marginTop: 5
     },
     resetButtonText:{
