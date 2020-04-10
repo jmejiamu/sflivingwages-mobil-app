@@ -27,13 +27,13 @@ import {
       //Text input validations:
       //console.log( "Bid: " + bid + " Name: " + name + " Email/Phone: " + phoneEmail);
       if(bid === "" && name === "" && phoneEmail === ""){
-        alert("Please enter all details");
+        Alert.alert("Error!", "Please enter all details");
       } else {
         if(bid !== "") {
           if(name !== "") {
             if(phoneEmail !== ""){
-              alert("Thanks for your Bid, " + name + " !");
-              // Clean the fields after user hits the submit button
+              Alert.alert("Submitted!", "Thanks for your bid, " + name + "!");
+              // Send the data to the DB
               fetch('http://157.245.184.202:8080/cdsbid', {
                 method: 'post',
                 headers: { 'Content-Type': 'application/json' },
@@ -45,23 +45,22 @@ import {
 
                 })
               })  
+              // Clean the fields after user hits the submit button
               setBid('');
               setName('');
               setPhoneEmail('');
             } else {
-              alert('Please enter your phone or email id');
+              Alert.alert("Error!", "Please enter your phone or email id");
             }
           } else {
-            alert('Please enter your name!');
+            Alert.alert("Error!", "Please enter your name");
           }
         } else {
-          alert('Please enter an amount to bid!');
+          Alert.alert("Error!", "Please enter an amount to bid");
         }
-      }
-      
-  }
-
-  //Reset all fields 
+      } 
+    }
+    //Reset all fields 
     const resetAll = () => {
       setBid('');
       setName('');
