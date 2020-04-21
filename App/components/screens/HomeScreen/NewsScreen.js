@@ -7,6 +7,7 @@ import {WebView} from "react-native-webview";
 import {Divider} from 'react-native-elements';
 import {getLinkPreview} from 'link-preview-js';
 
+
 export default class NewsScreen extends React.Component {
 
 
@@ -73,10 +74,10 @@ export default class NewsScreen extends React.Component {
                     //console.log(response)
                    // console.log(response.siteName);
 
-              publisher= response.siteName;
+              publisher= response;
 
-                    alert(publisher);
-                    console.log(publisher)
+                    // alert(publisher);
+                    // console.log(publisher)
 
                 })
 
@@ -101,15 +102,15 @@ export default class NewsScreen extends React.Component {
                             <Text style={styles.noteStyle} style={styles.noteStyle}>
                                 Date Published:
                                 {
-                                    " " + updatedDate
+                                    " " + updatedDate 
                                 }
-
 
                             </Text>
 
                         </Text>
 
                     </Card>
+                    
                 </>
             )
 
