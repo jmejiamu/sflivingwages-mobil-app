@@ -27,7 +27,7 @@ export default class HomeScreen extends React.Component {
   // };
 
   render() {
-    const htmltw = '<a  class="twitter-timeline" data-tweet-limit="5" href="https://twitter.com/SFLivingWage?ref_src=twsrc%5Etfw">Tweets by SFLivingWage</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>';
+    
     return (
       <ScrollView >
       {/*Home Page Navigation part*/}
@@ -46,20 +46,17 @@ export default class HomeScreen extends React.Component {
         </View>
           
         <View style={{ height: 1300 }}>
-          
-        
         <WebView
             ref={ref => (this.twitterWebview = ref)}
             style={{margin: 10, flex:1 }}
             source={{
-              uri:"https://twitter.com/SFLivingWage?ref_src=twsrc%5Etfw",
-              html: htmltw
+              html:
+              '<a target="_blank" class="twitter-timeline" data-tweet-limit="5" href="https://twitter.com/SFLivingWage?ref_src=twsrc%5Etfw">Tweets by SFLivingWage</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>'
             }}
             onNavigationStateChange={this.handleWebViewNavigationStateChange}
             javaScriptEnabled={true}
             domStorageEnabled={true}
           />
-         
         </View>
       </ScrollView>
       );
