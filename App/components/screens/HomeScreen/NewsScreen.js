@@ -20,7 +20,7 @@ export default class NewsScreen extends React.Component {
             dataSource2: [],
             dataSource3: [],
 
-            publisher:''
+            publisher: ''
         }
 
     }
@@ -64,36 +64,37 @@ export default class NewsScreen extends React.Component {
             var urlString = t.content.rendered;
             var redirectURL = urlString.substring(urlString.lastIndexOf("https"), urlString.lastIndexOf("\""));
 
+            if(updatedTitle==""){
+                updatedTitle="Untitled";
+            }
+
             console.log(redirectURL);
             //Using link-preview-js to parse metadata
 
             var publisher;
-          getLinkPreview(redirectURL)
+            getLinkPreview(redirectURL)
                 .then(response => {
 
                     //console.log(response)
-                   // console.log(response.siteName);
+                    // console.log(response.siteName);
 
-              publisher= response;
+                    publisher = response.siteName;
 
                     // alert(publisher);
                     // console.log(publisher)
 
-                })
+                });
 
 
             return (
 
 
                 <>
-
                     <Card
-                        title={updatedTitle } style={styles.cardStyle}
+                        title={updatedTitle}
                     >
-
-                        <Text onPress={() => Linking.openURL(redirectURL)}>
+                        <Text onPress={() => Linking.openURL(t.link)}>
                             {content}
-
 
                         </Text>
 
@@ -124,6 +125,10 @@ export default class NewsScreen extends React.Component {
                 .replace(/<p>/, '')
                 .replace(/<a.*>/, ' ...\n\nRead More')
                 .replace(/&#8217;|&#8220;|&#8221;|&#038;/g, '');
+
+            if(updatedTitle==""){
+                updatedTitle="Untitled";
+            }
 
             return (
 
@@ -171,6 +176,10 @@ export default class NewsScreen extends React.Component {
                 redirectURL = "https://twitter.com/SFLivingWage/status/1195443040225116161?ref_src=twsrc%5Etfw";
             } else {
                 redirectURL = urlString.substring(urlString.lastIndexOf("https"), urlString.lastIndexOf("\<\/a>"));
+            }
+
+            if(updatedTitle==""){
+                updatedTitle="Untitled";
             }
 
             return (

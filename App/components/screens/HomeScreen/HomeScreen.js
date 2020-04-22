@@ -51,7 +51,7 @@ export default class HomeScreen extends React.Component {
             style={{margin: 10, flex:1 }}
             source={{
               html:
-              '<a target="_blank" class="twitter-timeline" data-tweet-limit="5" href="https://twitter.com/SFLivingWage?ref_src=twsrc%5Etfw">Tweets by SFLivingWage</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>'
+              '<a  class="twitter-timeline" data-tweet-limit="5" href="https://twitter.com/SFLivingWage?ref_src=twsrc%5Etfw">Tweets by SFLivingWage</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>'
             }}
             onNavigationStateChange={this.handleWebViewNavigationStateChange}
             javaScriptEnabled={true}
@@ -61,18 +61,18 @@ export default class HomeScreen extends React.Component {
       </ScrollView>
       );
   }
-  // handleWebViewNavigationStateChange = newNavState => {
-  //   const { url } = newNavState;
-  //   console.log(`User clicked ${url}`);
-  //   if(!url) return;
-  //   Linking.canOpenURL(url).then(supported => {
-  //     if (supported) {
-  //     //if(event.url !== uri) {
-  //       this.twitterWebview.stopLoading();
-  //       Linking.openURL(url); 
-  //     } else {
-  //       console.log("Don't know how to open URI: " + url);
-  //     }
-  //   });
-  // }
+  handleWebViewNavigationStateChange = newNavState => {
+    const { url } = newNavState;
+    console.log(`User clicked ${url}`);
+    if (!url || url === 'about:blank') return;
+    Linking.canOpenURL(url).then(supported => {
+      if (supported) {
+      //if(event.url !== uri) {
+        this.twitterWebview.stopLoading();
+        Linking.openURL(url); 
+      } else {
+        console.log("Don't know how to open URI: " + url);
+      }
+    });
+  }
 }

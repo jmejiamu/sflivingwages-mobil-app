@@ -205,8 +205,8 @@ export default class DonateScreen extends React.Component {
           />
           
           {/* button for payment with paypal*/}
-          <Button title={'Pay with Paypal'} onPress={()=> this.props.navigation.navigate('Paypal')}
-          />
+          {/* <Button title={'Pay with Paypal'} onPress={()=> this.props.navigation.navigate('Paypal')}
+          /> */}
 
         </ScrollView>
 
