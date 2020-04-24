@@ -15,6 +15,9 @@ import {
 import HomeNavComponent from './HomeNavComponent';
 import { WebView } from 'react-native-webview';
 
+
+alert("Save the date for May 5, 2020! Click the Cinco De Mayo Registration button at the top to learn more!")
+
 export default class HomeScreen extends React.Component {
   twitterWebview = null;
   /*=====Change the navigation styling for this page=========*/
@@ -26,14 +29,29 @@ export default class HomeScreen extends React.Component {
   //   alignItems: 'center'
   // };
 
+
   render() {
     
     return (
+        <>
+
+
       <ScrollView >
       {/*Home Page Navigation part*/}
       <HomeNavComponent
         navigate={this.props.navigation.navigate}
       />
+
+        <TouchableHighlight>
+
+          <Button
+              onPress={() => Linking.openURL("https://www.livingwage-sf.org/event/reclaiming-cinco-de-mayo-celebration-of-cross-border-unity-2/")}
+              title="Cinco De Mayo Registration"
+
+          />
+        </TouchableHighlight>
+
+
       {/*Start of the Home Page Contents*/}
         <View style={{ height: 300 }}>
         <WebView
@@ -59,6 +77,7 @@ export default class HomeScreen extends React.Component {
           />
         </View>
       </ScrollView>
+        </>
       );
   }
   handleWebViewNavigationStateChange = newNavState => {
@@ -75,4 +94,6 @@ export default class HomeScreen extends React.Component {
       }
     });
   }
+
+
 }
