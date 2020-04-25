@@ -15,26 +15,19 @@ import {
   } from 'react-native';
   import ImageZoom from 'react-native-image-pan-zoom';
 
+  import InputBooks from './inputComponents/BooksInput';
 
-const Books = (props) => {
-    const  [bid, setBid] = useState('');
+  import styles from './style/styles'
+  
 
-    const onSubmitData = () => {
-        fetch('http://192.168.1.69:3001/data',{
-            method:'post',
-            headers:{'Content-Type': 'application/json'},
-            body:JSON.stringify({
-                bid: bid,
-                id:props.books.id
-            })
-        })
-    }
+
+const Books = ({books}) => { 
+    
     return(
-      
         
         <FlatList
             horizontal={true}
-            data={props.books}
+            data={books}
             keyExtractor={(item, index) => index.toString()}
 
             renderItem={({ item }) => {
@@ -56,35 +49,9 @@ const Books = (props) => {
 
                    <View style={styles.horizontalLine} />
 
-                   <Text style={{ marginLeft: 15 }}> {item.details} </Text>
-                   <TextInput
-                    style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-                    placeholder="Bid..."
-                    keyboardType='numeric'
-                    onChangeText={bidInput =>setBid(bidInput)} 
-                    // value={bid}
-                  />
-                   <Text style={{ marginLeft: 15 }}> {"$" + bid} </Text>
+                    <Text style={{ marginLeft: 15 }}> {item.details} </Text>
 
-                   <View style={{padding: 5}}/>
-                   <TextInput
-                    style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-                    placeholder="Name"
-                  
-                  />
-
-                  <View style={{padding: 5}}/>
-                   <TextInput
-                    style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-                    placeholder="Phone or Email"
-                  
-                  />
-                  <TouchableOpacity
-                    style = {styles.submitButton}
-                    onPress = {()=>alert("Thanks for your bid" + bid + "!")} 
-                    >
-                    <Text style = {styles.submitButtonText}> Submit </Text>
-                  </TouchableOpacity>
+                    <InputBooks booksData={item}/>
 
                   <Text style={{ marginLeft: 15 }}> {item.title} </Text>
                   <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
@@ -97,78 +64,4 @@ const Books = (props) => {
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#F5F5F5',
-      paddingTop: 0,
-    },
-    header: {
-      width: '100%',
-      paddingVertical: 0,
-      paddingHorizontal: 20,
-      flexWrap: 'wrap',
-      flexDirection: 'row',
-      alignItems: 'center',
-    },
-  
-    // txt: {
-    //   fontSize: 14,
-    //   color: '#ffffff',
-    //   marginLeft: 15,
-      
-    // },
-    dropDownItem: {
-      marginTop: 30,
-    },
-    titleHeader: {
-      fontSize: 24,
-      color: '#c91a1a',
-      padding: 10,
-      textTransform: 'uppercase',
-      fontWeight: 'bold',
-      paddingBottom: 20,
-      paddingTop: 20,
-    },
-    imageStyle: {
-      width: 250,
-      height: 350,
-      marginLeft: 15,
-      marginRight: 15,
-      // borderRadius: 4,
-    },
-    cardImage: {
-      // backgroundColor: 'rgba(52, 52, 52, 0.8)',
-      backgroundColor:'white',
-      margin: 10,
-      padding: 20,
-      // borderRadius: 10,
-      flex: 1,
-      shadowColor: "#000",
-      shadowOffset: {
-        width: 0,
-        height: 5,
-      },
-      shadowOpacity: 0.34,
-      shadowRadius: 6.27,
-      elevation: 10,
-    },
-    horizontalLine: {
-      marginTop: 10,
-      marginBottom: 10,
-      borderBottomColor: 'black',
-      borderBottomWidth: 1,
-    },
-    submitButton: {
-      backgroundColor: '#7a42f4',
-      padding: 10,
-      margin: 15,
-      height: 40,
-   },
-   submitButtonText:{
-    color: 'white'
-  }
-  });
 export default Books;

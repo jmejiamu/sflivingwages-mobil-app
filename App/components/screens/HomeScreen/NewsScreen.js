@@ -5,18 +5,24 @@ import {Card, CardItem} from 'react-native-elements';
 import HomeNavComponent from './HomeNavComponent';
 import {WebView} from "react-native-webview";
 import {Divider} from 'react-native-elements';
+import {getLinkPreview} from 'link-preview-js';
 
 
 export default class NewsScreen extends React.Component {
 
+
     constructor(props) {
+
         super(props);
         this.state = {
             isLoading: true,
             dataSource: [],
             dataSource2: [],
             dataSource3: [],
+
+            publisher: ''
         }
+
     }
 
     componentDidMount() {
@@ -26,7 +32,10 @@ export default class NewsScreen extends React.Component {
     fetchData = async () => Promise.all([
         fetch('https://www.livingwage-sf.org/wp-json/wp/v2/posts?per_page=3&category=closing_the_wage_gap'),
         fetch('https://www.livingwage-sf.org/wp-json/wp/v2/posts?per_page=3&categories=78'),
-        fetch('https://www.livingwage-sf.org/wp-json/wp/v2/posts?per_page=3&categories=81')],)
+        fetch('https://www.livingwage-sf.org/wp-json/wp/v2/posts?per_page=3&categories=81'),
+
+
+    ],)
         .then(([wageGap, pressRelease, pressCoverage]) =>
             Promise.all([
                 wageGap.json(), pressRelease.json(), pressCoverage.json()
@@ -35,6 +44,7 @@ export default class NewsScreen extends React.Component {
             dataSource: wageGap,
             dataSource2: pressRelease,
             dataSource3: pressCoverage,
+            isLoading: false,
         }))
 
         .catch(error => {
@@ -43,25 +53,49 @@ export default class NewsScreen extends React.Component {
 
 
     render() {
-
         const data = this.state.dataSource.map((t, index) => {
-
-            var updatedTitle = (t.title.rendered).replace(/&#8216;|&#8217;|&#8211;/g, '');
+            var updatedTitle = (t.title.rendered).replace(/&#8216;|&#8217;|&#8211;|&#8220;|&#8221;/g, '');
             var updatedDate = (t.date).split('T')[0];
             var content = (t.excerpt.rendered)
                 .replace(/<p>/, '')
                 .replace(/<a.*>/, ' ...\n\nRead More')
                 .replace(/&#8217;/g, '');
 
+            var urlString = t.content.rendered;
+            var redirectURL = urlString.substring(urlString.lastIndexOf("https"), urlString.lastIndexOf("\""));
+
+            if(updatedTitle==""){
+                updatedTitle="Untitled";
+            }
+
+            console.log(redirectURL);
+            //Using link-preview-js to parse metadata
+
+            var publisher;
+            getLinkPreview(redirectURL)
+                .then(response => {
+
+                    //console.log(response)
+                    // console.log(response.siteName);
+
+                    publisher = response.siteName;
+
+                    // alert(publisher);
+                    // console.log(publisher)
+
+                });
+
+
             return (
 
 
                 <>
                     <Card
-                        title={updatedTitle} style={styles.cardStyle}
+                        title={updatedTitle}
                     >
                         <Text onPress={() => Linking.openURL(t.link)}>
                             {content}
+
                         </Text>
 
                         <Text key={index}>
@@ -69,15 +103,15 @@ export default class NewsScreen extends React.Component {
                             <Text style={styles.noteStyle} style={styles.noteStyle}>
                                 Date Published:
                                 {
-                                    " " + updatedDate
+                                    " " + updatedDate 
                                 }
-
 
                             </Text>
 
                         </Text>
 
                     </Card>
+                    
                 </>
             )
 
@@ -92,6 +126,10 @@ export default class NewsScreen extends React.Component {
                 .replace(/<a.*>/, ' ...\n\nRead More')
                 .replace(/&#8217;|&#8220;|&#8221;|&#038;/g, '');
 
+            if(updatedTitle==""){
+                updatedTitle="Untitled";
+            }
+
             return (
 
 
@@ -101,6 +139,7 @@ export default class NewsScreen extends React.Component {
                     >
                         <Text onPress={() => Linking.openURL(t.link)}>
                             {content}
+
                         </Text>
 
                         <Text key={index}>
@@ -130,7 +169,19 @@ export default class NewsScreen extends React.Component {
                 .replace(/<p>/, '')
                 .replace(/<a.*>/, ' ...\n\nRead More')
                 .replace(/&#8217;|&#8220;|&#8221;|&#038;/g, '')
-        .replace(/&mdash;/, '');
+                .replace(/&mdash;/, '');
+            var urlString = t.content.rendered;
+            var redirectURL = "";
+            if (urlString.includes("twitter")) {
+                redirectURL = "https://twitter.com/SFLivingWage/status/1195443040225116161?ref_src=twsrc%5Etfw";
+            } else {
+                redirectURL = urlString.substring(urlString.lastIndexOf("https"), urlString.lastIndexOf("\<\/a>"));
+            }
+
+            if(updatedTitle==""){
+                updatedTitle="Untitled";
+            }
+
             return (
 
 
@@ -138,8 +189,9 @@ export default class NewsScreen extends React.Component {
                     <Card
                         title={updatedTitle}
                     >
-                        <Text onPress={() => Linking.openURL(t.link)}>
+                        <Text onPress={() => Linking.openURL(redirectURL)}>
                             {content}
+
                         </Text>
 
                         <Text key={index}>
