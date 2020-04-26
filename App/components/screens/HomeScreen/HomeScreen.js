@@ -18,7 +18,7 @@ import {WebView} from 'react-native-webview';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import {getLinkPreview} from "link-preview-js";
 import {Card} from "react-native-elements";
-
+import {compareAsc, format} from 'date-fns'
 //Dynamic solution to event button and alert message
 
 
@@ -63,33 +63,76 @@ export default class HomeScreen extends React.Component {
     }
 
     render() {
-        var numEvents = Object.keys(this.state.eventData).length;
         var updatedTitle = "";
-        var eventDate = "";
         var url = "";
+
+        var eventDate = "";
+        var formattedEventDate = "";
+        var spelledEventDate = "";
+        var eventDateMillis = "";
+
+        var currentDate = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
+
+        var formattedCurrentDate = currentDate.replace(/\s+/g, "T");
+        var currentDateMillis = Date.parse(formattedCurrentDate);
+
+        var eventHappened = false;
+
+        var randomDate = '01 Jan 3000 00:12:00 GMT';
+
+        var randomDateMillis = Date.parse(randomDate);
+
         const data = this.state.eventData.map((t, index) => {
             url = t.url;
             eventDate = t.start_date;
-            updatedTitle = "RSVP FOR " + "\""+ (t.title).replace('&#8211; ', '')+ "\"";
 
-            if(updatedTitle.includes("Rescate")){
-                updatedTitle = "SRC PARA " +  "\"" + (t.title).replace('&#8211; ', '')+ "\"";
+            formattedEventDate = eventDate.replace(/\s+/g, "T");
+
+
+            eventDateMillis = Date.parse(formattedEventDate);
+
+            spelledEventDate = format(eventDateMillis, 'MMM dd yyyy HH:mm:ss zz');
+
+            updatedTitle = "RSVP FOR " + "\"" + (t.title).replace('&#8211; ', '') + "\"";
+
+            if (updatedTitle.includes("Rescate")) {
+                updatedTitle = "SRC PARA " + "\"" + (t.title).replace('&#8211; ', '') + "\"";
             }
             console.log(updatedTitle);
-            console.log(eventDate);
             console.log(url);
-            alert("Save the date on\n" + eventDate + "\nClick the RSVP button at the top to learn more!")
+            console.log("event date " + eventDate);
+            console.log("current date " + currentDate);
+            console.log("random date " + randomDate);
+            console.log("event milliseconds" + eventDateMillis);
+            console.log("current milliseconds " + currentDateMillis);
+            console.log("random date milliseconds " + randomDateMillis);
+
+            console.log(randomDateMillis > eventDateMillis);
 
 
-            return (
+            //If the event already happened, it is in the past since current ms > event date ms
+            if (currentDateMillis > eventDateMillis) {
+
+                eventHappened = true;
+
+            }
+
+            console.log("The event occured before the current time " + eventHappened);
+            if (!eventHappened) {
 
 
+                alert("Save the date on\n" + spelledEventDate + "\nClick the RSVP button at the top to learn more!");
+                return (
 
-                <Button
-                onPress={() => Linking.openURL(url)}
-                title={ updatedTitle }
 
-            />);
+                    <Button
+                        onPress={() => Linking.openURL(url)}
+                        title={updatedTitle}
+
+                    />);
+            }
+
+
         });
 
         return (
