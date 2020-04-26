@@ -20,7 +20,7 @@ export default class NewsScreen extends React.Component {
             dataSource2: [],
             dataSource3: [],
 
-            publisher: ''
+            publisher: ""
         }
 
     }
@@ -53,6 +53,7 @@ export default class NewsScreen extends React.Component {
 
 
     render() {
+
         const data = this.state.dataSource.map((t, index) => {
             var updatedTitle = (t.title.rendered).replace(/&#8216;|&#8217;|&#8211;|&#8220;|&#8221;/g, '');
             var updatedDate = (t.date).split('T')[0];
@@ -64,32 +65,36 @@ export default class NewsScreen extends React.Component {
             var urlString = t.content.rendered;
             var redirectURL = urlString.substring(urlString.lastIndexOf("https"), urlString.lastIndexOf("\""));
 
-            if(updatedTitle==""){
-                updatedTitle="Untitled";
+            if (updatedTitle == "") {
+                updatedTitle = "Untitled";
             }
 
             console.log(redirectURL);
+
             //Using link-preview-js to parse metadata
+            const fetchMetaData = () => {
+                getLinkPreview(redirectURL)
+                    .then(json => {
+                        console.log(json);
+                        this.setState({
+                            publisher: json["siteName"],
+                        });
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
 
-            var publisher;
-            getLinkPreview(redirectURL)
-                .then(response => {
-
-                    //console.log(response)
-                    // console.log(response.siteName);
-
-                    publisher = response.siteName;
-
-                    // alert(publisher);
-                    // console.log(publisher)
-
-                });
+                console.log(this.state.publisher);
+                return (<Text>{this.state.publisher}</Text>);
+            }
 
 
             return (
 
 
                 <>
+                    {//fetchMetaData()
+                         }
                     <Card
                         title={updatedTitle}
                     >
@@ -103,7 +108,7 @@ export default class NewsScreen extends React.Component {
                             <Text style={styles.noteStyle} style={styles.noteStyle}>
                                 Date Published:
                                 {
-                                    " " + updatedDate 
+                                    " " + updatedDate
                                 }
 
                             </Text>
@@ -111,7 +116,7 @@ export default class NewsScreen extends React.Component {
                         </Text>
 
                     </Card>
-                    
+
                 </>
             )
 
@@ -126,8 +131,8 @@ export default class NewsScreen extends React.Component {
                 .replace(/<a.*>/, ' ...\n\nRead More')
                 .replace(/&#8217;|&#8220;|&#8221;|&#038;/g, '');
 
-            if(updatedTitle==""){
-                updatedTitle="Untitled";
+            if (updatedTitle == "") {
+                updatedTitle = "Untitled";
             }
 
             return (
@@ -178,8 +183,8 @@ export default class NewsScreen extends React.Component {
                 redirectURL = urlString.substring(urlString.lastIndexOf("https"), urlString.lastIndexOf("\<\/a>"));
             }
 
-            if(updatedTitle==""){
-                updatedTitle="Untitled";
+            if (updatedTitle == "") {
+                updatedTitle = "Untitled";
             }
 
             return (
@@ -212,6 +217,7 @@ export default class NewsScreen extends React.Component {
             )
 
         });
+
         return (
             <ScrollView style={{flex: 1}}>
                 {/*Home Navigation Bar*/}
