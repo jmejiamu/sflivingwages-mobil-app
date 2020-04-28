@@ -9,20 +9,16 @@ import {getLinkPreview} from 'link-preview-js';
 
 
 export default class NewsScreen extends React.Component {
-
-
     constructor(props) {
-
         super(props);
         this.state = {
             isLoading: true,
+            refreshing: true,
             dataSource: [],
             dataSource2: [],
             dataSource3: [],
-
             publisher: ""
         }
-
     }
 
     componentDidMount() {
@@ -33,8 +29,6 @@ export default class NewsScreen extends React.Component {
         fetch('https://www.livingwage-sf.org/wp-json/wp/v2/posts?per_page=3&category=closing_the_wage_gap'),
         fetch('https://www.livingwage-sf.org/wp-json/wp/v2/posts?per_page=3&categories=78'),
         fetch('https://www.livingwage-sf.org/wp-json/wp/v2/posts?per_page=3&categories=81'),
-
-
     ],)
         .then(([wageGap, pressRelease, pressCoverage]) =>
             Promise.all([
@@ -46,7 +40,6 @@ export default class NewsScreen extends React.Component {
             dataSource3: pressCoverage,
             isLoading: false,
         }))
-
         .catch(error => {
             console.error(error);
         });
@@ -61,40 +54,38 @@ export default class NewsScreen extends React.Component {
                 .replace(/<p>/, '')
                 .replace(/<a.*>/, ' ...\n\nRead More')
                 .replace(/&#8217;/g, '');
-
             var urlString = t.content.rendered;
             var redirectURL = urlString.substring(urlString.lastIndexOf("https"), urlString.lastIndexOf("\""));
 
             if (updatedTitle == "") {
                 updatedTitle = "Untitled";
             }
-
             console.log(redirectURL);
 
             //Using link-preview-js to parse metadata
             const fetchMetaData = () => {
                 getLinkPreview(redirectURL)
+
                     .then(json => {
-                        console.log(json);
                         this.setState({
                             publisher: json["siteName"],
+                            refreshing: false,
                         });
                     })
                     .catch(error => {
                         console.error(error);
                     });
 
-                console.log(this.state.publisher);
-                return (<Text>{this.state.publisher}</Text>);
+
+                if (!this.state.refreshing) {
+                    return (<Text>{this.state.publisher}</Text>);
+                }
             }
 
-
             return (
-
-
                 <>
                     {//fetchMetaData()
-                         }
+                    }
                     <Card
                         title={updatedTitle}
                     >
