@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, ScrollView, Image, Button,WebView } from 'react-native';
 import DropDownItem from 'react-native-drop-down-item';
 import DonateNav from './DonateNav';
+import WKWebView from 'react-native-wkwebview-reborn';
 
 
 
@@ -72,7 +73,7 @@ export default class DonateMoney extends React.Component {
             <View >
 
                 <View style={{ height: 1300 }}>
-                    <WebView useWebKit={true}
+                    <WKWebView
                         style={{ margin: 10, flex: 1 }}
 
                         source={{

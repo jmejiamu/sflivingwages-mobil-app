@@ -2,6 +2,7 @@
 
 import React from "react";
 import { View, Text, TouchableOpacity, Modal, WebView, Button, ScrollView } from "react-native";
+import WKWebView from 'react-native-wkwebview-reborn';
 
 export default class App extends React.Component {
     render() {
@@ -10,7 +11,7 @@ export default class App extends React.Component {
             <View >
 
                 <View style={{ height: 1300 }}>
-                    <WebView useWebKit={true}
+                    <WKWebView 
                         style={{ margin: 10, flex: 1 }}
 
                         source={{
