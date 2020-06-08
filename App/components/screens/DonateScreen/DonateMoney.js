@@ -1,9 +1,10 @@
 //Import Necessary Packges
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, ScrollView, Image, Button,WebView } from 'react-native';
+import { Platform, StyleSheet, Text, View, ScrollView, Image, Button, } from 'react-native';
 import DropDownItem from 'react-native-drop-down-item';
 import DonateNav from './DonateNav';
-import WKWebView from 'react-native-wkwebview-reborn';
+// import WKWebView from 'react-native-wkwebview-reborn';
+import { WebView } from 'react-native-webview';
 
 
 
@@ -73,7 +74,7 @@ export default class DonateMoney extends React.Component {
             <View >
 
                 <View style={{ height: 1300 }}>
-                    <WKWebView
+                    <WebView
                         style={{ margin: 10, flex: 1 }}
 
                         source={{

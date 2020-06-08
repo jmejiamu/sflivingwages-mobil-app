@@ -19,7 +19,7 @@ import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import {getLinkPreview} from "link-preview-js";
 import {Card} from "react-native-elements";
 import {compareAsc, format} from 'date-fns'
-import WKWebView from 'react-native-wkwebview-reborn';
+// import WKWebView from 'react-native-wkwebview-reborn';
 //Dynamic solution to event button and alert message
 
 
@@ -153,7 +153,7 @@ export default class HomeScreen extends React.Component {
 
                     {/*Start of the Home Page Contents*/}
                     <View style={{height: 300}}>
-                        <WKWebView
+                        <WebView
                             style={{margin: 10,}}
                             source={{uri: "http://www.youtube.com/embed?max-results=1&showinfo=0&rel=0&listType=user_uploads&list=sflivingwage"}}
                             javaScriptEnabled={true}
@@ -163,7 +163,7 @@ export default class HomeScreen extends React.Component {
                     </View>
 
                     <View style={{height: 1300}}>
-                        <WKWebView
+                        <WebView
                             ref={ref => (this.twitterWebview = ref)}
                             style={{margin: 10, flex: 1}}
                             source={{
