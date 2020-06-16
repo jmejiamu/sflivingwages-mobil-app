@@ -120,7 +120,7 @@ export default class HomeScreen extends React.Component {
 
             console.log("The event occured before the current time " + eventHappened);
             if (!eventHappened) {
-
+                   
 
                 alert("Save the date on\n" + spelledEventDate + "\nClick the RSVP button at the top to learn more!");
                 alert("Guarda la fecha Mayo 5 2020 dale click en el botón de arriva para más información.");

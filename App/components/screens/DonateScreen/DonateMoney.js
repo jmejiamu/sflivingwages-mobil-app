@@ -1,6 +1,6 @@
 //Import Necessary Packges
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, ScrollView, Image, Button, } from 'react-native';
+import { Platform, StyleSheet, Text, View, ScrollView, Image, Button, Linking, TouchableOpacity} from 'react-native';
 import DropDownItem from 'react-native-drop-down-item';
 import DonateNav from './DonateNav';
 // import WKWebView from 'react-native-wkwebview-reborn';
@@ -71,20 +71,15 @@ export default class DonateMoney extends React.Component {
           }
           <View style={{ height: 30 }}/>
           <ScrollView>
-            <View >
-
-                <View style={{ height: 1300 }}>
-                    <WebView
-                        style={{ margin: 10, flex: 1 }}
-
-                        source={{
-                            html:
-                                '<form action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="business"value="sflivingwage@riseup.net"><input type="hidden" name="cmd" value="_donations"><input type="hidden" name="item_name" value="Donation to San Francisco Living Wage Coalition"><input type="hidden" name="currency_code" value="USD"><input type="image" name="submit"width="300px" height="150px" align="middle" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"alt="Donate"><img alt="" width="100" height="100"src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" ></form>'
-                        }}
-                        javaScriptEnabled={true}
-                        domStorageEnabled={true}
-                    />
-                </View>
+            <View style={styles.buttonStyle}>
+              <TouchableOpacity style={styles.donationButton}
+              onPress={() => Linking.openURL('https://www.livingwage-sf.org/donations-and-membership/')}>
+                <Text style={styles.donationButtonText}>
+                  Donation
+                </Text>
+              </TouchableOpacity>
+                
+                
             </View>
             </ScrollView>
 
@@ -128,4 +123,26 @@ const styles = StyleSheet.create({
   dropDownItem: {
     marginTop: 30,
   },
+  donationButton: {
+    backgroundColor: '#d31623',
+    padding: 10,
+    width: 100,  
+    height: 40,
+    marginTop: 5,
+    // marginLeft:20
+    
+ },
+ buttonStyle:{
+  padding: 5, 
+  flex: 1, 
+  flexDirection: "row", 
+  // justifyContent: "space-evenly" 
+  justifyContent: "center",
+  alignItems: 'center'
+},
+donationButtonText:{
+  color: 'white',
+  fontWeight: "900",
+  textAlign: "center"
+},
 });
