@@ -1,101 +1,158 @@
-//Import Necessary Packages
-import React from 'react';
-import { 
-	 View, 
-	 Text, 
-	 ActivityIndicator, 
-	 StyleSheet, 
-	 ScrollView, 
-	 RefreshControl } from 'react-native';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
-import { withTheme } from 'react-native-elements';
+import React, { useState } from 'react';
+import {
+	StyleSheet,
+	Text,
+	View,
+	TextInput,
+	TouchableOpacity,
+	ScrollView,
+	Image,
+
+} from 'react-native';
 
 
-export default class Assistancecreen extends React.Component {
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			isLoading: true,
-			dataSource: null,
-		}
-	}
-	fetchData = async () => {
-		//const response = await fetch('http://157.245.184.202:8080/about')
-		const data = await response.json()
-		this.setState({
-			isLoading: false,
-			dataSource: data[0]
+const Assistancecreen = () => {
+
+	const [fullName, setFullName] = useState('');
+	const [userEmail, setUserEmail] = useState('');
+	const [userPhone, setUserPhone] = useState('');
+	const [userNotes, setUserNotes] = useState('');
+
+
+	const onSubmitData = () => {
+		fetch('http://192.168.1.xx:3001/assist', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				full_name: fullName,
+				email: userEmail,
+				phone: userPhone,
+				notes: userNotes
+			})
 		})
+		setFullName('');
+		setUserEmail('');
+		setUserPhone('');
+		setUserNotes('');
+	}
+	const resetAll = () => {
+		setFullName('');
+		setUserEmail('');
+		setUserPhone('');
+		setUserNotes('');
+	}
+	return (
+		<ScrollView>
 
-	}
- componentDidMount() {
-		this.fetchData();
-	}
-	_onRefresh(){
-		this.setState({refreshing:true})
-		this.fetchData().then(()=> {
-			this.setState({refreshing:false})
-		})
-	}
-	render() {
-		if (this.state.isLoading) {
-			return (
-				<View style={styles.container}>
-					<ActivityIndicator />
+			<View style={styles.container}>
+
+				<View style={styles.card}>
+					<View style={styles.logoContainer}>
+						<Image style={styles.logo} source={require('../../../../assets/icon.png')} />
+					</View>
+					<Text style={{ margin: 10 }}>We can assist you.</Text>
+					<Text style={{ margin: 10 }}>Complete the form below.</Text>
+
+					<TextInput
+						style={styles.textInput}
+						placeholder="Full Name"
+						onChangeText={fullNameInput => setFullName(fullNameInput)}
+						value={fullName}
+					/>
+
+					<TextInput
+						style={styles.textInput}
+						placeholder="E-Mail"
+						keyboardType='email-address'
+						onChangeText={userEmailInput => setUserEmail(userEmailInput)}
+						value={userEmail}
+					/>
+
+					<TextInput
+						style={styles.textInput}
+						placeholder="Phone"
+						keyboardType='numeric'
+						onChangeText={userPhoneInput => setUserPhone(userPhoneInput)}
+						value={userPhone}
+					/>
+					<Text style={{ margin: 10 }} >Brief description of your situation, ex. discrimination at your workplace, immigration status, wage theft, not paid overtime, no breaks, not paid the minimum wage, etc.</Text>
+					<TextInput
+						style={styles.textInput}
+						placeholder="Notes"
+						onChangeText={userNotesInput => setUserNotes(userNotesInput)}
+						value={userNotes}
+					/>
+
+					<View style={styles.buttonStyles}>
+
+						<TouchableOpacity style={styles.submitButton} onPress={onSubmitData}>
+							<Text style={styles.submitButtonText} >Submit</Text>
+						</TouchableOpacity>
+
+						<TouchableOpacity style={styles.submitButton} onPress={resetAll}>
+							<Text style={styles.submitButtonText}>Clear</Text>
+						</TouchableOpacity>
+
+					</View>
 				</View>
-		)
-		} else {
-				return(
-				<View  style={styles.item}>
-					<Text style={styles.titleAbout}>{this.state.dataSource.title}</Text>
-					<ScrollView 
-					refreshControl={
-						<RefreshControl 
-							refreshing = {this.state.refreshing}
-							onRefresh ={this._onRefresh.bind(this)}
-						/>
-					}
-					>
-						
-							
-					</ScrollView>
-				</View>
-				)
-		}
-			
-	}
+			</View>
+		</ScrollView>
+	);
 }
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#F5F5F5',
-		alignItems: 'center',
-		justifyContent: 'center'
 	},
-	item: {
-		flex: 1,
-		alignSelf: 'stretch',
+	card: {
+		paddingTop: 35,
+		backgroundColor: 'white',
 		margin: 10,
-		alignItems: 'center',
-		//justifyContent: 'center',
-		backgroundColor: '#F5F5F5'
-	
+		padding: 1,
+		shadowColor: '#000',
+		shadowOffset: {
+			width: 0,
+			height: 10
+		},
+		shadowOpacity: 0.34,
+		shadowRadius: 6.27,
+		elevation: 10
 	},
-	titleAbout: {
-		fontSize: 24,
-		color: '#c91a1a',
+	textInput: {
+		height: 40,
+		borderColor: 'gray',
+		borderWidth: 1,
+		padding: 5,
+		margin: 10
+	},
+	submitButton: {
+		backgroundColor: '#d31623',
 		padding: 10,
-		textTransform: 'uppercase',
-		fontWeight: 'bold',
-		paddingBottom: 20,
-		paddingTop: 20,
+		width: 100,
+		height: 40,
+		marginTop: 20
 	},
-	aboutInfoText: {
-		fontSize: 16,
-		color: '#100c08',
-		paddingHorizontal: 20,
-	}
-	
-})
+	buttonStyles: {
+		flexDirection: 'row',
+		justifyContent: 'space-evenly',
+		padding: 5,
+		paddingBottom: 35
+	},
+	logo: {
+		width: 125,
+		height: 125,
+		marginTop: 20
+	},
+	logoContainer: {
+		marginTop: 10,
+		justifyContent: 'center',
+		alignItems: 'center'
+	},
+	submitButtonText: {
+		color: 'white',
+		fontWeight: "900",
+		textAlign: "center"
+	},
+});
+export default Assistancecreen;

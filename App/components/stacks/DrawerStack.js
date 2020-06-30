@@ -12,9 +12,9 @@ import {
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 // Stack Navigators to Screen
-import { 
-	HomeStack, 
-	DetailsStack, 
+import {
+	HomeStack,
+	DetailsStack,
 	AboutStack,
 	InfoStack,
 	DonateStack,
@@ -27,9 +27,9 @@ import { styles, bannerStyle } from '../style/styleSheet';
 // Customize the drawer header
 const CustomDrawerComponent = (props) => (
 	<SafeAreaView style={{ flex: 1 }}>
-		<View style={{ height: 150, backgroundColor: '#d31623', alignItems: 'center', justifyContent: 'center',  }}>
-		<Image
-				source={ require('../../../assets/sflwc_logo_finaltemp.png') }
+		<View style={{ height: 150, backgroundColor: '#d31623', alignItems: 'center', justifyContent: 'center', }}>
+			<Image
+				source={require('../../../assets/sflwc_logo_finaltemp.png')}
 				style={
 					bannerStyle.logoHeaderImageStyle
 				}
@@ -49,45 +49,45 @@ export const DrawerNav = createDrawerNavigator(
 			navigationOptions: {
 				//changes the name of the screen to Close rather than BottomTab
 				drawerLabel: 'Close',
-				drawerIcon: <MaterialCommunityIcons name='close' size={20}/>,
+				drawerIcon: <MaterialCommunityIcons name='close' size={20} />,
 			}
 		},
 		Home: {
-			screen:	HomeStack,
+			screen: HomeStack,
 			navigationOptions: {
-				drawerIcon: <MaterialCommunityIcons name='home' size={20}/>
+				drawerIcon: <MaterialCommunityIcons name='home' size={20} />
 			}
 		},
 		About: {
 			screen: AboutStack,
 			navigationOptions: {
-				drawerIcon: <MaterialCommunityIcons name='nature-people' size={20}/>
+				drawerIcon: <MaterialCommunityIcons name='nature-people' size={20} />
 			}
 		},
 		Details: {
 			screen: DetailsStack,
 			navigationOptions: {
 				drawerLabel: 'Details',
-				drawerIcon: <MaterialCommunityIcons name='details' size={20}/>
+				drawerIcon: <MaterialCommunityIcons name='details' size={20} />
 			}
 		},
 		Info: {
 			screen: InfoStack,
 			navigationOptions: {
 				drawerLabel: 'Info',
-				drawerIcon: <MaterialCommunityIcons name='information-variant' size={20}/>
+				drawerIcon: <MaterialCommunityIcons name='information-variant' size={20} />
 			}
 		},
 		Donate: {
 			screen: DonateStack,
 			navigationOptions: {
-				drawerIcon: <MaterialCommunityIcons name='cart-outline' size={20}/>
+				drawerIcon: <MaterialCommunityIcons name='cart-outline' size={20} />
 			}
 		},
 		Assistance: {
 			screen: AssistanceStack,
 			navigationOptions: {
-				drawerIcon: <MaterialCommunityIcons name='cart-outline' size={20}/>
+				drawerIcon: <MaterialCommunityIcons name='assistance' size={20} />
 			}
 		},
 	},
