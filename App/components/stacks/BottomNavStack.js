@@ -11,7 +11,8 @@ import {
 	DetailsStack,
 	AboutStack,
     InfoStack,
-    DonateStack,
+	DonateStack,
+	AssistanceStack,
 	header 
 } from './ScreenStacks';
 // import { DrawerNav } from './DrawerStack';
@@ -56,7 +57,11 @@ const navigationIcons = ({navigation}) => ({
         	case 'About':
         		//About Us Page
         		iconName = 'nature-people';
-        		break;
+				break;
+				case 'Assistance':
+					//Assistance Page
+					iconName = 'assistance';
+					break;
         }
 
         return (
@@ -94,8 +99,9 @@ export const BottomNavStack = createBottomTabNavigator(
 		Details: DetailsStack,
 		About: AboutStack,
         Info: InfoStack,
-        Donate: DonateStack
+        Donate: DonateStack,
 
+		Assistance:AssistanceStack
 	},
 	{
 		defaultNavigationOptions: navigationIcons,

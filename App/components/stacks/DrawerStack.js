@@ -18,6 +18,7 @@ import {
 	AboutStack,
 	InfoStack,
 	DonateStack,
+	AssistanceStack,
 	header,
 } from './ScreenStacks';
 import { BottomNavStack } from './BottomNavStack';
@@ -79,6 +80,12 @@ export const DrawerNav = createDrawerNavigator(
 		},
 		Donate: {
 			screen: DonateStack,
+			navigationOptions: {
+				drawerIcon: <MaterialCommunityIcons name='cart-outline' size={20}/>
+			}
+		},
+		Assistance: {
+			screen: AssistanceStack,
 			navigationOptions: {
 				drawerIcon: <MaterialCommunityIcons name='cart-outline' size={20}/>
 			}

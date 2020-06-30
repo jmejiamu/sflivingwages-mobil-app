@@ -22,6 +22,8 @@ import DonateScreen from '../screens/DonateScreen/DonateScreen';
 import DonateMoney from '../screens/DonateScreen/DonateMoney';
 import DonateInKind from '../screens/DonateScreen/DonateInKind';
 import DonateSales from '../screens/DonateScreen/DonateSales';
+import AssistanceScreen from '../screens/AssistanceScreen/AssistanceScreen';
+
 
 // Styled Components
 import LogoHeader from './LogoHeader';
@@ -48,6 +50,7 @@ export const HomeStack = createStackNavigator(
 		Media: MediaScreen,
 		News: NewsScreen,
 		Plus: PlusScreen,
+		
 	},
 	{
 		defaultNavigationOptions: header, styles,
@@ -99,7 +102,20 @@ export const DonateStack = createStackNavigator(
 		Money: DonateMoney,
 		Kind: DonateInKind,
 		Sales: DonateSales,
-		Paypal: PaypalDonate
+		Paypal: PaypalDonate,
+		
+	},
+	{
+		defaultNavigationOptions: header,
+		headerLayoutPreset: 'center',
+		cardStyle: {backgroundColor: '#F5F5F5'}
+	}
+);
+
+// Stack Screen for Assistance
+export const AssistanceStack = createStackNavigator(
+	{
+		Assistance: AssistanceScreen
 	},
 	{
 		defaultNavigationOptions: header,
