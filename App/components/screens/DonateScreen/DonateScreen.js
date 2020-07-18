@@ -26,7 +26,7 @@ export default class DonateScreen extends React.Component {
 		const data = await response.json()
 		this.setState({
 			isLoading: false,
-			dataSource: data[0]
+			dataSource: data
 		})
 
 	}
@@ -39,7 +39,12 @@ export default class DonateScreen extends React.Component {
 			this.setState({ refreshing: false })
 		})
 	}
+
+	
+
 	render() {
+		
+
 		if (this.state.isLoading) {
 			return (
 				<View style={styles.container}>
@@ -47,6 +52,18 @@ export default class DonateScreen extends React.Component {
 				</View>
 			)
 		} else {
+			const data = this.state.dataSource.map((t, index) => {
+				var title = (t.title);
+				var body= (t.body);
+				return(
+					<>
+					<Text style={styles.titleAbout}>{title}</Text>
+					<Text style={styles.aboutInfoText}>{body}</Text>
+					</>
+			)
+
+        });
+
 			return (
 				<View style={styles.item}>
 					<ScrollView
@@ -60,9 +77,9 @@ export default class DonateScreen extends React.Component {
 						<DonateNav
 							navigate={this.props.navigation.navigate}
 						/>
-						<Text style={styles.titleAbout}>{this.state.dataSource.title}</Text>
-						<Text style={styles.aboutInfoText}>{this.state.dataSource.body}</Text>
-
+					
+							{data}
+				
 					</ScrollView>
 				</View>
 			)
@@ -70,6 +87,7 @@ export default class DonateScreen extends React.Component {
 
 	}
 }
+
 
 const styles = StyleSheet.create({
 	container: {
@@ -99,7 +117,8 @@ const styles = StyleSheet.create({
 	aboutInfoText: {
 		fontSize: 16,
 		color: '#100c08',
-		paddingHorizontal: 20,
+		padding:15,
+		paddingHorizontal: 30,
 	}
 
 })
