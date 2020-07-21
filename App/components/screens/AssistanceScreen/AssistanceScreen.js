@@ -78,13 +78,13 @@ const Assistancecreen = () => {
 						onChangeText={userPhoneInput => setUserPhone(userPhoneInput)}
 						value={userPhone}
 					/>
-					<Checkbox color="primary" label="wage theft" />
-					<Checkbox color="primary" label="unpaid overtime" />
-					<Checkbox color="primary" label="no breaks" />
-					<Checkbox color="primary" label="discrimination" />
-					<Checkbox color="primary" label="no sick leave" />
-					<Checkbox color="primary" label="retaliation" />
-					<Checkbox color="primary" label="other" />
+					<Checkbox color="primary" label="Wage theft" />
+					<Checkbox color="primary" label="Unpaid overtime" />
+					<Checkbox color="primary" label="No breaks" />
+					<Checkbox color="primary" label="Discrimination" />
+					<Checkbox color="primary" label="No sick leave" />
+					<Checkbox color="primary" label="Retaliation" />
+					<Checkbox color="primary" label="Other" />
 
 					<Text style={{ margin: 10 }} >Brief description of your situation, ex. discrimination at your workplace, immigration status, wage theft, not paid overtime, no breaks, not paid the minimum wage, etc.</Text>
 					<TextInput
