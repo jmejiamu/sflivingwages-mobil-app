@@ -10,6 +10,8 @@ import {
 
 } from 'react-native';
 
+import { Checkbox } from 'galio-framework';
+
 
 
 const Assistancecreen = () => {
@@ -76,6 +78,14 @@ const Assistancecreen = () => {
 						onChangeText={userPhoneInput => setUserPhone(userPhoneInput)}
 						value={userPhone}
 					/>
+					<Checkbox color="primary" label="wage theft" />
+					<Checkbox color="primary" label="unpaid overtime" />
+					<Checkbox color="primary" label="no breaks" />
+					<Checkbox color="primary" label="discrimination" />
+					<Checkbox color="primary" label="no sick leave" />
+					<Checkbox color="primary" label="retaliation" />
+					<Checkbox color="primary" label="other" />
+
 					<Text style={{ margin: 10 }} >Brief description of your situation, ex. discrimination at your workplace, immigration status, wage theft, not paid overtime, no breaks, not paid the minimum wage, etc.</Text>
 					<TextInput
 						style={styles.textInput}
@@ -121,8 +131,9 @@ const styles = StyleSheet.create({
 	},
 	textInput: {
 		height: 40,
-		borderColor: 'gray',
+		borderColor: '#d31623',
 		borderWidth: 1,
+		borderRadius: 5,
 		padding: 5,
 		margin: 10
 	},
@@ -131,7 +142,9 @@ const styles = StyleSheet.create({
 		padding: 10,
 		width: 100,
 		height: 40,
-		marginTop: 20
+		marginTop: 20,
+		borderRadius: 5,
+
 	},
 	buttonStyles: {
 		flexDirection: 'row',

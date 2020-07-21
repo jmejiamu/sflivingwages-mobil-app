@@ -40,10 +40,10 @@ export default class DonateScreen extends React.Component {
 		})
 	}
 
-	
+
 
 	render() {
-		
+
 
 		if (this.state.isLoading) {
 			return (
@@ -54,36 +54,43 @@ export default class DonateScreen extends React.Component {
 		} else {
 			const data = this.state.dataSource.map((t, index) => {
 				var title = (t.title);
-				var body= (t.body);
-				return(
-					<>
-					<Text style={styles.titleAbout}>{title}</Text>
-					<Text style={styles.aboutInfoText}>{body}</Text>
-					</>
-			)
+				var body = (t.body);
 
-        });
+				return (
+					<View style={styles.item}>
+						<ScrollView
+							refreshControl={
+								<RefreshControl
+									refreshing={this.state.refreshing}
+									onRefresh={this._onRefresh.bind(this)}
+								/>
+							}
+						>
 
+							<Text style={styles.titleAbout}>{title}</Text>
+							<Text style={styles.aboutInfoText}>{body}</Text>
+
+
+						</ScrollView>
+					</View>
+				)
+
+			});
 			return (
-				<View style={styles.item}>
-					<ScrollView
-						refreshControl={
-							<RefreshControl
-								refreshing={this.state.refreshing}
-								onRefresh={this._onRefresh.bind(this)}
-							/>
-						}
-					>
+				<View>
+					<ScrollView>
 						<DonateNav
 							navigate={this.props.navigation.navigate}
 						/>
-					
-							{data}
-				
+						{data}
 					</ScrollView>
 				</View>
+
 			)
+
+
 		}
+
 
 	}
 }
@@ -117,7 +124,7 @@ const styles = StyleSheet.create({
 	aboutInfoText: {
 		fontSize: 16,
 		color: '#100c08',
-		padding:15,
+		padding: 15,
 		paddingHorizontal: 30,
 	}
 

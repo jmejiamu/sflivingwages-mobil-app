@@ -18,6 +18,7 @@
     "ejs": "^2.7.1",
     "expo": "^37.0.0",
     "express": "^4.17.1",
+    "galio-framework": "^0.7.1",
     "gcp-metadata": "^4.0.0",
     "html-metadata": "^1.7.1",
     "link-preview-js": "^2.0.1",
