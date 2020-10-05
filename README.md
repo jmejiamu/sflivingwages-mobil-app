@@ -15,4 +15,9 @@ In the app users will be able to share pieces of art(paints, draws and digital),
 * Express
 * MySQL
 
+## Screenshots
+#### Donate
+On the Donate section, users can participate on art auction where users will submit a bid for any of the pieces of art that they like.
+![Screenshot_20200414-124009_samsung-galaxynote5-silvertitanium-portrait](https://user-images.githubusercontent.com/27458911/95143311-96812900-072a-11eb-9bfb-63663c2679c3.png)
+
 
