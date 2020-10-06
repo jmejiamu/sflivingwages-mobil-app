@@ -8,12 +8,17 @@ In the app users will be able to share pieces of art(paints, draws and digital),
 * [Google Play Store](https://play.google.com/store/apps/details?id=com.sfLiving.sflivingwagecoalition&hl=en)
 * [Apple Store](https://apps.apple.com/us/app/id1510663811)
 
-## Technologies Used
-* JavaScript
-* React Native
-* Node
-* Express
-* MySQL
+## Technologies used base on JavaScript
+* Back End
+  * Node
+  * Express
+  * MySQL
+  * Knexjs
+  * npm
+* Front End
+  * React Native
+  * React Hooks
+  * Navigation
 
 ## Screenshots
 #### Donate
@@ -24,4 +29,12 @@ On the Donate section, users can participate on art auction where users will sub
 On the event section, users will have more detail information about events that the organization will be hosting. Tap on the red dot to get event info.
 ![Screenshot_20200414-124251_samsung-galaxynote5-silvertitanium-portrait](https://user-images.githubusercontent.com/27458911/95143732-b9f8a380-072b-11eb-9fae-2855291b24e2.png)
 
+## Resources
+* [React Native](https://reactnative.dev/)
+* [Express](https://expressjs.com/)
+* [Knexjs](http://knexjs.org/)
+* [npm](https://www.npmjs.com/)
 
+## What is next?
+* [Add a new feature](https://github.com/jmejiamu/sflivingwagenewfeature)
+* [Build a CMS with reactj](https://github.com/jmejiamu/mobile-sf-admin)
