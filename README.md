@@ -20,4 +20,8 @@ In the app users will be able to share pieces of art(paints, draws and digital),
 On the Donate section, users can participate on art auction where users will submit a bid for any of the pieces of art that they like.
 ![Screenshot_20200414-124009_samsung-galaxynote5-silvertitanium-portrait](https://user-images.githubusercontent.com/27458911/95143311-96812900-072a-11eb-9bfb-63663c2679c3.png)
 
+#### Events
+On the event section, users will have more detail information about events that the organization will be hosting. Tap on the red dot to get event info.
+![Screenshot_20200414-124251_samsung-galaxynote5-silvertitanium-portrait](https://user-images.githubusercontent.com/27458911/95143732-b9f8a380-072b-11eb-9fae-2855291b24e2.png)
+
 
