@@ -36,6 +36,6 @@ On the event section, users will have more detail information about events that 
 * [npm](https://www.npmjs.com/)
 
 ## What is next?
-* [Add a new feature](https://github.com/jmejiamu/sflivingwagenewfeature)
+* [Mobile app new feature](https://github.com/jmejiamu/sflivingwagenewfeature)
 * [Build a CMS with ReactJS](https://github.com/jmejiamu/mobile-sf-admin)
 * __NOTE:__ This new feature are under developement
