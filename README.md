@@ -38,4 +38,4 @@ On the event section, users will have more detail information about events that 
 ## What is next?
 * [Mobile app new feature](https://github.com/jmejiamu/sflivingwagenewfeature)
 * [Build a CMS with ReactJS](https://github.com/jmejiamu/mobile-sf-admin)
-* __NOTE:__ This new feature are under developement
+* __NOTE:__ This new features are under developement
