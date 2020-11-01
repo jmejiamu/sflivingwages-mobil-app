@@ -91,8 +91,27 @@ const styles = StyleSheet.create({
       color: 'white',
       fontWeight: "900",
       textAlign: "center"
-    }
-
+    },
+    detailButton:{
+      backgroundColor: '#141045',
+        padding: 10,
+        width: 100,  
+        height: 40,  
+        marginTop: 5,
+        marginLeft: 170
+    },
+    detailButtonText:{
+      color: 'white',
+      fontWeight: "900",
+      textAlign: "center"
+    },
+    detailViewStyle:{
+      padding: 10,
+      textAlign: "center"
+    },
+    backButtonSytle:{
+      paddingTop: 20
+    },
 })
 
 export default styles;
