@@ -23,7 +23,7 @@ const Assistancecreen = () => {
 
 
 	const onSubmitData = () => {
-		fetch('http://192.168.1.xx:3001/assist', {
+		fetch('http://157.245.184.202:8080/assistance', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
