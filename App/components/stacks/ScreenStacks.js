@@ -23,7 +23,7 @@ import DonateMoney from '../screens/DonateScreen/DonateMoney';
 import DonateInKind from '../screens/DonateScreen/DonateInKind';
 import DonateSales from '../screens/DonateScreen/DonateSales';
 import AssistanceScreen from '../screens/AssistanceScreen/AssistanceScreen';
-
+import DetailComponent from '../screens/DonateScreen/donateSalesComponents/DetailComponent';
 
 // Styled Components
 import LogoHeader from './LogoHeader';
@@ -103,7 +103,7 @@ export const DonateStack = createStackNavigator(
 		Kind: DonateInKind,
 		Sales: DonateSales,
 		Paypal: PaypalDonate,
-		
+		SalesDetail: DetailComponent,
 	},
 	{
 		defaultNavigationOptions: header,

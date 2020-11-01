@@ -1,4 +1,6 @@
-import React from 'react';
+import { Button } from 'native-base';
+import React, { Component , useContext} from 'react'
+import MyBackButton from '../donateSalesComponents/MyNavigationButton';
 import {
     Platform,
     StyleSheet,
@@ -11,14 +13,16 @@ import {
     TouchableHighlight,
     Alert,
     Dimensions,
-    TextInput
+    TextInput,
   } from 'react-native';
   import ImageZoom from 'react-native-image-pan-zoom';
 
   import InputArts from './inputComponents/ArtInputs';
   import styles from './style/styles'
+import MyNavigationButton from '../donateSalesComponents/MyNavigationButton';
 
   const Art = ({art}) => {
+
     return(
         <FlatList
             horizontal={true}
@@ -51,6 +55,8 @@ import {
                     <Text style={{ marginLeft: 15 }}> {item.title} </Text>
                     <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
 
+                 <MyNavigationButton data={item} />
+                 
                   </View>
                 </View>
               )
