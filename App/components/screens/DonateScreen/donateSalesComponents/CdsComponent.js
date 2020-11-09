@@ -53,7 +53,7 @@ import {
 
               <Text style={{ marginLeft: 15 }}> {item.title} </Text>
               <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
-              <MyNavigationButton itemTitle={item.title} 
+              <MyNavigationButton itemPath={item.path}  itemTitle={item.title} 
                                       itemDescription = {item.contact} 
                                       />
               </View>

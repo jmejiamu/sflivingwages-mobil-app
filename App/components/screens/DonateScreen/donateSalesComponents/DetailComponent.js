@@ -25,7 +25,9 @@ export default class Detail extends React.Component {
         super(props);
         this.state = {
             isLoading: true,
+            hasDetail: false,
             dataSource: [],
+            title: props.navigation.getParam('title', 'no title'),
         }
     }
     fetchData = async () => {
@@ -33,11 +35,26 @@ export default class Detail extends React.Component {
         const data = await response.json()
         this.setState({
             isLoading: false,
-            dataSource: data[0]
+            dataSource:data[1]
+        })
+        console.log("---"+ this.state.title);
+        data.map(data => {
+            
+            if (this.state.title === data.title) 
+            {
+                console.log("|||"+ data.title);
+                this.setState({
+                    //isLoading: false,
+                    hasDetail:true,
+                    dataSource: data
+                })
+            }
+            
         })
 
     }
     componentDidMount() {
+    
         this.fetchData();
     }
     _onRefresh() {
@@ -48,10 +65,13 @@ export default class Detail extends React.Component {
     }
 
     render() {
-        //const { navigation } = this.detail;
-        //const isLoading = true;
-        // const itemId = navigation.getParam('itemId', 'NO-ID');
-        // const title = navigation.getParam('title', 'no title');
+        const { navigation } = this.props;
+        const title = navigation.getParam('title', 'no title');
+        const description = navigation.getParam('description', 'no description');
+        const path = navigation.getParam("path","no path");
+        const AuthorImageWrapper = ({ condition, wrapper, children}) => 
+        condition ? wrapper(children) : children;
+        
         if (this.state.isLoading) {
             return (
                 <View style={styles.container}>
@@ -69,13 +89,28 @@ export default class Detail extends React.Component {
                             />
                         }
                     >
-                        {/* <Text style={styles.aboutInfoText}>{this.state.dataSource}</Text>
-                        <Text style={styles.titleHeader}>Details Screen</Text>
-                        <Text style={styles.item}>ItemId: </Text>
-                        <Text>Title: {this.state.data}</Text> */}
+                    <Text style={styles.titleHeader}>Full Details</Text>
+           
+                    <Image  style={styles.detailImage}
+                            source={{ uri: path } }
+                            alt={JSON.stringify(title)}
+                    />
+                      
+                       <Text style={styles.authorAndDescriptionText}>Title: {title}</Text>
+                       <Text style={styles.authorAndDescriptionText}> {description}
+                       </Text>	
+                       <AuthorImageWrapper condition={this.state.dataSource.authorImage} wrapper={children =>
+                         <Image style={styles.authorImage}
+                         source={{ uri: this.state.dataSource.authorImage}}>{children} /</Image>}> 
+                            
+                            <Text></Text>
+                       </AuthorImageWrapper>
 
-                        <Text>Description:{this.state.dataSource.title} </Text>
-                        <Text>Description:{this.state.dataSource.long_description} </Text>
+                        <Text>{this.state.dataSource.title} </Text>
+                        <Text style={styles.detailInfoText} >
+                            { this.state.hasDetail && JSON.stringify(this.state.dataSource.long_description)
+                            .replace(/\\n/g, '')
+                            .replace(/\\r/g, '') } </Text>
                         <MyBackButton />
                     </ScrollView>
 
@@ -85,50 +120,5 @@ export default class Detail extends React.Component {
         }
     }
 }
-
-// render(){
-//     const { navigation } = this.props;
-//     //const itemId = navigation.getParam('itemId', 'NO-ID');
-//     const title = navigation.getParam('title', 'no title');
-//     const description = navigation.getParam('description', 'no description');
-//     const descriptionReformat = JSON.stringify(description).replace(('/', 'a'));
-//     const path = navigation.getParam("path","no path");
-//     const AuthorImageWrapper = ({ dataSource, wrapper, children}) => 
-//     dataSource ? wrapper(children) : children;
-// // if (this.state.isLoading) {
-// //     return (
-// //         <View style={styles.container}>
-// //             <ActivityIndicator />
-// //         </View>
-// // )
-// // } else {
-// return (
-//     <View style={styles.detailViewStyle}>
-        
-//         <ScrollView 
-//                 refreshControl={
-//                     <RefreshControl 
-//                         refreshing = {this.state.refreshing}
-//                         onRefresh ={this._onRefresh.bind(this)}
-//                     />
-//                 }
-//                  >
-            
-//             <Text style={styles.titleHeader}>Full Details</Text>
-           
-//             <Image
-//                    style={styles.detailImage}
-//                     source={{ uri: path } }
-//                     alt={JSON.stringify(title)}
-//                   />
-           
-//             <Text style={styles.authorAndDescriptionText}>Title: {title}
-//             </Text>	
-//             <AuthorImageWrapper condition={this.state.dataSource} wrapper={children => <a href={link}>{children}</a>}> 
-//                 <Text>Picture:</Text>
-//                 <Image
-//                     style={styles.authorImage}
-//                     source={{ uri: this.state.dataSource.authorImage}}/>
-//             </AuthorImageWrapper>
 
 //export default Detail;
