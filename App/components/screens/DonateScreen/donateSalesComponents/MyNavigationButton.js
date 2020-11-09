@@ -4,8 +4,16 @@ import { withNavigation } from 'react-navigation';
 import Detail from './DetailComponent';
 
 class MyNavigationButton extends React.Component {
+
   render() {
-    return <Button title="Details" data={this.props.data} onPress={() => { this.props.navigation.navigate('SalesDetail') }} />;
+    return <Button title="Details" onPress={() => { this.props.navigation.navigate('SalesDetail',
+    {
+        title: this.props.itemTitle, 
+        description: this.props.itemDescription,
+        path: this.props.itemPath
+    })
+    }} 
+    />;
   }
 }
 

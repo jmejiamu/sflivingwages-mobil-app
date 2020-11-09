@@ -18,7 +18,7 @@ import {
 
   import styles from './style/styles';
   import InputDvds from './inputComponents/DvdsInputs';
-
+  import MyNavigationButton from '../donateSalesComponents/MyNavigationButton';
 
 const Dvds = ({dvds}) =>{
     return(
@@ -52,6 +52,9 @@ const Dvds = ({dvds}) =>{
 
                   <Text style={{ marginLeft: 15 }}> {item.title} </Text>
                   <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
+                  <MyNavigationButton itemPath={item.path} itemTitle={item.title} 
+                                      itemDescription = {item.contact} 
+                                      />
                   </View>
                 </View>
               )

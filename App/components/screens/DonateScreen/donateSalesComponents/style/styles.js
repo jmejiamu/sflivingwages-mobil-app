@@ -107,7 +107,42 @@ const styles = StyleSheet.create({
     },
     detailViewStyle:{
       padding: 10,
-      textAlign: "center"
+      textAlign: "center",
+      justifyContent: "flex-start",
+      flexDirection: "row",
+      paddingHorizontal: 20,
+      flex: 1, 
+      alignItems: 'stretch',
+    },
+    authorAndDescriptionText:{
+      fontSize: 16,
+    },
+    detailImage:{
+      flex: 1,
+      aspectRatio: 1.5, 
+      marginLeft: 1,
+      marginRight: 1,
+      marginBottom: 15,
+      flexDirection: "row",
+      flexWrap:'wrap',
+      resizeMode: 'contain'
+    },
+    authorImage:{
+      flex: 1,
+      //aspectRatio: 1.5, 
+      marginLeft: 15,
+      marginRight: 15,
+      marginBottom: 15,
+      flexWrap:'wrap',
+      resizeMode: 'contain',
+    },
+    detailInfoText:{
+      fontSize: 24,
+      color: '#100c08',
+      paddingTop: 10,
+      borderStyle: "dashed",
+      textAlign: "left",
+      flexWrap:'wrap',
     },
     backButtonSytle:{
       paddingTop: 20

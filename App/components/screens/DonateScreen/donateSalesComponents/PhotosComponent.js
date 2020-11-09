@@ -19,6 +19,7 @@ import {
   import InputPhotos from './inputComponents/PhotoInputs';
 
   import styles from './style/styles';
+  import MyNavigationButton from '../donateSalesComponents/MyNavigationButton';
 
   const Photos = ({photos}) => {
       return(
@@ -53,6 +54,9 @@ import {
 
                 <Text style={{ marginLeft: 15 }}> {item.title} </Text>
                 <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
+                <MyNavigationButton itemPath={item.path} itemTitle={item.title} 
+                                      itemDescription = {item.contact} 
+                                      />
               </View>
             </View>
           )
