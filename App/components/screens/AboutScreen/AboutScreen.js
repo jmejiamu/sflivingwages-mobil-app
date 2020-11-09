@@ -1,12 +1,13 @@
 //Import Necessary Packages
 import React from 'react';
-import { 
-	 View, 
-	 Text, 
-	 ActivityIndicator, 
-	 StyleSheet, 
-	 ScrollView, 
-	 RefreshControl } from 'react-native';
+import {
+	View,
+	Text,
+	ActivityIndicator,
+	StyleSheet,
+	ScrollView,
+	RefreshControl
+} from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { withTheme } from 'react-native-elements';
 
@@ -29,13 +30,13 @@ export default class AboutScreen extends React.Component {
 		})
 
 	}
- componentDidMount() {
+	componentDidMount() {
 		this.fetchData();
 	}
-	_onRefresh(){
-		this.setState({refreshing:true})
-		this.fetchData().then(()=> {
-			this.setState({refreshing:false})
+	_onRefresh() {
+		this.setState({ refreshing: true })
+		this.fetchData().then(() => {
+			this.setState({ refreshing: false })
 		})
 	}
 	render() {
@@ -44,26 +45,26 @@ export default class AboutScreen extends React.Component {
 				<View style={styles.container}>
 					<ActivityIndicator />
 				</View>
-		)
+			)
 		} else {
-				return(
-				<View  style={styles.item}>
+			return (
+				<View style={styles.item}>
 					<Text style={styles.titleAbout}>{this.state.dataSource.title}</Text>
-					<ScrollView 
-					refreshControl={
-						<RefreshControl 
-							refreshing = {this.state.refreshing}
-							onRefresh ={this._onRefresh.bind(this)}
-						/>
-					}
+					<ScrollView
+						refreshControl={
+							<RefreshControl
+								refreshing={this.state.refreshing}
+								onRefresh={this._onRefresh.bind(this)}
+							/>
+						}
 					>
-						<Text style={styles.aboutInfoText}>{ this.state.dataSource.aboutinfo }</Text>
-							
+						<Text style={styles.aboutInfoText}>{this.state.dataSource.aboutinfo}</Text>
+
 					</ScrollView>
 				</View>
-				)
+			)
 		}
-			
+
 	}
 }
 
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		//justifyContent: 'center',
 		backgroundColor: '#F5F5F5'
-	
+
 	},
 	titleAbout: {
 		fontSize: 24,
@@ -97,5 +98,5 @@ const styles = StyleSheet.create({
 		color: '#100c08',
 		paddingHorizontal: 20,
 	}
-	
+
 })
