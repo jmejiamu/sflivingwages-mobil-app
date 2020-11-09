@@ -17,10 +17,9 @@ import {
 } from 'react-native';
 import ImageZoom from 'react-native-image-pan-zoom';
 
-import InputArts from './inputComponents/ArtInputs';
-import styles from './style/styles'
-import MyNavigationButton from '../donateSalesComponents/MyNavigationButton';
-import DetailComponent from './DetailComponent';
+  import InputArts from './inputComponents/ArtInputs';
+  import styles from './style/styles'
+  import MyNavigationButton from '../donateSalesComponents/MyNavigationButton';
 
 const Art = ({ art }) => {
 
@@ -56,15 +55,18 @@ const Art = ({ art }) => {
               <Text style={{ marginLeft: 15 }}> {item.title} </Text>
               <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
 
-              <MyNavigationButton data={item} />
+                 <MyNavigationButton itemPath={item.path } itemTitle={item.title} 
+                                      itemDescription = {item.contact} 
+                                      />
 
-            </View>
-          </View>
-        )
-      }}
-    />
-  )
-}
+                  </View>
+                </View>
+              )
+            }}
+          />
+    )
+  }
+
 
 
 export default Art;

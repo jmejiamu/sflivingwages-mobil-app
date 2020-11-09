@@ -19,6 +19,7 @@ import {
   import styles from './style/styles';
 
   import InputCds from './inputComponents/CdsInputs';
+  import MyNavigationButton from '../donateSalesComponents/MyNavigationButton';
 
   const Cds = ({cds}) => {
       return(
@@ -52,6 +53,9 @@ import {
 
               <Text style={{ marginLeft: 15 }}> {item.title} </Text>
               <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
+              <MyNavigationButton itemTitle={item.title} 
+                                      itemDescription = {item.contact} 
+                                      />
               </View>
             </View>
           )
