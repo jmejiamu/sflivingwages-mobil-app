@@ -80,7 +80,7 @@ export default class Detail extends React.Component {
             )
         } else {
             return (
-                <View style={styles.detailViewStyle}>
+                <View style={styles.cardImage}>
                     <ScrollView
                         refreshControl={
                             <RefreshControl
@@ -89,15 +89,14 @@ export default class Detail extends React.Component {
                             />
                         }
                     >
-                    <Text style={styles.titleHeader}>Full Details</Text>
-           
+                    <Text style={styles.titleHeader}>{title}</Text>
                     <Image  style={styles.detailImage}
                             source={{ uri: path } }
                             alt={JSON.stringify(title)}
                     />
                       
-                       <Text style={styles.authorAndDescriptionText}>Title: {title}</Text>
-                       <Text style={styles.authorAndDescriptionText}> {description}
+                       
+                       <Text style={styles.descriptionText}> {description}
                        </Text>	
                        <AuthorImageWrapper condition={this.state.dataSource.authorImage} wrapper={children =>
                          <Image style={styles.authorImage}
@@ -106,11 +105,9 @@ export default class Detail extends React.Component {
                             <Text></Text>
                        </AuthorImageWrapper>
 
-                        <Text>{this.state.dataSource.title} </Text>
+                        
                         <Text style={styles.detailInfoText} >
-                            { this.state.hasDetail && JSON.stringify(this.state.dataSource.long_description)
-                            .replace(/\\n/g, '')
-                            .replace(/\\r/g, '') } </Text>
+                            { this.state.hasDetail && this.state.dataSource.long_description } </Text>
                         <MyBackButton />
                     </ScrollView>
 

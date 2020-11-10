@@ -30,6 +30,7 @@ const Dvds = ({dvds}) =>{
               return (
                 <View style={{flex:1}}>
                   <View style={styles.cardImage}>
+                  <Text style={{fontSize:24, marginLeft: 15 }}> {item.title} </Text>
                    <TouchableHighlight >
                        <ImageZoom cropWidth={300}
                                   cropHeight={400}
@@ -50,7 +51,7 @@ const Dvds = ({dvds}) =>{
 
                   <InputDvds dvdsData={item}/>
 
-                  <Text style={{ marginLeft: 15 }}> {item.title} </Text>
+                 
                   <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
                   <MyNavigationButton itemPath={item.path} itemTitle={item.title} 
                                       itemDescription = {item.contact} 
