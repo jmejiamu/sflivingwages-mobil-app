@@ -33,6 +33,7 @@ const Books = ({books}) => {
               return (
                 <View style={{ flex: 1 }}>
                   <View style={styles.cardImage}>
+                  <Text style={{textAlign: "center", fontSize:24, marginLeft: 15 }}> {item.title} </Text>
                   <TouchableHighlight>
                   <ImageZoom
                       cropWidth={300}
@@ -52,8 +53,7 @@ const Books = ({books}) => {
 
                     <InputBooks booksData={item}/>
 
-                  <Text style={{ marginLeft: 15 }}> {item.title} </Text>
-                  <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
+                   <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
                   <MyNavigationButton itemPath={item.path} itemTitle={item.title} 
                                       itemDescription = {item.contact} 
                                       />

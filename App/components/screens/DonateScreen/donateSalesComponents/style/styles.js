@@ -114,8 +114,9 @@ const styles = StyleSheet.create({
       flex: 1, 
       alignItems: 'stretch',
     },
-    authorAndDescriptionText:{
-      fontSize: 16,
+
+    descriptionText:{
+      fontSize: 18,
     },
     detailImage:{
       flex: 1,
