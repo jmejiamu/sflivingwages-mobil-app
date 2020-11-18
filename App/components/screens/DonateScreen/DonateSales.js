@@ -22,27 +22,27 @@ import ImageZoom from 'react-native-image-pan-zoom';
 
 import Books from './donateSalesComponents/booksComponents';
 import Art from './donateSalesComponents/ArtComponent';
-import Photos from  './donateSalesComponents/PhotosComponent';
+import Photos from './donateSalesComponents/PhotosComponent';
 import Cds from './donateSalesComponents/CdsComponent';
 import Dvds from './donateSalesComponents/DvdsComponent';
 
 import styles from './donateSalesComponents/style/styles'
 
 export default class DonateSales extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-  this.state = {
-    
-    art: [],
-    books: [],
-    photos: [],
-    cds: [],
-    dvds: [],
-    modalVisible: false,
-    bid: ''
-  };
-}
-  
+    this.state = {
+
+      art: [],
+      books: [],
+      photos: [],
+      cds: [],
+      dvds: [],
+      modalVisible: false,
+      bid: ''
+    };
+  }
+
   setModalVisible = (visible) => {
     this.setState({ modalVisible: visible })
   }
@@ -62,18 +62,18 @@ export default class DonateSales extends React.Component {
       .then(([resBooks, resArt, resPhotos, resCds, resDvds]) => Promise.all([
         resBooks.json(), resArt.json(), resPhotos.json(), resCds.json(), resDvds.json()
       ]))
-      .then(([dataBooks,dataArt, dataPhotos, dataCds, dataDvds]) => this.setState({
+      .then(([dataBooks, dataArt, dataPhotos, dataCds, dataDvds]) => this.setState({
         books: dataBooks,
         art: dataArt,
         photos: dataPhotos,
         cds: dataCds,
         dvds: dataDvds
-        
+
       }))
-       
-    }
-    
-    handleChange = (e)=>{
+
+  }
+
+  handleChange = (e) => {
     this.setState({ bid: e })
   }
 
@@ -86,7 +86,7 @@ export default class DonateSales extends React.Component {
 
 
   render() {
-   
+
     return (
       <ScrollView style={{ flex: 1 }}
         refreshControl={
@@ -100,23 +100,23 @@ export default class DonateSales extends React.Component {
         <DonateNav navigate={this.props.navigation.navigate} />
 
 
-        <View style={{ justifyContent: "center", alignItems: "center",}}>
-          
+        <View style={{ justifyContent: "center", alignItems: "center", }}>
+
           <Text style={styles.titleHeader}>Art</Text>
-          <Art art={this.state.art}/>
+          <Art art={this.state.art} />
 
           <Text style={styles.titleHeader}>Books</Text>
-          <Books books={this.state.books}/>
+          <Books books={this.state.books} />
 
           <Text style={styles.titleHeader}>Photos</Text>
-          <Photos photos={this.state.photos}/>
+          <Photos photos={this.state.photos} />
 
           <Text style={styles.titleHeader}>CDS</Text>
-          <Cds cds={this.state.cds}/>
-        
+          <Cds cds={this.state.cds} />
+
 
           <Text style={styles.titleHeader}>DVDS</Text>
-          <Dvds dvds={this.state.dvds}/>
+          <Dvds dvds={this.state.dvds} />
         </View>
 
       </ScrollView>

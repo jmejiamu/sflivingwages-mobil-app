@@ -1,67 +1,67 @@
 import React from 'react';
 
 import {
-    Platform,
-    StyleSheet,
-    Text, View,
-    ScrollView,
-    Image,
-    FlatList,
-    TouchableOpacity,
-    RefreshControl,
-    TouchableHighlight,
-    Alert,
-    Dimensions,
-    TextInput
-  } from 'react-native';
-  import ImageZoom from 'react-native-image-pan-zoom';
+  Platform,
+  StyleSheet,
+  Text, View,
+  ScrollView,
+  Image,
+  FlatList,
+  TouchableOpacity,
+  RefreshControl,
+  TouchableHighlight,
+  Alert,
+  Dimensions,
+  TextInput
+} from 'react-native';
+import ImageZoom from 'react-native-image-pan-zoom';
 
-  import styles from './style/styles';
-  import InputDvds from './inputComponents/DvdsInputs';
-  import MyNavigationButton from '../donateSalesComponents/MyNavigationButton';
+import styles from './style/styles';
+import InputDvds from './inputComponents/DvdsInputs';
+import MyNavigationButton from '../donateSalesComponents/MyNavigationButton';
 
-const Dvds = ({dvds}) =>{
-    return(
-        <FlatList
-            horizontal={true}
-            data={dvds}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item }) => {
-              return (
-                <View style={{flex:1}}>
-                  <View style={styles.cardImage}>
-                  <Text style={{fontSize:24, marginLeft: 15 }}> {item.title} </Text>
-                   <TouchableHighlight >
-                       <ImageZoom cropWidth={300}
-                                  cropHeight={400}
-                                  imageWidth={250}
-                                  imageHeight={350}
+const Dvds = ({ dvds }) => {
+  return (
+    <FlatList
+      horizontal={true}
+      data={dvds}
+      keyExtractor={(item, index) => index.toString()}
+      renderItem={({ item }) => {
+        return (
+          <View style={{ flex: 1 }}>
+            <View style={styles.cardImage}>
+              <Text style={{ fontSize: 24, marginLeft: 15 }}> {item.title} </Text>
+              <TouchableHighlight >
+                <ImageZoom cropWidth={300}
+                  cropHeight={400}
+                  imageWidth={250}
+                  imageHeight={350}
 
-                       >
-                           <Image  style={styles.imageStyle}
-                                  source={{uri: item.path }}/>
-                       </ImageZoom>
+                >
+                  <Image style={styles.imageStyle}
+                    source={{ uri: item.path }} />
+                </ImageZoom>
 
-                   </TouchableHighlight>
-                  
+              </TouchableHighlight>
 
-                    <View style={styles.horizontalLine}/>
 
-                  <Text style={{ marginLeft: 15 }}> {item.details} </Text>
+              <View style={styles.horizontalLine} />
 
-                  <InputDvds dvdsData={item}/>
+              <Text style={{ marginLeft: 15 }}> {item.details} </Text>
 
-                 
-                  <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
-                  <MyNavigationButton itemPath={item.path} itemTitle={item.title} 
-                                      itemDescription = {item.contact} 
-                                      />
-                  </View>
-                </View>
-              )
-            }}
-          />
-    )
+              <InputDvds dvdsData={item} />
+
+
+              <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
+              <MyNavigationButton author={item.author_image} description={item.long_description}
+                title={item.title}
+              />
+            </View>
+          </View>
+        )
+      }}
+    />
+  )
 }
 
 export default Dvds;

@@ -16,9 +16,9 @@ import {
     Dimensions,
     TextInput
 } from 'react-native';
+
 //import ImageZoom from 'react-native-image-pan-zoom';
 import MyBackButton from './MyBackButton';
-
 
 export default class Detail extends React.Component {
     constructor(props) {
@@ -35,26 +35,25 @@ export default class Detail extends React.Component {
         const data = await response.json()
         this.setState({
             isLoading: false,
-            dataSource:data[1]
+            dataSource: data[1]
         })
-        console.log("---"+ this.state.title);
+        // console.log("---" + this.state.title);
         data.map(data => {
-            
-            if (this.state.title === data.title) 
-            {
-                console.log("|||"+ data.title);
+
+            if (this.state.title === data.title) {
+                console.log("|||" + data.title);
                 this.setState({
                     //isLoading: false,
-                    hasDetail:true,
+                    hasDetail: true,
                     dataSource: data
                 })
             }
-            
+
         })
 
     }
     componentDidMount() {
-    
+
         this.fetchData();
     }
     _onRefresh() {
@@ -65,13 +64,18 @@ export default class Detail extends React.Component {
     }
 
     render() {
-        const { navigation } = this.props;
-        const title = navigation.getParam('title', 'no title');
-        const description = navigation.getParam('description', 'no description');
-        const path = navigation.getParam("path","no path");
-        const AuthorImageWrapper = ({ condition, wrapper, children}) => 
-        condition ? wrapper(children) : children;
-        
+        // const route = useRoute();
+        // const { navigation } = this.props;
+        // const title = navigation.getParam('title', 'no title');
+        // const description = navigation.getParam('description', 'no description');
+        // const path = navigation.getParam("path", "no path");
+        // const AuthorImageWrapper = ({ condition, wrapper, children }) =>
+        //     condition ? wrapper(children) : children;
+        // console.log('>>>', this.props.navigation.state.params);
+        const { image, bio, title } = this.props.navigation.state.params;
+        const resImage = JSON.stringify(image);
+        const resBio = JSON.stringify(bio)
+        const resTitle = JSON.stringify(title)
         if (this.state.isLoading) {
             return (
                 <View style={styles.container}>
@@ -89,7 +93,10 @@ export default class Detail extends React.Component {
                             />
                         }
                     >
-                    <Text style={styles.titleHeader}>{title}</Text>
+                        <Text style={styles.titleHeader} >{JSON.parse(resTitle)}</Text>
+                        <Image style={{ height: 250, width: 250 }} source={{ uri: JSON.parse(resImage) }} />
+                        <Text>{JSON.parse(resBio)}</Text>
+                        {/* <Text style={styles.titleHeader}>{title}</Text>
                     <Image  style={styles.detailImage}
                             source={{ uri: path } }
                             alt={JSON.stringify(title)}
@@ -107,7 +114,7 @@ export default class Detail extends React.Component {
 
                         
                         <Text style={styles.detailInfoText} >
-                            { this.state.hasDetail && this.state.dataSource.long_description } </Text>
+                            { this.state.hasDetail && this.state.dataSource.long_description } </Text> */}
                         <MyBackButton />
                     </ScrollView>
 
