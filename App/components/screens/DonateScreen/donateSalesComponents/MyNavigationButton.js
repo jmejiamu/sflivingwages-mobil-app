@@ -15,7 +15,7 @@ class MyNavigationButton extends React.Component {
     // })
     // }} 
     // />;
-    return <Button title="Details" onPress={() => {
+    return <Button title="Details" color="#c91a1a" onPress={() => {
       this.props.navigation.navigate('SalesDetail',
         {
           image: this.props.author,
