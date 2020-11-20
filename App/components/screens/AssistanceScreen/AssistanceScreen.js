@@ -79,7 +79,7 @@ const Assistancecreen = () => {
 						value={userPhone}
 					/>
 					<Text style={{ margin: 10 }} >Brief description of your situation, type in topic using example down below</Text>
-					<Text>Wage theft </Text>
+					<Text>Wage theft</Text>
 					<Text>Unpaid overtime</Text>
 					<Text>No break</Text>
 					<Text>Unpaid overtime</Text>
