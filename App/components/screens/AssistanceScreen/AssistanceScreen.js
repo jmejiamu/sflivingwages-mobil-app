@@ -78,15 +78,15 @@ const Assistancecreen = () => {
 						onChangeText={userPhoneInput => setUserPhone(userPhoneInput)}
 						value={userPhone}
 					/>
+					<Text style={{ margin: 10 }} >Brief description of your situation, type in topic using example down below</Text>
 					<Text>Wage theft </Text>
 					<Text>Unpaid overtime</Text>
-					<Text>No breakse</Text>
+					<Text>No break</Text>
 					<Text>Unpaid overtime</Text>
 					<Text>Discrimination</Text>
 					<Text>No sick leave</Text>
 					<Text>Retaliatione</Text>
 
-					<Text style={{ margin: 10 }} >Brief description of your situation, type in topic using example on the side</Text>
 					<TextInput
 						style={styles.textInput}
 						placeholder="ex. discrimination at your workplaces"
