@@ -31,7 +31,7 @@ const Art = ({ art }) => {
         return (
           <View style={{ flex: 1 }}>
             <View style={styles.cardImage}>
-              <Text style={{ textAlign: "center", fontSize: 24, marginLeft: 15 }}> {item.title} </Text>
+              <Text style={{ textAlign: "center", fontSize: 16, marginLeft: 15 }}> {item.title} </Text>
               <TouchableHighlight>
                 <ImageZoom
                   cropWidth={300}
