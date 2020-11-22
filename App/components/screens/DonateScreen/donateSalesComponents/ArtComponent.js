@@ -17,12 +17,11 @@ import {
 } from 'react-native';
 import ImageZoom from 'react-native-image-pan-zoom';
 
-  import InputArts from './inputComponents/ArtInputs';
-  import styles from './style/styles'
-  import MyNavigationButton from '../donateSalesComponents/MyNavigationButton';
+import InputArts from './inputComponents/ArtInputs';
+import styles from './style/styles'
+import MyNavigationButton from '../donateSalesComponents/MyNavigationButton';
 
 const Art = ({ art }) => {
-
   return (
     <FlatList
       horizontal={true}
@@ -32,7 +31,7 @@ const Art = ({ art }) => {
         return (
           <View style={{ flex: 1 }}>
             <View style={styles.cardImage}>
-            <Text style={{textAlign: "center", fontSize:24, marginLeft: 15 }}> {item.title} </Text>
+              <Text style={{ textAlign: "center", fontSize: 16, marginLeft: 15 }}> {item.title} </Text>
               <TouchableHighlight>
                 <ImageZoom
                   cropWidth={300}
@@ -52,20 +51,21 @@ const Art = ({ art }) => {
 
               <InputArts artsData={item} />
 
-             
+
               <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
 
-                 <MyNavigationButton itemPath={item.path } itemTitle={item.title} 
+              {/* <MyNavigationButton itemPath={item.path } itemTitle={item.title} 
                                       itemDescription = {item.contact} 
-                                      />
+                                      /> */}
+              <MyNavigationButton author={item.author_image} description={item.long_description} title={item.title} />
 
-                  </View>
-                </View>
-              )
-            }}
-          />
-    )
-  }
+            </View>
+          </View>
+        )
+      }}
+    />
+  )
+}
 
 
 

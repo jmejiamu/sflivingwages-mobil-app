@@ -5,7 +5,7 @@ import { withNavigation } from 'react-navigation';
 
 class MyBackButton extends React.Component {
   render() {
-    return <Button style={styles.backButtonSytle} title="Back" onPress={() => { this.props.navigation.goBack() }} />;
+    return <Button style={styles.backButtonSytle} title="Back" color="#c91a1a" onPress={() => { this.props.navigation.goBack() }} />;
   }
 }
 

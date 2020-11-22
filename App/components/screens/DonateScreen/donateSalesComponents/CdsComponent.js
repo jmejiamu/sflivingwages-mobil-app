@@ -1,32 +1,32 @@
 import React from 'react';
 
 import {
-    Platform,
-    StyleSheet,
-    Text, View,
-    ScrollView,
-    Image,
-    FlatList,
-    TouchableOpacity,
-    RefreshControl,
-    TouchableHighlight,
-    Alert,
-    Dimensions,
-    TextInput
-  } from 'react-native';
-  import ImageZoom from 'react-native-image-pan-zoom';
+  Platform,
+  StyleSheet,
+  Text, View,
+  ScrollView,
+  Image,
+  FlatList,
+  TouchableOpacity,
+  RefreshControl,
+  TouchableHighlight,
+  Alert,
+  Dimensions,
+  TextInput
+} from 'react-native';
+import ImageZoom from 'react-native-image-pan-zoom';
 
-  import styles from './style/styles';
+import styles from './style/styles';
 
-  import InputCds from './inputComponents/CdsInputs';
-  import MyNavigationButton from '../donateSalesComponents/MyNavigationButton';
+import InputCds from './inputComponents/CdsInputs';
+import MyNavigationButton from '../donateSalesComponents/MyNavigationButton';
 
-  const Cds = ({cds}) => {
-      return(
-        <FlatList
-        horizontal={true}
-        data={cds}
-        keyExtractor={(item, index) => index.toString()}
+const Cds = ({ cds }) => {
+  return (
+    <FlatList
+      horizontal={true}
+      data={cds}
+      keyExtractor={(item, index) => index.toString()}
 
         renderItem={({ item }) => {
           return (
@@ -35,14 +35,14 @@ import {
               <Text style={{textAlign: "center", fontSize:24, marginLeft: 15 }}> {item.title} </Text>
               <TouchableHighlight>
                 <ImageZoom
-                      cropWidth={300}
-                      cropHeight={400}
-                      imageWidth={250}
-                      imageHeight={350}>
-                <Image
-                  style={styles.imageStyle}
-                  source={{ uri: item.path }}
-                />
+                  cropWidth={300}
+                  cropHeight={400}
+                  imageWidth={250}
+                  imageHeight={350}>
+                  <Image
+                    style={styles.imageStyle}
+                    source={{ uri: item.path }}
+                  />
                 </ImageZoom>
               </TouchableHighlight>
 
@@ -50,19 +50,19 @@ import {
 
               <Text style={{ marginLeft: 15 }}> {item.details} </Text>
 
-              <InputCds cdsData={item}/>
+              <InputCds cdsData={item} />
 
               <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
-              <MyNavigationButton itemPath={item.path}  itemTitle={item.title} 
-                                      itemDescription = {item.contact} 
-                                      />
-              </View>
+              <MyNavigationButton author={item.author_image} description={item.long_description}
+                title={item.title}
+              />
             </View>
-          )
-        }}
-      />
-      );
-  }
+          </View>
+        )
+      }}
+    />
+  );
+}
 
 
-  export default Cds;
+export default Cds;

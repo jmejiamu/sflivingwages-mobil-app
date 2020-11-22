@@ -78,18 +78,18 @@ const Assistancecreen = () => {
 						onChangeText={userPhoneInput => setUserPhone(userPhoneInput)}
 						value={userPhone}
 					/>
-					<Checkbox color="primary" label="Wage theft" />
-					<Checkbox color="primary" label="Unpaid overtime" />
-					<Checkbox color="primary" label="No breaks" />
-					<Checkbox color="primary" label="Discrimination" />
-					<Checkbox color="primary" label="No sick leave" />
-					<Checkbox color="primary" label="Retaliation" />
-					<Checkbox color="primary" label="Other" />
+					<Text style={{ margin: 10 }} >Brief description of your situation, type in topic using example down below</Text>
+					<Text>Wage theft</Text>
+					<Text>Unpaid overtime</Text>
+					<Text>No break</Text>
+					<Text>Unpaid overtime</Text>
+					<Text>Discrimination</Text>
+					<Text>No sick leave</Text>
+					<Text>Retaliatione</Text>
 
-					<Text style={{ margin: 10 }} >Brief description of your situation, ex. discrimination at your workplace, immigration status, wage theft, not paid overtime, no breaks, not paid the minimum wage, etc.</Text>
 					<TextInput
 						style={styles.textInput}
-						placeholder="Notes"
+						placeholder="ex. discrimination at your workplaces"
 						onChangeText={userNotesInput => setUserNotes(userNotesInput)}
 						value={userNotes}
 					/>
