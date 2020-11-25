@@ -64,14 +64,6 @@ export default class Detail extends React.Component {
     }
 
     render() {
-        // const route = useRoute();
-        // const { navigation } = this.props;
-        // const title = navigation.getParam('title', 'no title');
-        // const description = navigation.getParam('description', 'no description');
-        // const path = navigation.getParam("path", "no path");
-        // const AuthorImageWrapper = ({ condition, wrapper, children }) =>
-        //     condition ? wrapper(children) : children;
-        // console.log('>>>', this.props.navigation.state.params);
         const { image, bio, title } = this.props.navigation.state.params;
         const resImage = JSON.stringify(image);
         const resBio = JSON.stringify(bio)

@@ -54,9 +54,6 @@ const Art = ({ art }) => {
 
               <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
 
-              {/* <MyNavigationButton itemPath={item.path } itemTitle={item.title} 
-                                      itemDescription = {item.contact} 
-                                      /> */}
               <MyNavigationButton author={item.author_image} description={item.long_description} title={item.title} />
 
             </View>
