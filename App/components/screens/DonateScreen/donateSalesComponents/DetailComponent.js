@@ -41,7 +41,7 @@ export default class Detail extends React.Component {
         data.map(data => {
 
             if (this.state.title === data.title) {
-                console.log("|||" + data.title);
+               
                 this.setState({
                     //isLoading: false,
                     hasDetail: true,
@@ -96,25 +96,7 @@ export default class Detail extends React.Component {
                         <Text style={styles.titleHeader} >{JSON.parse(resTitle)}</Text>
                         <Image style={{ height: 250, width: 250 }} source={{ uri: JSON.parse(resImage) }} />
                         <Text>{JSON.parse(resBio)}</Text>
-                        {/* <Text style={styles.titleHeader}>{title}</Text>
-                    <Image  style={styles.detailImage}
-                            source={{ uri: path } }
-                            alt={JSON.stringify(title)}
-                    />
-                      
-                       
-                       <Text style={styles.descriptionText}> {description}
-                       </Text>	
-                       <AuthorImageWrapper condition={this.state.dataSource.authorImage} wrapper={children =>
-                         <Image style={styles.authorImage}
-                         source={{ uri: this.state.dataSource.authorImage}}>{children} /</Image>}> 
-                            
-                            <Text></Text>
-                       </AuthorImageWrapper>
-
-                        
-                        <Text style={styles.detailInfoText} >
-                            { this.state.hasDetail && this.state.dataSource.long_description } </Text> */}
+                    
                         <MyBackButton />
                     </ScrollView>
 

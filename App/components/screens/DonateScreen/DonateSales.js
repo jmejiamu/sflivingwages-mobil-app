@@ -48,29 +48,33 @@ export default class DonateSales extends React.Component {
   }
 
   componentWillMount() {
-    this.fetchData();
+    //this.fetchData();
+    this.fetchArt();
   }
 
-  fetchData = async () => {
-    Promise.all([
-      fetch('http://157.245.184.202:8080/pictures'),//Booksssss
-      fetch('http://157.245.184.202:8080/arts'),
-      fetch('http://157.245.184.202:8080/photos'),
-      fetch('http://157.245.184.202:8080/cds'),
-      fetch('http://157.245.184.202:8080/dvds'),
-    ])
-      .then(([resBooks, resArt, resPhotos, resCds, resDvds]) => Promise.all([
-        resBooks.json(), resArt.json(), resPhotos.json(), resCds.json(), resDvds.json()
-      ]))
-      .then(([dataBooks, dataArt, dataPhotos, dataCds, dataDvds]) => this.setState({
-        books: dataBooks,
-        art: dataArt,
-        photos: dataPhotos,
-        cds: dataCds,
-        dvds: dataDvds
+  // fetchData = async () => {
+  //   Promise.all([
+  //     fetch('http://157.245.184.202:8080/pictures'),//Booksssss
+  //     fetch('http://157.245.184.202:8080/arts'),
+  //     fetch('http://157.245.184.202:8080/photos'),
+  //     fetch('http://157.245.184.202:8080/cds'),
+  //     fetch('http://157.245.184.202:8080/dvds'),
+  //   ])
+  //     .then(([resBooks, resArt, resPhotos, resCds, resDvds]) => Promise.all([
+  //       resBooks.json(), resArt.json(), resPhotos.json(), resCds.json(), resDvds.json()
+  //     ]))
+  //     .then(([dataBooks, dataArt, dataPhotos, dataCds, dataDvds]) => this.setState({
+  //       books: dataBooks,
+  //       art: dataArt,
+  //       photos: dataPhotos,
+  //       cds: dataCds,
+  //       dvds: dataDvds
 
-      }))
+  //     }))
 
+  // }
+  fetchArt = async () => {
+   fetch('http://157.245.184.202:8080/arts').then([resArt]).then(([dataArt]) => this.setState({ art: dataArt }))
   }
 
   handleChange = (e) => {
@@ -105,7 +109,7 @@ export default class DonateSales extends React.Component {
           <Text style={styles.titleHeader}>Art</Text>
           <Art art={this.state.art} />
 
-          <Text style={styles.titleHeader}>Books</Text>
+          {/* <Text style={styles.titleHeader}>Books</Text>
           <Books books={this.state.books} />
 
           <Text style={styles.titleHeader}>Photos</Text>
@@ -116,7 +120,7 @@ export default class DonateSales extends React.Component {
 
 
           <Text style={styles.titleHeader}>DVDS</Text>
-          <Dvds dvds={this.state.dvds} />
+          <Dvds dvds={this.state.dvds} /> */}
         </View>
 
       </ScrollView>

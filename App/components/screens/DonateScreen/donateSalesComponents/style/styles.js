@@ -98,7 +98,8 @@ const styles = StyleSheet.create({
         width: 100,  
         height: 40,  
         marginTop: 5,
-        marginLeft: 170
+        marginLeft: 170,
+      fontSize:14
     },
     detailButtonText:{
       color: 'white',
