@@ -49,7 +49,12 @@ const Dvds = ({ dvds }) => {
 
               <Text style={{ marginLeft: 15 }}> {item.details} </Text>
 
-              <InputDvds dvdsData={item} />
+              { item.openforbid  &&
+              <InputArts artsData={item} /> }
+
+              { !item.openforbid  && 
+              <Text style={{ marginLeft: 15, fontSize:24 }} >Bid is closed</Text> }
+              
 
 
               <Text style={{ marginLeft: 15 }}> {item.contact} </Text>

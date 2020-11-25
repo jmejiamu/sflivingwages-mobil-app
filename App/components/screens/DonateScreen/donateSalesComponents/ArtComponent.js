@@ -49,12 +49,16 @@ const Art = ({ art }) => {
               />
               <Text style={{ marginLeft: 15 }}> {item.details} </Text>
 
-              <InputArts artsData={item} />
+             { item.openforbid  &&
+              <InputArts artsData={item} /> }
 
-
+              { !item.openforbid  && 
+              <Text style={{ marginLeft: 15, fontSize:24 }} >Bid is closed</Text> }
+              
               <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
-
-              <MyNavigationButton author={item.author_image} description={item.long_description} title={item.title} />
+              { (item.long_description || item.author_image) &&
+              <MyNavigationButton author={item.author_image} 
+              description={item.long_description} title={item.title} /> }
 
             </View>
           </View>
