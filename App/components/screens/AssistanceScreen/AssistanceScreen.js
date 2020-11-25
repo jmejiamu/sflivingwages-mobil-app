@@ -79,13 +79,13 @@ const Assistancecreen = () => {
 						value={userPhone}
 					/>
 					<Text style={{ margin: 10 }} >Brief description of your situation, type in topic using example down below</Text>
-					<Text>Wage theft</Text>
-					<Text>Unpaid overtime</Text>
-					<Text>No break</Text>
-					<Text>Unpaid overtime</Text>
-					<Text>Discrimination</Text>
-					<Text>No sick leave</Text>
-					<Text>Retaliatione</Text>
+					<Text style={{ marginLeft: 10 }} >Wage theft</Text>
+					<Text style={{ marginLeft: 10 }} >Unpaid overtime</Text>
+					<Text style={{ marginLeft: 10 }} >No break</Text>
+					<Text style={{ marginLeft: 10 }} >Unpaid overtime</Text>
+					<Text style={{ marginLeft: 10 }} >Discrimination</Text>
+					<Text style={{ marginLeft: 10 }} >No sick leave</Text>
+					<Text style={{ marginLeft: 10 }} >Retaliatione</Text>
 
 					<TextInput
 						style={styles.textInput}
