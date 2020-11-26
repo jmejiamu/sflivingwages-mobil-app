@@ -51,12 +51,17 @@ import {
 
                 <Text style={{ marginLeft: 15 }}> {item.details} </Text>
 
-                <InputPhotos photoData={item}/>
+                { item.openforbid  &&
+              <InputArts artsData={item} /> }
+
+              { !item.openforbid  && 
+              <Text style={{ marginLeft: 15, fontSize:24 }} >Bid is closed</Text> }
+              
 
                 <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
-                <MyNavigationButton itemPath={item.path} itemTitle={item.title} 
-                                      itemDescription = {item.contact} 
-                                      />
+                <MyNavigationButton author={item.author_image} description={item.long_description}
+                title={item.title}
+              />
               </View>
             </View>
           )

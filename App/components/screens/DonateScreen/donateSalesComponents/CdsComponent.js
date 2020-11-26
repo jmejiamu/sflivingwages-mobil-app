@@ -28,11 +28,11 @@ const Cds = ({ cds }) => {
       data={cds}
       keyExtractor={(item, index) => index.toString()}
 
-      renderItem={({ item }) => {
-        return (
-          <View style={{ flex: 1 }}>
-            <View style={styles.cardImage}>
-              <Text style={{ textAlign: "center", fontSize: 24, marginLeft: 15 }}> {item.title} </Text>
+        renderItem={({ item }) => {
+          return (
+            <View style={{flex:1}}>
+              <View style={styles.cardImage}>
+              <Text style={{textAlign: "center", fontSize:24, marginLeft: 15 }}> {item.title} </Text>
               <TouchableHighlight>
                 <ImageZoom
                   cropWidth={300}
@@ -50,7 +50,12 @@ const Cds = ({ cds }) => {
 
               <Text style={{ marginLeft: 15 }}> {item.details} </Text>
 
-              <InputCds cdsData={item} />
+              { item.openforbid  &&
+              <InputArts artsData={item} /> }
+
+              { !item.openforbid  && 
+              <Text style={{ marginLeft: 15, fontSize:24 }} >Bid is closed</Text> }
+              
 
               <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
               <MyNavigationButton author={item.author_image} description={item.long_description}

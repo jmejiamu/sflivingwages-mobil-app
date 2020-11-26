@@ -24,43 +24,43 @@ export default class Detail extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: true,
+            isLoading: false,
             hasDetail: false,
             dataSource: [],
             title: props.navigation.getParam('title', 'no title'),
         }
     }
-    fetchData = async () => {
-        const response = await fetch('http://157.245.184.202:8080/salesdetail')
-        const data = await response.json()
-        this.setState({
-            isLoading: false,
-            dataSource: data[1]
-        })
-        // console.log("---" + this.state.title);
-        data.map(data => {
+    // fetchData = async () => {
+    //     const response = await fetch('http://157.245.184.202:8080/salesdetail')
+    //     const data = await response.json()
+    //     this.setState({
+    //         isLoading: false,
+    //         dataSource: data[1]
+    //     })
+    //     // console.log("---" + this.state.title);
+    //     data.map(data => {
 
-            if (this.state.title === data.title) {
-                console.log("|||" + data.title);
-                this.setState({
-                    //isLoading: false,
-                    hasDetail: true,
-                    dataSource: data
-                })
-            }
+    //         if (this.state.title === data.title) {
+               
+    //             this.setState({
+    //                 //isLoading: false,
+    //                 hasDetail: true,
+    //                 dataSource: data
+    //             })
+    //         }
 
-        })
+    //     })
 
-    }
+    // }
     componentDidMount() {
 
-        this.fetchData();
+       // this.fetchData();
     }
     _onRefresh() {
-        this.setState({ refreshing: true })
-        this.fetchData().then(() => {
-            this.setState({ refreshing: false })
-        })
+        // this.setState({ refreshing: true })
+        //this.fetchData().then(() => {
+        this.setState({ refreshing: false })
+        //})
     }
 
     render() {
@@ -85,10 +85,12 @@ export default class Detail extends React.Component {
                             />
                         }
                     >
-                        <Text style={styles.titleHeader} >{JSON.parse(resTitle)}</Text>
-                        <Image style={{ height: 250, width: 250 }} source={{ uri: JSON.parse(resImage) }} />
-                        <Text>{JSON.parse(resBio)}</Text>
 
+                        <Text style={styles.titleHeader} > {JSON.parse(resTitle)}</Text>
+                   <Text>Author picture:</Text> 
+                        <Image style={{ height: 250, width: 250 }} source={{ uri: JSON.parse(resImage) }} />
+                    <Text>{JSON.parse(resBio)}</Text>
+                    
                         <MyBackButton />
                     </ScrollView>
 
