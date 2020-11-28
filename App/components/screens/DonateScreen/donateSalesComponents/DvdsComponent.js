@@ -50,7 +50,7 @@ const Dvds = ({ dvds }) => {
               <Text style={{ marginLeft: 15 }}> {item.details} </Text>
 
               { item.openforbid  &&
-              <InputArts artsData={item} /> }
+              <InputDvds artsData={item} /> }
 
               { !item.openforbid  && 
               <Text style={{ marginLeft: 15, fontSize:24 }} >Bid is closed</Text> }

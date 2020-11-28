@@ -52,7 +52,7 @@ import {
                 <Text style={{ marginLeft: 15 }}> {item.details} </Text>
 
                 { item.openforbid  &&
-              <InputArts artsData={item} /> }
+              <InputPhotos artsData={item} /> }
 
               { !item.openforbid  && 
               <Text style={{ marginLeft: 15, fontSize:24 }} >Bid is closed</Text> }
