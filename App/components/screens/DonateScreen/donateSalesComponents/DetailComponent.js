@@ -41,7 +41,7 @@ export default class Detail extends React.Component {
     //     data.map(data => {
 
     //         if (this.state.title === data.title) {
-               
+
     //             this.setState({
     //                 //isLoading: false,
     //                 hasDetail: true,
@@ -54,7 +54,7 @@ export default class Detail extends React.Component {
     // }
     componentDidMount() {
 
-       // this.fetchData();
+        // this.fetchData();
     }
     _onRefresh() {
         // this.setState({ refreshing: true })
@@ -87,10 +87,10 @@ export default class Detail extends React.Component {
                     >
 
                         <Text style={styles.titleHeader} > {JSON.parse(resTitle)}</Text>
-                   <Text>Author picture:</Text> 
+                        <Text>Author picture:</Text>
                         <Image style={{ height: 250, width: 250 }} source={{ uri: JSON.parse(resImage) }} />
-                    <Text>{JSON.parse(resBio)}</Text>
-                    
+                        <Text>{JSON.parse(resBio)}</Text>
+
                         <MyBackButton />
                     </ScrollView>
 
@@ -100,5 +100,3 @@ export default class Detail extends React.Component {
         }
     }
 }
-
-//export default Detail;
