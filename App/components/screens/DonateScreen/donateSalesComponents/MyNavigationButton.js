@@ -6,15 +6,7 @@ import Detail from './DetailComponent';
 class MyNavigationButton extends React.Component {
 
   render() {
-    // console.log('>>>>>>>>>>>>>>>>>>>', this.props.author);
-    // return <Button title="Details" onPress={() => { this.props.navigation.navigate('SalesDetail',
-    // {
-    //     title: this.props.itemTitle, 
-    //     description: this.props.itemDescription,
-    //     path: this.props.itemPath
-    // })
-    // }} 
-    // />;
+
     return <Button title="Details" color="#c91a1a" onPress={() => {
       this.props.navigation.navigate('SalesDetail',
         {
