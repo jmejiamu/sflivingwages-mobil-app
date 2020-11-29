@@ -51,16 +51,17 @@ const Cds = ({ cds }) => {
               <Text style={{ marginLeft: 15 }}> {item.details} </Text>
 
               { item.openforbid  &&
-              <InputCds artsData={item} /> }
+              <InputCds cdsData={item} /> }
 
               { !item.openforbid  && 
               <Text style={{ marginLeft: 15, fontSize:24 }} >Bid is closed</Text> }
               
 
               <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
+              { (item.long_description && item.author_image) &&
               <MyNavigationButton author={item.author_image} description={item.long_description}
                 title={item.title}
-              />
+              />}
             </View>
           </View>
         )
