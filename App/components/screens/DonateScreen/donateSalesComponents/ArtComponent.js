@@ -22,10 +22,11 @@ import styles from './style/styles'
 import MyNavigationButton from '../donateSalesComponents/MyNavigationButton';
 
 const Art = ({ art }) => {
-  const calculateTimeLeft = () => {
+  const calculateTimeLeft = (value) => {
     // Set bid end day here
     let year = new Date().getFullYear();
-    let endDate = art[0].closeDate;
+    //let endDate = art[0].closeDate;
+    let endDate = value
     //Date format: 2021-06-01T12:00:00.000Z
     let difference = +new Date(endDate) - +new Date();
     
@@ -46,8 +47,8 @@ const Art = ({ art }) => {
 
   useEffect(() => {
     const timer=setTimeout(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
+      setTimeLeft(calculateTimeLeft(art[0].closeDate));
+    }, 1000); 
 
 
 
@@ -91,8 +92,9 @@ const Art = ({ art }) => {
                   />
                 </ImageZoom>
               </TouchableHighlight>
-
+              
               <Text>
+                {() => calculateTimeLeft(item.closeDate)}
                 {timerComponents.length ? timerComponents : "Bid is closed!"}
             </Text>
               <View
@@ -102,9 +104,6 @@ const Art = ({ art }) => {
 
              { item.openforbid  &&
               <InputArts artsData={item} /> }
-
-              { !item.openforbid  && 
-              <Text style={{ marginLeft: 15, fontSize:24 }} >Bid is closed</Text> }
               
               <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
               { (item.long_description || item.author_image) &&

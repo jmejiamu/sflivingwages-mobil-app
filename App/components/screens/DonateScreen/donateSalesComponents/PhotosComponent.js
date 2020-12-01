@@ -96,11 +96,7 @@ import {
 
                 { item.openforbid  &&
                <InputPhotos photoData={item}/>}
-
-              { !item.openforbid  && 
-              <Text style={{ marginLeft: 15, fontSize:24 }} >Bid is closed</Text> }
-              
-              
+ 
                 <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
                 
                 { (item.long_description && item.author_image) &&
