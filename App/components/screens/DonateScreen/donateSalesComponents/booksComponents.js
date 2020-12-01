@@ -100,10 +100,6 @@ const Books = ({books}) => {
                     { item.openforbid  &&
                     <InputBooks booksData={item} /> }
 
-                    { !item.openforbid  && 
-                    <Text style={{ marginLeft: 15, fontSize:24 }} >Bid is closed</Text> }
-                    
-
                    <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
                    { (item.long_description && item.author_image) &&
                    <MyNavigationButton author={item.author_image} description={item.long_description}
