@@ -88,6 +88,7 @@ const Dvds = ({ dvds }) => {
 
               <Text>
                 {timerComponents.length ? timerComponents : "Bid is closed!"}
+                {timerComponents.length ? item.openforbid = "left" : item.openforbid = null }
             </Text>
               <View style={styles.horizontalLine} />
 
