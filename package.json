@@ -5,7 +5,15 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
+    ],
+    "setupFiles": ["./node_modules/react-native-gesture-handler/jestSetup.js"]
   },
   "dependencies": {
     "@react-native-community/viewpager": "3.3.0",
@@ -16,7 +24,7 @@
     "consolidate": "^0.15.1",
     "date-fns": "^2.16.1",
     "ejs": "^2.7.4",
-    "expo": "^37.0.0",
+    "expo": "^39.0.5",
     "express": "^4.17.1",
     "galio-framework": "^0.7.1",
     "gcp-metadata": "^4.2.1",
@@ -49,7 +57,10 @@
     "request": "^2.88.2"
   },
   "devDependencies": {
+    "@testing-library/jest-native": "^3.4.3",
+    "@testing-library/react-native": "^7.1.0",
     "babel-preset-expo": "^7.0.0",
+    "jest": "^26.6.3",
     "react-native-credit-card-input": "^0.4.1",
     "react-native-keyboard-spacer": "^0.4.1"
   },

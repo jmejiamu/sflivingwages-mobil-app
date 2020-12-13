@@ -13,3 +13,6 @@ yarn.lock
 
 #tester folder to ignore
 ignore
+
+#test files
+__Tests__
