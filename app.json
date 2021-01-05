@@ -7,7 +7,7 @@
       "ios",
       "android"
     ],
-    "version": "6.0.0",
+    "version": "11.0.0",
     "orientation": "portrait",
     "ios": {
       "supportsTablet": true,
@@ -19,8 +19,8 @@
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#d31623"
       },
-      "package": "com.sfLiving.sflivingwagesbeta",
-      "versionCode": 6
+      "package": "com.sfLiving.sflivingwagecoaltionsflc",
+      "versionCode": 11
     },
     "androidStatusBar": {
       "backgroundColor": "#C2185B"
