@@ -23,7 +23,17 @@ const InputArts = (props) => {
   const [name, setName] = useState('');
   const [phoneEmail, setPhoneEmail] = useState('');
 
+  const validations = () => {
+    //const bidValue= Number(bid)
+     if (isNaN(bid)  ) {
+      Alert.alert("Value is Not Number");
+      setBid('');
+     }
+
+  }
+
   const onSubmitData = () => {
+    validations()
     //Text input validations:
     //console.log( "Bid: " + bid + " Name: " + name + " Email/Phone: " + phoneEmail);
     if (bid === "" && name === "" && phoneEmail === "") {
@@ -67,6 +77,8 @@ const InputArts = (props) => {
     setName('');
     setPhoneEmail('');
   }
+
+
   return (
     <>
 
