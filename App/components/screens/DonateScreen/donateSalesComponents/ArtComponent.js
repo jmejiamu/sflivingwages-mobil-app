@@ -95,7 +95,7 @@ const Art = ({ art }) => {
               
               <Text>
                 {() => calculateTimeLeft(item.closeDate)}
-                {timerComponents.length ? timerComponents : "Bid is closed!" }
+                {timerComponents.length ? timerComponents : "Bid is closed" }
                 {timerComponents.length ? item.openforbid = "left" : item.openforbid = null }
             </Text>
               <View
