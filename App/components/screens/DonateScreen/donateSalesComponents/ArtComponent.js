@@ -95,7 +95,8 @@ const Art = ({ art }) => {
               
               <Text>
                 {() => calculateTimeLeft(item.closeDate)}
-                {timerComponents.length ? timerComponents : "Bid is closed!"}
+                {timerComponents.length ? timerComponents : "Bid is closed" }
+                {timerComponents.length ? item.openforbid = "left" : item.openforbid = null }
             </Text>
               <View
                 style={styles.horizontalLine}
@@ -104,7 +105,7 @@ const Art = ({ art }) => {
 
              { item.openforbid  &&
               <InputArts artsData={item} /> }
-              
+            
               <Text style={{ marginLeft: 15 }}> {item.contact} </Text>
               { (item.long_description || item.author_image) &&
               <MyNavigationButton author={item.author_image} 
