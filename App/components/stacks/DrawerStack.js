@@ -59,12 +59,6 @@ export const DrawerNav = createDrawerNavigator(
 				drawerIcon: <MaterialCommunityIcons name='home' size={20} />
 			}
 		},
-		Auction: {
-			screen: AuctionStack,
-			navigationOptions: {
-				drawerIcon: <MaterialCommunityIcons name='point-of-sale' size={20} />
-			}
-		},
 		About: {
 			screen: AboutStack,
 			navigationOptions: {
