@@ -19,6 +19,7 @@ import {
 	InfoStack,
 	DonateStack,
 	AssistanceStack,
+	AuctionStack,
 	header,
 } from './ScreenStacks';
 import { BottomNavStack } from './BottomNavStack';
@@ -56,6 +57,12 @@ export const DrawerNav = createDrawerNavigator(
 			screen: HomeStack,
 			navigationOptions: {
 				drawerIcon: <MaterialCommunityIcons name='home' size={20} />
+			}
+		},
+		Auction: {
+			screen: AuctionStack,
+			navigationOptions: {
+				drawerIcon: <MaterialCommunityIcons name='point-of-sale' size={20} />
 			}
 		},
 		About: {
