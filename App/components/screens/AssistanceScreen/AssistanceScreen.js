@@ -24,7 +24,7 @@ const Assistancecreen = () => {
 
 	const onSubmitData = () => {
 		if(fullName.length === 0 || userEmail.length === 0|| userNotes.length === 0 || userPhone === 0){
-			Alert.alert("Please fill all the fields");
+			Alert.alert("Must enter name and contact information to submit");
 		}
 		
 		else{
