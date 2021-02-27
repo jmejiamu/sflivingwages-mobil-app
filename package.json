@@ -13,7 +13,9 @@
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
     ],
-    "setupFiles": ["./node_modules/react-native-gesture-handler/jestSetup.js"]
+    "setupFiles": [
+      "./node_modules/react-native-gesture-handler/jestSetup.js"
+    ]
   },
   "dependencies": {
     "@react-native-community/viewpager": "4.2.0",
@@ -24,7 +26,7 @@
     "consolidate": "^0.15.1",
     "date-fns": "^2.16.1",
     "ejs": "^2.7.4",
-    "expo": "^40.0.0",
+    "expo": "^40.0.1",
     "express": "^4.17.1",
     "galio-framework": "^0.7.1",
     "gcp-metadata": "^4.2.1",
