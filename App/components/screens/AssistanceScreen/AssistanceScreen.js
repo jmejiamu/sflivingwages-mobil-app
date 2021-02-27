@@ -7,6 +7,7 @@ import {
 	TouchableOpacity,
 	ScrollView,
 	Image,
+	Alert
 
 } from 'react-native';
 
@@ -21,23 +22,32 @@ const Assistancecreen = () => {
 	const [userPhone, setUserPhone] = useState('');
 	const [userNotes, setUserNotes] = useState('');
 
-
 	const onSubmitData = () => {
-		fetch('http://157.245.184.202:8080/assistance', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({
-				full_name: fullName,
-				email: userEmail,
-				phone: userPhone,
-				notes: userNotes
+		if(fullName.length === 0 || userEmail.length === 0|| userNotes.length === 0 || userPhone === 0){
+			Alert.alert("Please fill all the fields");
+		}
+		
+		else{
+			fetch('http://157.245.184.202:8080/assistance', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					full_name: fullName,
+					email: userEmail,
+					phone: userPhone,
+					notes: userNotes
+				})
 			})
-		})
+
+			Alert.alert("We recieve your complain. We will contact you soon")
+	    }
+		
 		setFullName('');
 		setUserEmail('');
 		setUserPhone('');
 		setUserNotes('');
 	}
+	
 	const resetAll = () => {
 		setFullName('');
 		setUserEmail('');
@@ -53,51 +63,59 @@ const Assistancecreen = () => {
 					<View style={styles.logoContainer}>
 						<Image style={styles.logo} source={require('../../../../assets/icon.png')} />
 					</View>
-					<Text style={{ margin: 10 }}>We can assist you.</Text>
-					<Text style={{ margin: 10 }}>Complete the form below.</Text>
-
-					<TextInput
-						style={styles.textInput}
-						placeholder="Full Name"
-						onChangeText={fullNameInput => setFullName(fullNameInput)}
-						value={fullName}
-					/>
-
-					<TextInput
-						style={styles.textInput}
-						placeholder="E-Mail"
-						keyboardType='email-address'
-						onChangeText={userEmailInput => setUserEmail(userEmailInput)}
-						value={userEmail}
-					/>
-
-					<TextInput
-						style={styles.textInput}
-						placeholder="Phone"
-						keyboardType='numeric'
-						onChangeText={userPhoneInput => setUserPhone(userPhoneInput)}
-						value={userPhone}
-					/>
-					<Text style={{ margin: 10 }} >Brief description of your situation, type in topic using example down below</Text>
-					<Text style={{ marginLeft: 10 }} >Wage theft</Text>
-					<Text style={{ marginLeft: 10 }} >Unpaid overtime</Text>
-					<Text style={{ marginLeft: 10 }} >No break</Text>
-					<Text style={{ marginLeft: 10 }} >Unpaid overtime</Text>
-					<Text style={{ marginLeft: 10 }} >Discrimination</Text>
-					<Text style={{ marginLeft: 10 }} >No sick leave</Text>
-					<Text style={{ marginLeft: 10 }} >Retaliatione</Text>
-
-					<TextInput
-						style={styles.textInput}
-						placeholder="ex. discrimination at your workplaces"
-						onChangeText={userNotesInput => setUserNotes(userNotesInput)}
-						value={userNotes}
-					/>
-
+					<Text style={{ marginLeft: 20, marginTop: 10 }}>We can assist you.</Text>
+					<Text style={{ marginLeft: 20, marginBottom: 30 }}>Complete the form below.</Text>
+                    
+					<View style={styles.inputContainer}>
+						<Text style={{marginLeft: 10}}>Full Name</Text>
+						<TextInput
+							style={styles.textInput}
+							onChangeText={fullNameInput => setFullName(fullNameInput)}
+							value={fullName}
+						/>
+					</View>
+                    
+					<View style={styles.inputContainer}>
+						<Text style={{marginLeft: 10}}>E-mail</Text>
+						<TextInput
+							style={styles.textInput}
+							keyboardType='email-address'
+							onChangeText={userEmailInput => setUserEmail(userEmailInput)}
+							value={userEmail}
+						/>
+					</View>
+                    
+					<View style={styles.inputContainer}>
+						<Text style={{marginLeft: 10}}>Phone</Text>
+						<TextInput
+							style={styles.textInput}
+							keyboardType='numeric'
+							onChangeText={userPhoneInput => setUserPhone(userPhoneInput)}
+							value={userPhone}
+						/>
+					</View>
+					
+					<Text style={{ marginBottom: 10, marginLeft: 20 }} >Brief description of your situation, type in topic using example down below</Text>
+					<Text style={{ marginLeft: 20 }} >Wage theft</Text>
+					<Text style={{ marginLeft: 20 }} >Unpaid overtime</Text>
+					<Text style={{ marginLeft: 20 }} >No break</Text>
+					<Text style={{ marginLeft: 20 }} >Discrimination</Text>
+                    
+					<View style={styles.inputContainer}>
+						<Text style={{marginLeft: 3}}>Note</Text>
+						<TextInput
+							style={styles.textInput}
+							onChangeText={userNotesInput => setUserNotes(userNotesInput)}
+							value={userNotes}
+						/>
+                    </View>
+					
 					<View style={styles.buttonStyles}>
 
-						<TouchableOpacity style={styles.submitButton} onPress={onSubmitData}>
-							<Text style={styles.submitButtonText} >Submit</Text>
+						<TouchableOpacity onPress={onSubmitData}>
+							<View  style={styles.submitButton} >
+								<Text style={styles.submitButtonText} >Submit</Text>
+							</View>
 						</TouchableOpacity>
 
 						<TouchableOpacity style={styles.submitButton} onPress={resetAll}>
@@ -130,20 +148,20 @@ const styles = StyleSheet.create({
 		elevation: 10
 	},
 	textInput: {
-		height: 40,
-		borderColor: '#d31623',
-		borderWidth: 1,
-		borderRadius: 5,
-		padding: 5,
+		height: 30,
+		borderBottomColor: '#d31623',
+		borderBottomWidth: 1,
 		margin: 10
 	},
 	submitButton: {
-		backgroundColor: '#d31623',
+		backgroundColor: 'white',
+		borderColor: '#d31623',
+		borderWidth: 1,
 		padding: 10,
 		width: 100,
 		height: 40,
 		marginTop: 20,
-		borderRadius: 5,
+		borderRadius: 10,
 
 	},
 	buttonStyles: {
@@ -153,9 +171,9 @@ const styles = StyleSheet.create({
 		paddingBottom: 35
 	},
 	logo: {
-		width: 125,
-		height: 125,
-		marginTop: 20
+		width: 200,
+		height: 200,
+		borderRadius: 200 / 2
 	},
 	logoContainer: {
 		marginTop: 10,
@@ -163,9 +181,13 @@ const styles = StyleSheet.create({
 		alignItems: 'center'
 	},
 	submitButtonText: {
-		color: 'white',
+		color: '#d31623',
 		fontWeight: "900",
 		textAlign: "center"
 	},
+
+	inputContainer:{
+		margin: 12
+	}
 });
 export default Assistancecreen;
