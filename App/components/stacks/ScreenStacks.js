@@ -124,4 +124,15 @@ export const AssistanceStack = createStackNavigator(
 	}
 );
 
+// Stack Screen for Auction house
+export const AuctionStack = createStackNavigator(
+	{
+		Auction: DonateSales
+	},
+	{
+		defaultNavigationOptions: header,
+		headerLayoutPreset: 'center',
+		cardStyle: {backgroundColor: '#F5F5F5'}
+	}
+);
 

@@ -13,6 +13,7 @@ import {
     InfoStack,
 	DonateStack,
 	AssistanceStack,
+	AuctionStack,
 	header 
 } from './ScreenStacks';
 // import { DrawerNav } from './DrawerStack';
@@ -44,24 +45,17 @@ const navigationIcons = ({navigation}) => ({
         	case 'Home':
         		iconName = 'home';
         		break;
-        	case 'Details':
+        	case 'Auction':
         		//Join the fight page
-        		iconName = 'details';
-        		break;
-        	case 'Info':
-        		iconName = 'information-variant';
+        		iconName = 'point-of-sale';
         		break;
         	case 'Donate':
         		iconName = 'cart-outline';
         		break;
-        	case 'About':
-        		//About Us Page
-        		iconName = 'nature-people';
+			case 'Assistance':
+				//Assistance Page
+				iconName = 'assistance';
 				break;
-				case 'Assistance':
-					//Assistance Page
-					iconName = 'assistance';
-					break;
         }
 
         return (
@@ -96,11 +90,8 @@ const iconColors = {
 export const BottomNavStack = createBottomTabNavigator(
 	{
 		Home: HomeStack,
-		Details: DetailsStack,
-		About: AboutStack,
-        Info: InfoStack,
+		Auction: AuctionStack,
         Donate: DonateStack,
-
 		Assistance:AssistanceStack
 	},
 	{

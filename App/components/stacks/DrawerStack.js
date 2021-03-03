@@ -19,6 +19,7 @@ import {
 	InfoStack,
 	DonateStack,
 	AssistanceStack,
+	AuctionStack,
 	header,
 } from './ScreenStacks';
 import { BottomNavStack } from './BottomNavStack';

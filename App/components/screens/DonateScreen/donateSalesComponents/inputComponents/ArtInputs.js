@@ -22,6 +22,7 @@ const InputArts = (props) => {
   const [bid, setBid] = useState('');
   const [name, setName] = useState('');
   const [phoneEmail, setPhoneEmail] = useState('');
+  
 
   const validations = () => {
     //const bidValue= Number(bid)
@@ -39,7 +40,7 @@ const InputArts = (props) => {
     if (bid === "" && name === "" && phoneEmail === "") {
       Alert.alert("Error!", "Please enter all details");
     } else {
-      if (bid !== "") {
+      if (bid !== "" && bid > props.artsData.bid && bid > props.artsData.lastbid) {
         if (name !== "") {
           if (phoneEmail !== "") {
             Alert.alert("Submitted!", "Thanks for your bid, " + name + "!");
@@ -67,7 +68,7 @@ const InputArts = (props) => {
           Alert.alert("Error!", "Please enter your name");
         }
       } else {
-        Alert.alert("Error!", "Please enter an amount to bid");
+        Alert.alert("Error!", "Please enter correct amount to bid");
       }
     }
   }
@@ -82,8 +83,8 @@ const InputArts = (props) => {
   return (
     <>
 
-      <Text style={{ marginLeft: 15 }}> {"Last BID: $" + props.artsData.bid} </Text>
-
+      <Text style={{ marginLeft: 15 }}> {"Minimum BID: $" + props.artsData.bid} </Text>
+      <Text style={{ marginLeft: 15 }}> {"Last BID: $" + props.artsData.lastbid} </Text>
       <TextInput
         style={styles.textInput}
         placeholder="Bidding amount"
