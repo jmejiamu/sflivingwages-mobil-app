@@ -20,6 +20,7 @@ import {
 	DonateStack,
 	AssistanceStack,
 	AuctionStack,
+	CampaignStack,
 	header,
 } from './ScreenStacks';
 import { BottomNavStack } from './BottomNavStack';
@@ -89,6 +90,13 @@ export const DrawerNav = createDrawerNavigator(
 			screen: AssistanceStack,
 			navigationOptions: {
 				drawerIcon: <MaterialCommunityIcons name='assistance' size={20} />
+			}
+		},
+		Campaign: {
+			screen: CampaignStack,
+			navigationOptions: {
+				drawerLabel: 'Campaigns',
+				drawerIcon: <MaterialCommunityIcons name='campaign' size={20} />
 			}
 		},
 	},

@@ -45,15 +45,16 @@ const InputArts = (props) => {
           if (phoneEmail !== "") {
             Alert.alert("Submitted!", "Thanks for your bid, " + name + "!");
             // Send the data to the DB
-            fetch('http://157.245.184.202:8080/artsbid', {
+            //fetch('http://157.245.184.202:8080/artsbid', {
+            fetch('http://localhost:3001/artsbid', {
               method: 'post',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
+              body: JSON.stringify({ 
                 id: props.artsData.id,
                 name: name,
                 bid: bid,
                 phoneEmail: phoneEmail,
-                title: props.artsData.title
+                title: props.artsData.title,
 
               })
             })

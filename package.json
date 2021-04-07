@@ -13,7 +13,9 @@
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
     ],
-    "setupFiles": ["./node_modules/react-native-gesture-handler/jestSetup.js"]
+    "setupFiles": [
+      "./node_modules/react-native-gesture-handler/jestSetup.js"
+    ]
   },
   "dependencies": {
     "@react-native-community/viewpager": "4.2.0",
@@ -47,7 +49,7 @@
     "react-native-image-zoom-viewer": "^2.2.27",
     "react-native-modal": "^11.5.6",
     "react-native-photo-view-ex": "^1.1.0",
-    "react-native-screens": "~2.15.0",
+    "react-native-screens": "~2.15.2",
     "react-native-square-in-app-payments": "^1.4.0",
     "react-native-webview": "11.0.0",
     "react-native-wkwebview-reborn": "^2.0.0",

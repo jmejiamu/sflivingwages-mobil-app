@@ -151,7 +151,7 @@ export default class DonateSales extends React.Component {
         onScroll={this.handleScroll}
       >
 
-        <DonateNav navigate={this.props.navigation.navigate} />
+        {/* <DonateNav navigate={this.props.navigation.navigate} /> */}
 
 
         <View style={{ justifyContent: "center", alignItems: "center", }}>

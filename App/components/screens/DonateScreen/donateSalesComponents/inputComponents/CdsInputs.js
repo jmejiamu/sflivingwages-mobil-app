@@ -70,7 +70,8 @@ const InputCds = (props) => {
   return (
     <>
 
-      <Text style={{ marginLeft: 15 }}> {"Last BID: $" + props.cdsData.bid} </Text>
+      <Text style={{ marginLeft: 15 }}> {"Minimum BID: $" + props.artsData.bid} </Text>
+      <Text style={{ marginLeft: 15 }}> {"Last BID: $" + props.artsData.lastbid} </Text>
 
       <TextInput
         style={styles.textInput}

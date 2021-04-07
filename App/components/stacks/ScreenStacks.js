@@ -32,6 +32,10 @@ import NavigationDrawerStructure from './NavigationDrawerStructure';
 // StyleSheets
 import { styles, bannerStyle } from '../style/styleSheet';
 import PaypalDonate from "../screens/DonateScreen/PaypalDonate";
+import CampaignScreen from '../screens/CampaignScreen/CampaignScreen';
+import CampaignDetail from '../screens/CampaignScreen/CampaignDetail';
+import CampaignFullDetail from '../screens/CampaignScreen/CampaignFullDetail';
+
 //import DonateInKind from '../screens/DonateScreen/DonateInKind';
 //import DonateSales from '../screens/DonateScreen/DonateSales';
 
@@ -135,4 +139,19 @@ export const AuctionStack = createStackNavigator(
 		cardStyle: {backgroundColor: '#F5F5F5'}
 	}
 );
+
+// Stack Screen for Campaigns 
+export const CampaignStack = createStackNavigator(
+	{
+		Campaign: CampaignScreen,
+		CampaignDetailpage: CampaignDetail,
+		CampaignFull: CampaignFullDetail,
+	},
+	{
+		defaultNavigationOptions: header,
+		headerLayoutPreset: 'center',
+		cardStyle: {backgroundColor: '#F5F5F5'}
+	}
+);
+
 
