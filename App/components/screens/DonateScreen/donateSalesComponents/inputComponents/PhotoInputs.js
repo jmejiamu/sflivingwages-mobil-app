@@ -70,8 +70,8 @@ const InputPhotos = (props) => {
   return (
     <>
 
-      <Text style={{ marginLeft: 15 }}> {"Minimum BID: $" + props.artsData.bid} </Text>
-      <Text style={{ marginLeft: 15 }}> {"Last BID: $" + props.artsData.lastbid} </Text>
+      <Text style={{ marginLeft: 15 }}> {"Minimum BID: $" + props.photoData.bid} </Text>
+      <Text style={{ marginLeft: 15 }}> {"Last BID: $" + props.photoData.lastbid} </Text>
 
       <TextInput
         style={styles.textInput}

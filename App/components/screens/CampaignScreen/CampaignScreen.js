@@ -38,14 +38,14 @@ export default class CampaignScreen extends React.Component {
                </View>
                <View style={styles.lightbluebackground}>
                     < Text style={ styles.textSytle }
-                       >
-                      REFORM A BROKEN IMMIGRATION SYSTEM
+                      onPress={() => this.props.navigation.navigate('CampaignTwoDetail',{filename:"campaignData.json"})} >
+                       END THE INJUSTICE OF MASS INCARCERATION
                     </Text>
                </View>
                <View style={styles.lightbluebackground}>
                     < Text style={ styles.textSytle }
                        >
-                       END THE INJUSTICE OF MASS INCARCERATION
+                      REFORM A BROKEN IMMIGRATION SYSTEM
                     </Text>
                </View>    
                <View style={styles.lightbluebackground}>

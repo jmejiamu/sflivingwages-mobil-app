@@ -74,7 +74,7 @@ export default class CampaignFullDetail2 extends React.Component{
                         backgroundColor: "#F1F9FF"
                     }}
                     >   
-                <Text style={{ fontSize:24, height: 100, color: "#2699FB"} }>a. CAMPAIGN FOR CITY FUNDING FOR MCO WAGE INCREASE FOR NON-PROFITS</Text>
+                <Text style={{ fontSize:24, height: 100, color: "#2699FB"} }>b. Support the Heroes Act</Text>
                 </View>
 
                 <View 
@@ -95,12 +95,9 @@ export default class CampaignFullDetail2 extends React.Component{
                         fontSize: 14
                         }}
                         >
-                The Budget and Appropriations Committee of the Board of Supervisors, led by chair Supervisor Sandra Fewer 
-                with members Supervisors Shamann Walton, Hillary Ronen, Norman Yee and Rafael Mandelman, approved in their 
-                proposed spending plan $2.1 million for the 3.31 percent cost-of-living adjustment to the Minimum Compensation Ordinance 
-                retroactive to July 1 as a one-time, one-year “Non-profit Worker Emergency Support.” This will increase the minimum wage 
-                for city-funded non-profit workers and CalWORKs parents in welfare-to-work programs from $16.50 to $17.05. The Supervisors also included $675,000 
-                in additional funding to raise wages for IHSS home care workers to $17.50 per hour.</Text>
+                The CARES Act, passed by the Senate on March 25, allocated $2 trillion dollars to mitigate the devastating effects of the COVID-19 pandemic, including direct payments to tax-paying individuals. However, the CARES Act excludes those without Social Security numbers, leaving out nearly 12 million undocumented individuals and Dreamers. There is also language in the legislation that excludes sex-workers, affecting over a million people.
+
+On June 12th, the Heroes Act was introduced to the House of Representatives. According to the AFL-CIO, this bill “gives aid for state and local governments, public schools, the U.S. Postal Service, and pension funding relief; keeps workers on payrolls to avoid mass layoffs; extends unemployment insurance; provides more direct payments to working people; extends health care coverage; provides housing and food benefits; and much more.” The Heroes Act would extend coverage to undocumented people and other people in vulnerable communities. Right now, this bill has passed in the House of Representatives and we are waiting on the Senate.</Text>
                 </View>
                 <View style={{ backgroundColor: "#BEF0FD",
                              marginLeft: 10,

@@ -29,7 +29,7 @@ export default CampaignCard = (props) => {
 			Sales
 			</Text> */}
 		</View>
-		 </ScrollView>
+	</ScrollView>
          )
     // <Button title="Raise Wage" color="#c91a1a" onPress={() => {
     //   this.props.navigation.navigate('CampaignDetailpage',

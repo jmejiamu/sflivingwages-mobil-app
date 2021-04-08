@@ -71,8 +71,8 @@ const InputBooks = (props) => {
   return (
     <>
 
-      <Text style={{ marginLeft: 15 }}> {"Minimum BID: $" + props.artsData.bid} </Text>
-      <Text style={{ marginLeft: 15 }}> {"Last BID: $" + props.artsData.lastbid} </Text>  
+      <Text style={{ marginLeft: 15 }}> {"Minimum BID: $" + props.booksData.bid} </Text>
+      <Text style={{ marginLeft: 15 }}> {"Last BID: $" + props.booksData.lastbid} </Text>  
 
       <TextInput
         style={styles.textInput}
