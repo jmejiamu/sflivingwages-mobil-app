@@ -14,12 +14,14 @@ import {
 	DonateStack,
 	AssistanceStack,
 	AuctionStack,
+	CampaignStack,
 	header 
 } from './ScreenStacks';
 // import { DrawerNav } from './DrawerStack';
 
 // Vector icon imports
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+//import CampaignScreen from '../screens/CampaignScreen/CampaignScreen';
 
 // function to check which screen user is looking at and changing the color of the tab icon based on active or not
 const navigationIcons = ({navigation}) => ({
@@ -45,6 +47,9 @@ const navigationIcons = ({navigation}) => ({
         	case 'Home':
         		iconName = 'home';
         		break;
+			case 'Campaign':
+				iconName = 'home';
+				break;
         	case 'Auction':
         		//Join the fight page
         		iconName = 'point-of-sale';
@@ -90,6 +95,7 @@ const iconColors = {
 export const BottomNavStack = createBottomTabNavigator(
 	{
 		Home: HomeStack,
+		Campaign: CampaignStack,
 		Auction: AuctionStack,
         Donate: DonateStack,
 		Assistance:AssistanceStack

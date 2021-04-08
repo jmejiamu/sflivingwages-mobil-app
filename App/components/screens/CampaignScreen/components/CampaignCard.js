@@ -1,26 +1,27 @@
-//Import Necessary Packges
 import React from 'react';
 import { Button, View, Text, ScrollView, StyleSheet } from 'react-native';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { withNavigation } from 'react-navigation';
 
 
-export default DonateNav = (props) => {
-	return(
+export default CampaignCard = (props) => {
 
-	<ScrollView style={{ flex: 1}}>
+
+    return  (
+    
+    <ScrollView style={{ flex: 1}}>
 		<View style={styles.homeNav}>
 			<Text 
 			style={styles.homeNavText}
-			onPress={() => props.navigate('Money')}
+			onPress={() => props.navigate('CampaignDetailpage')}
 			>
-		    Money
+		    Raise Wage
 			</Text>
-			<Text
+			{/* <Text
 			style={styles.homeNavText}
 			onPress={() => props.navigate('Kind')}
 			>
 			In-Kind
-			</Text>
+			</Text> */}
 			{/* <Text
 			style={styles.homeNavText}
 			onPress={() => props.navigate('Sales')}
@@ -28,25 +29,33 @@ export default DonateNav = (props) => {
 			Sales
 			</Text> */}
 		</View>
-		 </ScrollView>
+	</ScrollView>
+         )
+    // <Button title="Raise Wage" color="#c91a1a" onPress={() => {
+    //   this.props.navigation.navigate('CampaignDetailpage',
+    //     {
+    //       title: this.props.title
+    //     })
+    // }}
+    // />;
 
-	);
-};
+}
 
 const styles = StyleSheet.create({
-  homeNav: {
+    campaignNav: {
 		flex: 1,
 		flexDirection: 'row',
 		backgroundColor: '#870c18',
 		height: 40,
 		alignItems: 'center'
 	},
-	homeNavText: {
+	campaignText: {
 	flex: 1,
 	fontSize: 28,
 	fontWeight: 'bold',
 	color: '#fff',
 	textAlign: 'center',
-	}
-});
+	},
 
+	
+});
