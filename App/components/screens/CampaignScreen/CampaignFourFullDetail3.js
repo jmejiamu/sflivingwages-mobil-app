@@ -14,12 +14,12 @@ import { Checkbox } from 'galio-framework';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
-export default class CampaignFullDetail2 extends React.Component{
+export default class CampaignFourFullDetail3 extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
             props: this.props.navigate,
-            url: "http://google.com"
+            url: "https://actionnetwork.org/letters/pass-the-protecting-the-right-to-organize-pro-act?source=direct_link&"
         }
     }
  //  static propTypes = { url: React.PropTypes.string };
@@ -41,29 +41,45 @@ export default class CampaignFullDetail2 extends React.Component{
             <ScrollView>
 
                 <View style={styles.container}>
+
                 <View 
                     style={{
                         flexDirection: "row",
-                        height: 60,
+                        height: 120,
                         padding: 20,
                         margin: 10,
                        // backgroundColor: "#F1F9FF", 
                         alignContent: 'center'
                     }}
                     >   
-               
-            
-                <Text style={{ fontSize:24, height: 60, color: "#2699FB", paddingTop:6,paddingLeft:10} }
+                <Text style={{ fontSize:24, height: 60, color: "#2699FB", paddingTop:6,paddingLeft:10,textAlign: 'center'} }
                  onPress={() => this.props.navigation.goBack()}>
                     <Icon name="chevron-left" size={20} color="#c91a1a" 
                      /></Text>
-                     <Text style={{ fontSize:24, width:260, height: 60, 
-                color: "#c91a1a", paddingLeft:20, textAlign: 'center'} }> RAISE WAGE</Text>
+                         <Text style={{ fontFamily:"sans-serif", fontSize:24, width:260, height: 120, 
+                color: "#c91a1a", paddingLeft:20, textAlign: 'center'} }>PROTECT PUBLIC SECTOR EMPLOYMENT AND UNION JOBS</Text>
                     <Text style={{  paddingTop:6, paddingLeft:20,height: 30} }
                     onPress={ ()=>{ 
-                        Linking.openURL('https://actionnetwork.org/petitions/raise-wages-for-economic-recovery?source=email&;')}}>
+                        Linking.openURL(this.state.url)}}>
                         <Icon name="pencil" size={20} color="#c91a1a" /></Text>
                 </View>
+
+                <View 
+                    style={{
+                        padding: 20,
+                        marginLeft: 10,
+                        marginRight:10,
+                        //backgroundColor: "white"
+                    }}>
+                <Text style={{ fontFamily:"sans-serif", fontSize:24, width:260, height: 30, 
+                color: "black", paddingLeft:20, fontWeight: "bold", textAlign: 'center'} }>  Action Steps:  
+                </Text></View>
+                <View 
+                    style={{ flexDirection: "row" ,paddingLeft:20, }}>
+                <Text style={{ color:"#c91a1a"}}>1 </Text>
+                <Text>Contact the mayor or your district supervisor directly.</Text>
+                    </View>
+
 
                 <View 
                     style={{
@@ -71,10 +87,10 @@ export default class CampaignFullDetail2 extends React.Component{
                         height: 60,
                         padding: 20,
                         margin: 10,
-                        //backgroundColor: "#F1F9FF"
+                       // backgroundColor: "white"
                     }}
                     >   
-                <Text style={{ fontSize:24, height: 100, color: "black"} }>b. Support the Heroes Act</Text>
+                <Text style={{ fontSize:24, height: 60, color: "black"} }>c. Fight for $15 and the Right to a Union Without Retaliation</Text>
                 </View>
 
                 <View 
@@ -83,7 +99,7 @@ export default class CampaignFullDetail2 extends React.Component{
                         padding: 20,
                         marginLeft: 10,
                         marginRight:10,
-                       // backgroundColor: "#F1F9FF"
+                        //backgroundColor: "white"
                     }}
                     >
                         
@@ -99,9 +115,13 @@ export default class CampaignFullDetail2 extends React.Component{
                         fontSize: 18
                         }}
                         >
-                The CARES Act, passed by the Senate on March 25, allocated $2 trillion dollars to mitigate the devastating effects of the COVID-19 pandemic, including direct payments to tax-paying individuals. However, the CARES Act excludes those without Social Security numbers, leaving out nearly 12 million undocumented individuals and Dreamers. There is also language in the legislation that excludes sex-workers, affecting over a million people.
+The San Francisco Living Wage Coalition is proud to support the Fight for $15 Movement, as well as similar causes that fight for economic justice and the right to unionize without retaliation. Living wages are a great improvement in San Francisco, but not all employers are complying with these new laws, nor are they honoring their workers’ rights to organize without retaliation.
+a. Fight for $15
 
-On June 12th, the Heroes Act was introduced to the House of Representatives. According to the AFL-CIO, this bill “gives aid for state and local governments, public schools, the U.S. Postal Service, and pension funding relief; keeps workers on payrolls to avoid mass layoffs; extends unemployment insurance; provides more direct payments to working people; extends health care coverage; provides housing and food benefits; and much more.” The Heroes Act would extend coverage to undocumented people and other people in vulnerable communities. Right now, this bill has passed in the House of Representatives and we are waiting on the Senate.</Text>
+The Fight for $15 began in New York City by fast food employees to protest the prolonged increase in income inequality. Inspired by the movement, other cities such as Seattle and San Francisco have begun to take action. (Read more)
+b. Unions and Wage Equality
+
+Statistical correlation between the decrease in union participation and increase in wage inequality shows the positive impact of unions in the fight for wage equality.</Text>
                 </View>
                 <View style={{ backgroundColor: "#c91a1a",
                              marginLeft: 10,

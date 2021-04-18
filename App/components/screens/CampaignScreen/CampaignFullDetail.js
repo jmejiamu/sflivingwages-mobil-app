@@ -44,7 +44,7 @@ export default class CampaignFullDetail2 extends React.Component{
                 <View 
                     style={{
                         flexDirection: "row",
-                        height: 20,
+                        height: 60,
                         padding: 20,
                         margin: 10,
                        // backgroundColor: "#F1F9FF", 
@@ -53,17 +53,22 @@ export default class CampaignFullDetail2 extends React.Component{
                     >   
                
             
-                <Text style={{ fontSize:24, height: 100, color: "#2699FB", paddingLeft:20} }
+                <Text style={{ fontSize:24, height: 60, color: "#2699FB", paddingTop:6,paddingLeft:10,textAlign: 'center'} }
                  onPress={() => this.props.navigation.goBack()}>
-                    <Icon name="chevron-left" size={20} color="#2699FB" 
-                     />            RAISE WAGE
-                    </Text>
+                    <Icon name="chevron-left" size={20} color="#c91a1a" 
+                     /></Text>
+                         <Text style={{ fontFamily:"sans-serif", fontSize:24, width:260, height: 100, 
+                color: "#c91a1a", paddingLeft:20, textAlign: 'center'} }> RAISE WAGE</Text>
+                    <Text style={{  paddingTop:6, paddingLeft:20,height: 30} }
+                    onPress={ ()=>{ 
+                        Linking.openURL('https://actionnetwork.org/petitions/raise-wages-for-economic-recovery?source=email&;')}}>
+                        <Icon name="pencil" size={20} color="#c91a1a" /></Text>
                 </View>
 
-                <View  style={{  margin: 20}} > 
+                {/* <View  style={{  margin: 20}} > 
                 <Button  title="Sign a petition"  color="#2699FB"
                 onPress={ ()=>{ Linking.openURL('https://actionnetwork.org/petitions/raise-wages-for-economic-recovery?source=email&;')}} />
-                    </View>
+                    </View> */}
 
                 <View 
                     style={{
@@ -71,10 +76,10 @@ export default class CampaignFullDetail2 extends React.Component{
                         height: 100,
                         padding: 20,
                         margin: 10,
-                        backgroundColor: "#F1F9FF"
+                       // backgroundColor: "white"
                     }}
                     >   
-                <Text style={{ fontSize:24, height: 100, color: "#2699FB"} }>a. CAMPAIGN FOR CITY FUNDING FOR MCO WAGE INCREASE FOR NON-PROFITS</Text>
+                <Text style={{ fontSize:24, height: 100, color: "black"} }>a. CAMPAIGN FOR CITY FUNDING FOR MCO WAGE INCREASE FOR NON-PROFITS</Text>
                 </View>
 
                 <View 
@@ -83,7 +88,7 @@ export default class CampaignFullDetail2 extends React.Component{
                         padding: 20,
                         marginLeft: 10,
                         marginRight:10,
-                        backgroundColor: "#F1F9FF"
+                        //backgroundColor: "white"
                     }}
                     >
                         
@@ -91,8 +96,12 @@ export default class CampaignFullDetail2 extends React.Component{
                 <View style={{ backgroundColor: "red", flex: 0.5 }} />
                 
                 <Text style={{
+                        fontFamily:"sans-serif",
                         flexDirection: "row",
-                        fontSize: 14
+                        textAlign: "auto",
+                        letterSpacing: 2,
+                        lineHeight: 30,
+                        fontSize: 18
                         }}
                         >
                 The Budget and Appropriations Committee of the Board of Supervisors, led by chair Supervisor Sandra Fewer 
@@ -102,7 +111,7 @@ export default class CampaignFullDetail2 extends React.Component{
                 for city-funded non-profit workers and CalWORKs parents in welfare-to-work programs from $16.50 to $17.05. The Supervisors also included $675,000 
                 in additional funding to raise wages for IHSS home care workers to $17.50 per hour.</Text>
                 </View>
-                <View style={{ backgroundColor: "#BEF0FD",
+                <View style={{ backgroundColor: "#c91a1a",
                              marginLeft: 10,
                             marginRight:10,
                             height: 40 }} >

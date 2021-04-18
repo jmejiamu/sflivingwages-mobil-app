@@ -45,24 +45,27 @@ export default class CampaignTwoDetail extends React.Component{
                     }}
                     >   
                 <Text style={{ fontSize:24, height: 100, 
-                color: "#2699FB", paddingLeft:0, textAlign: 'center'} }
+                color: "#c91a1a", paddingLeft:0, textAlign: 'center'} }
                  onPress={() => this.props.navigation.goBack()}>
-                    <Icon name="chevron-left" size={20} color="#2699FB" 
+                    <Icon name="chevron-left" size={20} color="#c91a1a" 
                      />   End the Injustice of Mass Incarceration{"\n"}
                      
                     </Text>
                 </View>
-                        <View style={{ backgroundColor: "#F1F9FF",  marginLeft: 10,
-                        marginTop:10,marginRight:10, flex: 0.3 }} ><Text style={{paddingLeft:20}}>
+                        <View style={{ borderTopLeftRadius: 10, borderTopRightRadius: 10,
+                         borderBottomLeftRadius: 10, borderBottomRightRadius: 10,
+                        borderWidth: 1, marginLeft:10, marginTop:10,marginRight:10, flex: 0.3 }} >
+                            <Text style={{paddingLeft:20}}>
                         A broken criminal justice system is turning to mass incarceration as a source of cheap prison labor. The formerly incarcerated
                       or convicted then face lifetime job discrimination that leaves them unemployed or in the dirtiest, most dangerous, 
                       and lowest paying jobs.
                       </Text></View>
                 
 
-                <View style={{ backgroundColor: "#F1F9FF",  marginLeft: 10,
+                <View style={{ borderTopLeftRadius: 10, borderTopRightRadius: 10,
+                        borderTopWidth:1,borderLeftWidth:1, borderRightWidth:1, marginLeft: 10,
                         marginTop:10,marginRight:10, flex: 0.3 }} >
-                    <Text style={{paddingLeft:20, fontSize:24, color:"#2699FB" }}> 
+                    <Text style={{paddingLeft:20, fontSize:24, color:"black" }}> 
                     {this.state.post1}{'\n'}
                     </Text>
                 </View>
@@ -70,12 +73,13 @@ export default class CampaignTwoDetail extends React.Component{
                 <View 
                     style={{
                         flexDirection: "row",
-                        height: 220,
+                        height: 120,
                         paddingLeft: 20,
                         paddingRight: 20,
                         marginLeft: 10,
                         marginRight:10,
-                        backgroundColor: "#F1F9FF"
+                        borderLeftWidth:1, 
+                        borderRightWidth:1,
                     }}
                     >
                 <Text style={{
@@ -85,19 +89,20 @@ export default class CampaignTwoDetail extends React.Component{
                         >
                  {this.state.content1}</Text>
                 </View>
-                <View style={{ backgroundColor: "#BEF0FD",
+                <View style={{ backgroundColor: "#c91a1a",
                              marginLeft: 10,
                             marginRight:10,
                             height: 40 }} >
-                    <Text style={{ margin: 10 } }
+                    <Text style={{ margin: 10, color: "white" } }
                         onPress={() => this.props.navigation.navigate('CampaginTwoFullDetail')}>   Read More</Text>
                 </View> 
 
                 </View>
 
-                <View style={{ backgroundColor: "#F1F9FF",  marginLeft: 10,
+                <View style={{ borderTopLeftRadius: 10, borderTopRightRadius: 10,
+                        borderTopWidth:1,borderLeftWidth:1, borderRightWidth:1, marginLeft: 10,
                         marginTop:10,marginRight:10, flex: 0.3 }} >
-                    <Text style={{paddingLeft:20, fontSize:24, color:"#2699FB" }}>
+                    <Text style={{paddingLeft:20, fontSize:24, color:"black" }}>
                     {this.state.post2}{'\n'}
                     </Text>
                 </View>
@@ -105,12 +110,13 @@ export default class CampaignTwoDetail extends React.Component{
                 <View 
                     style={{
                         flexDirection: "row",
-                        height: 220,
+                        height: 120,
                         paddingLeft: 20,
                         paddingRight: 20,
                         marginLeft: 10,
                         marginRight:10,
-                        backgroundColor: "#F1F9FF"
+                        borderLeftWidth:1,
+                        borderRightWidth:1,
                     }}
                     >
                 
@@ -122,12 +128,12 @@ export default class CampaignTwoDetail extends React.Component{
                 {this.state.content2}</Text>
                                     
                 </View>
-                <View style={{ backgroundColor: "#BEF0FD", 
+                <View style={{ backgroundColor: "#c91a1a", 
                             marginLeft: 10,
                             marginRight:10,
                             marginBottom: 20,
                             height: 40 }} >
-                            <Text style={{margin: 10 }}
+                            <Text style={{margin: 10 , color: "white"}}
                             onPress={() => this.props.navigation.navigate('CampaignTwoFullDetail2')}>   Read More</Text>
                 </View> 
                 

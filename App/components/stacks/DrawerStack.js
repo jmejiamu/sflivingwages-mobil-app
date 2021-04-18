@@ -96,7 +96,7 @@ export const DrawerNav = createDrawerNavigator(
 			screen: CampaignStack,
 			navigationOptions: {
 				drawerLabel: 'Campaigns',
-				drawerIcon: <MaterialCommunityIcons name='campaign' size={20} />
+				drawerIcon: <MaterialCommunityIcons name='pencil-ruler' size={20} />
 			}
 		},
 	},

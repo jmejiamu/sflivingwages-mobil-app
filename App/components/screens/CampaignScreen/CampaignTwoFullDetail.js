@@ -44,7 +44,7 @@ export default class CampaignTwoFullDetail extends React.Component{
                 <View 
                     style={{
                         flexDirection: "row",
-                        height: 80,
+                        height: 60,
                         //padding: 20,
                         margin: 10,
                         //backgroundColor: "#F1F9FF", 
@@ -53,17 +53,19 @@ export default class CampaignTwoFullDetail extends React.Component{
                     >   
                
             
-                <Text style={{ fontSize:24, height: 100, color: "#2699FB", paddingLeft:20} }
+                <Text style={{ fontSize:24, height: 60, color: "#c91a1a", paddingTop:8,paddingLeft:20} }
                  onPress={() => this.props.navigation.goBack()}>
-                    <Icon name="chevron-left" size={20} color="#2699FB" 
-                     />   End the Injustice of Mass Incarceration
-                    </Text>
+                    <Icon name="chevron-left" size={20} color="#c91a1a" 
+                     /></Text>
+                    <Text style={{ fontFamily:"sans-serif", fontSize:24, width:260, height: 100, 
+                color: "#c91a1a", paddingLeft:20, textAlign: 'center'} }>   End the Injustice of Mass Incarceration
+                </Text>
                 </View>
 
-                {/* <View  style={{  margin: 20}} > 
-                <Button  title="Sign a petition"  color="#2699FB"
-                onPress={ ()=>{ Linking.openURL('https://actionnetwork.org/petitions/raise-wages-for-economic-recovery?source=email&;')}} />
-                    </View> */}
+                <View  style={{  margin: 20}} > 
+                <Button  title="Know your rights"  color="#c91a1a"
+                onPress={ ()=>{ Linking.openURL('https://www.livingwage-sf.org/know-your-rights')}} ></Button>
+                    </View>
 
                 <View 
                     style={{
@@ -74,7 +76,7 @@ export default class CampaignTwoFullDetail extends React.Component{
                         backgroundColor: "#F1F9FF"
                     }}
                     >   
-                <Text style={{ fontSize:24, height: 40, color: "#2699FB"} }>a.  Prison Privatization</Text>
+                <Text style={{ fontSize:24, height: 40, color: "black"} }>a.  Prison Privatization</Text>
                 </View>
 
                 <View 
@@ -91,8 +93,12 @@ export default class CampaignTwoFullDetail extends React.Component{
                 <View style={{ backgroundColor: "red", flex: 0.5 }} />
                 
                 <Text style={{
+                        fontFamily:"sans-serif",
                         flexDirection: "row",
-                        fontSize: 24
+                        textAlign: "auto",
+                        letterSpacing: 2,
+                        lineHeight: 30,
+                        fontSize: 18
                         }}
                         >
                
@@ -107,7 +113,7 @@ Not only has the privatization of the prison industry negatively impacted incarc
 
 Written by Jefferson Gennerella</Text>
                 </View>
-                <View style={{ backgroundColor: "#BEF0FD",
+                <View style={{ backgroundColor: "#c91a1a",
                              marginLeft: 10,
                             marginRight:10,
                             height: 40 }} >

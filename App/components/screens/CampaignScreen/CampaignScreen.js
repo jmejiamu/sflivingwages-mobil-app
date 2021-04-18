@@ -7,7 +7,7 @@ import {
 	TouchableOpacity,
 	ScrollView,
 	Image,
-
+    Linking
 } from 'react-native';
 
 import { Checkbox } from 'galio-framework';
@@ -25,37 +25,41 @@ export default class CampaignScreen extends React.Component {
 
 			<View style={styles.container}>
                 <View style={styles.topbackground}>
-                <Text Text style={{ paddingTop:40, fontSize:36, color: "#2699FB",textAlign:'center'}}>
+                <Text Text style={{ paddingTop:40, fontSize:36, 
+                    //color: "#2699FB",
+                    color: "black",
+                    textAlign:'center'}}>
                     Our Campaigns </Text>
-                    <Text Text style={{ fontSize:24, color: "#2699FB", textAlign:'center'}}>
+                    <Text Text style={{ fontSize:24, color: "black", textAlign:'center'}}>
                     {'\n'}Stand for your rights</Text>
                 </View>
-               <View style={styles.lightbluebackground}>
+               <View style={styles.lightbackground}>
                     < Text style={ styles.textSytle }
                         onPress={() => this.props.navigation.navigate('CampaignDetailpage')}>
-                      RAISE WAGE
+                      RAISE WAGES
                     </Text>
                </View>
-               <View style={styles.lightbluebackground}>
+               <View style={styles.lightbackground}>
                     < Text style={ styles.textSytle }
                       onPress={() => this.props.navigation.navigate('CampaignTwoDetail',{filename:"campaignData.json"})} >
                        END THE INJUSTICE OF MASS INCARCERATION
                     </Text>
                </View>
-               <View style={styles.lightbluebackground}>
+               <View style={styles.lightbackground}>
                     < Text style={ styles.textSytle }
+                     onPress={ ()=> this.props.navigation.navigate('CampaignThreeDetail')} 
                        >
                       REFORM A BROKEN IMMIGRATION SYSTEM
                     </Text>
                </View>    
-               <View style={styles.lightbluebackground}>
+               <View style={styles.lightbackground}>
                     < Text style={ styles.textSytle }
-                       >
+                    onPress={ ()=> this.props.navigation.navigate('CampaignFourDetail') } >
                        PROTECT PUBLIC SECTOR EMPLOYMENT AND UNION JOBS
                         {'\n'}
                     </Text>
                </View>
-               <View style={styles.lightbluebackground}>
+               <View style={styles.lightbackground}>
                     < Text style={ styles.textSytle }
                        >
                        ENACT FAIR TRADE POLICIES
@@ -85,9 +89,10 @@ const styles = StyleSheet.create({
         borderColor: '#95989a',
         borderWidth: 1,
         borderRadius: 5,
-        backgroundColor: "#F1F9FF"
+        backgroundColor: "white"
+        //backgroundColor: "#F1F9FF"
 	},
-	lightbluebackground: {
+	lightbackground: {
         //flexDirection: "row",
 		height: 100,
         padding: 20,
@@ -95,7 +100,7 @@ const styles = StyleSheet.create({
         borderColor: '#95989a',
         borderWidth: 1,
         borderRadius: 5,
-        backgroundColor: "#F1F9FF"
+        backgroundColor: "white"
 	},
 	textSytle: {
 		height: 50,
@@ -103,8 +108,13 @@ const styles = StyleSheet.create({
 		//borderWidth: 1,
 		borderRadius: 5,
 		padding: 5,
-        color: "#2699FB",
-		margin: 10
+        //color: "#2699FB",
+        color: '#c91a1a',
+		margin: 10,
+        textTransform: 'uppercase',
+        fontWeight: 'bold',
+        fontSize: 18,
+        textAlign: "center"
 	},
 	submitButton: {
 		backgroundColor: '#d31623',

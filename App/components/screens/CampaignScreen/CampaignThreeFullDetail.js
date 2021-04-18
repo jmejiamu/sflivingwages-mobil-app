@@ -14,7 +14,7 @@ import { Checkbox } from 'galio-framework';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
-export default class CampaignFullDetail2 extends React.Component{
+export default class CampaignThreeFullDetail extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -44,7 +44,7 @@ export default class CampaignFullDetail2 extends React.Component{
                 <View 
                     style={{
                         flexDirection: "row",
-                        height: 60,
+                        height: 120,
                         padding: 20,
                         margin: 10,
                        // backgroundColor: "#F1F9FF", 
@@ -53,15 +53,15 @@ export default class CampaignFullDetail2 extends React.Component{
                     >   
                
             
-                <Text style={{ fontSize:24, height: 60, color: "#2699FB", paddingTop:6,paddingLeft:10} }
+                <Text style={{ fontSize:24, height: 60, color: "#2699FB", paddingTop:6,paddingLeft:10,textAlign: 'center'} }
                  onPress={() => this.props.navigation.goBack()}>
                     <Icon name="chevron-left" size={20} color="#c91a1a" 
                      /></Text>
-                     <Text style={{ fontSize:24, width:260, height: 60, 
-                color: "#c91a1a", paddingLeft:20, textAlign: 'center'} }> RAISE WAGE</Text>
+                         <Text style={{ fontFamily:"sans-serif", fontSize:24, width:260, height: 120, 
+                color: "#c91a1a", paddingLeft:20, textAlign: 'center'} }>  REFORM A BROKEN IMMIGRATION SYSTEM</Text>
                     <Text style={{  paddingTop:6, paddingLeft:20,height: 30} }
                     onPress={ ()=>{ 
-                        Linking.openURL('https://actionnetwork.org/petitions/raise-wages-for-economic-recovery?source=email&;')}}>
+                        Linking.openURL('https://www.livingwage-sf.org/pledge-of-resistance/')}}>
                         <Icon name="pencil" size={20} color="#c91a1a" /></Text>
                 </View>
 
@@ -71,10 +71,10 @@ export default class CampaignFullDetail2 extends React.Component{
                         height: 60,
                         padding: 20,
                         margin: 10,
-                        //backgroundColor: "#F1F9FF"
+                       // backgroundColor: "white"
                     }}
                     >   
-                <Text style={{ fontSize:24, height: 100, color: "black"} }>b. Support the Heroes Act</Text>
+                <Text style={{ fontSize:24, height: 60, color: "black"} }>a. Dignity Campaign</Text>
                 </View>
 
                 <View 
@@ -83,7 +83,7 @@ export default class CampaignFullDetail2 extends React.Component{
                         padding: 20,
                         marginLeft: 10,
                         marginRight:10,
-                       // backgroundColor: "#F1F9FF"
+                        //backgroundColor: "white"
                     }}
                     >
                         
@@ -99,9 +99,20 @@ export default class CampaignFullDetail2 extends React.Component{
                         fontSize: 18
                         }}
                         >
-                The CARES Act, passed by the Senate on March 25, allocated $2 trillion dollars to mitigate the devastating effects of the COVID-19 pandemic, including direct payments to tax-paying individuals. However, the CARES Act excludes those without Social Security numbers, leaving out nearly 12 million undocumented individuals and Dreamers. There is also language in the legislation that excludes sex-workers, affecting over a million people.
+                Immigrant Rights Advocacy
 
-On June 12th, the Heroes Act was introduced to the House of Representatives. According to the AFL-CIO, this bill “gives aid for state and local governments, public schools, the U.S. Postal Service, and pension funding relief; keeps workers on payrolls to avoid mass layoffs; extends unemployment insurance; provides more direct payments to working people; extends health care coverage; provides housing and food benefits; and much more.” The Heroes Act would extend coverage to undocumented people and other people in vulnerable communities. Right now, this bill has passed in the House of Representatives and we are waiting on the Senate.</Text>
+The Dignity Campaign is a network of more than 40 immigrant rights and community
+ organizations, unions and churches, including ours, that has crafted an immigration 
+ reform proposal based on “human, labor and civil rights for all.” The campaign’s member 
+ organizations support a progressive alternative to current immigration proposals in Congress. 
+ Current immigration proposals in Congress consist in getting some legalization
+  in trade for guest worker programs and increasing border and workplace enforcement. 
+  The consequences of this immigration policy, which is based on producing a labor supply for 
+  employers, is the break-up of families, displacement of communities and vulnerability of immigrant
+   workers to extreme exploitation. A progressive alternative immigration proposal would include immediate 
+   legalization of the undocumented, de-criminalization of immigrants, equal rights, reunification of families,
+   an end to temporary worker programs,and an end to trade and foreign policies that cause 
+   the dislocation of people.</Text>
                 </View>
                 <View style={{ backgroundColor: "#c91a1a",
                              marginLeft: 10,

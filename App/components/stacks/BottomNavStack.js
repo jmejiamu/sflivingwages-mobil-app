@@ -48,7 +48,7 @@ const navigationIcons = ({navigation}) => ({
         		iconName = 'home';
         		break;
 			case 'Campaign':
-				iconName = 'home';
+				iconName = 'pencil-ruler';
 				break;
         	case 'Auction':
         		//Join the fight page

@@ -39,6 +39,14 @@ import CampaignTwoDetail from '../screens/CampaignScreen/CampaignTwoDetail';
 import CampaignTwoFullDetail from '../screens/CampaignScreen/CampaignTwoFullDetail';
 import CampaignTwoFullDetail2 from '../screens/CampaignScreen/CampaignTwoFullDetail2';
 import CampaignFullDetail2 from '../screens/CampaignScreen/CampaignFullDetail2';
+import CampaignThreeDetail from '../screens/CampaignScreen/CampaignThreeDetail';
+import CampaignThreeFullDetail from '../screens/CampaignScreen/CampaignThreeFullDetail';
+import CampaignThreeFullDetail2 from '../screens/CampaignScreen/CampaignThreeFullDetail2';
+import CampaignFourDetail from '../screens/CampaignScreen/CampaignFourDetail';
+import CampaignFourFullDetail from '../screens/CampaignScreen/CampaignFourFullDetail';
+import CampaignFourFullDetail2 from '../screens/CampaignScreen/CampaignFourFullDetail2';
+import CampaignFourFullDetail3 from '../screens/CampaignScreen/CampaignFourFullDetail3';
+import CampaignFourFullDetail4 from '../screens/CampaignScreen/CampaignFourFullDetail4';
 //import DonateInKind from '../screens/DonateScreen/DonateInKind';
 //import DonateSales from '../screens/DonateScreen/DonateSales';
 
@@ -110,7 +118,7 @@ export const DonateStack = createStackNavigator(
 		Kind: DonateInKind,
 		Sales: DonateSales,
 		Paypal: PaypalDonate,
-		SalesDetail: DetailComponent,
+		
 	},
 	{
 		defaultNavigationOptions: header,
@@ -134,7 +142,8 @@ export const AssistanceStack = createStackNavigator(
 // Stack Screen for Auction house
 export const AuctionStack = createStackNavigator(
 	{
-		Auction: DonateSales
+		Auction: DonateSales,
+		SalesDetail: DetailComponent,
 	},
 	{
 		defaultNavigationOptions: header,
@@ -152,8 +161,15 @@ export const CampaignStack = createStackNavigator(
 		CampaignFullDetail2: CampaignFullDetail2,
 		CampaignTwoDetail: CampaignTwoDetail,
 		CampaginTwoFullDetail: CampaignTwoFullDetail,
-		CampaignTwoFullDetail2:CampaignTwoFullDetail2
-		
+		CampaignTwoFullDetail2:CampaignTwoFullDetail2,
+		CampaignThreeDetail: CampaignThreeDetail,
+		CampaignThreeFullDetail: CampaignThreeFullDetail,
+		CampaignThreeFullDetail2: CampaignThreeFullDetail2,
+		CampaignFourDetail: CampaignFourDetail,
+		CampaignFourFullDetail: CampaignFourFullDetail,
+		CampaignFourFullDetail2: CampaignFourFullDetail2,
+		CampaignFourFullDetail3: CampaignFourFullDetail3,
+		CampaignFourFullDetail4: CampaignFourFullDetail4
 	},
 	{
 		defaultNavigationOptions: header,

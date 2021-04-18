@@ -44,7 +44,7 @@ export default class CampaignTwoFullDetail2 extends React.Component{
                 <View 
                     style={{
                         flexDirection: "row",
-                        height: 100,
+                        height: 60,
                         padding: 20,
                         margin: 10,
                         //backgroundColor: "#F1F9FF", 
@@ -53,28 +53,31 @@ export default class CampaignTwoFullDetail2 extends React.Component{
                     >   
                
             
-                <Text style={{ fontSize:24, height: 100, color: "#2699FB", paddingLeft:20} }
+                <Text style={{ fontSize:24, height: 60, paddingTop:8,paddingLeft:20} }
                  onPress={() => this.props.navigation.goBack()}>
-                    <Icon name="chevron-left" size={20} color="#2699FB" 
-                     />   End the Injustice of {"\n"}       Mass Incarceration
-                    </Text>
+                    <Icon name="chevron-left" size={20} color="#c91a1a" 
+                     /></Text>
+                     <Text style={{ fontFamily:"sans-serif", fontSize:24, width:260, height: 100, 
+                color: "#c91a1a", paddingLeft:20, textAlign: 'center'} }>   End the Injustice of Mass Incarceration
+                </Text>
                 </View>
 
-                {/* <View  style={{  margin: 20}} > 
-                <Button  title="Sign a petition"  color="#2699FB"
-                onPress={ ()=>{ Linking.openURL('https://actionnetwork.org/petitions/raise-wages-for-economic-recovery?source=email&;')}} />
-                    </View> */}
+                
+                <View  style={{  margin: 20}} > 
+                <Button  title="Know your rights"  color="#c91a1a"
+                onPress={ ()=>{ Linking.openURL('https://www.livingwage-sf.org/know-your-rights')}} ></Button>
+                    </View>
 
                 <View 
                     style={{
                         flexDirection: "row",
-                        height: 100,
+                        height: 80,
                         padding: 20,
                         margin: 10,
                         backgroundColor: "#F1F9FF"
                     }}
                     >   
-                <Text style={{ fontSize:24, height: 100, color: "#2699FB"} }>               
+                <Text style={{ fontSize:24, height: 60, color: "black"} }>               
 b .Discrimination Against Formerly Incarcerated People</Text>
                 </View>
 
@@ -92,8 +95,12 @@ b .Discrimination Against Formerly Incarcerated People</Text>
                 <View style={{ backgroundColor: "red", flex: 0.5 }} />
                 
                 <Text style={{
+                        fontFamily:"sans-serif",
                         flexDirection: "row",
-                        fontSize: 24
+                        textAlign: "auto",
+                        letterSpacing: 2,
+                        lineHeight: 30,
+                        fontSize: 18
                         }}
                         >
 The stigma of felony convictions and incarceration follows people long after their court mandated “debt to society” has been paid. 19.8 million Americans (8.6% of the adult population) face incredible hardship and discrimination as they fight an uphill battle to rebuild their lives and stay out of the criminal justice system. In many ways, a felony conviction is like a scarlet letter that can severely limit and prevent a person’s ability to find housing, employment, or to receive student loans or aid from social welfare programs. Furthermore, many states further disenfranchise people with felony convictions by denying them the right to vote.
@@ -108,7 +115,7 @@ A criminal record should not be a life sentence to homelessness, poverty, and di
 
 Written by Greg Lorentzen</Text>
                 </View>
-                <View style={{ backgroundColor: "#BEF0FD",
+                <View style={{ backgroundColor: "#c91a1a",
                              marginLeft: 10,
                             marginRight:10,
                             height: 40 }} >
