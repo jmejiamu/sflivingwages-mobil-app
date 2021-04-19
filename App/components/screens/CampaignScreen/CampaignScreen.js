@@ -61,15 +61,18 @@ export default class CampaignScreen extends React.Component {
                </View>
                <View style={styles.lightbackground}>
                     < Text style={ styles.textSytle }
-                       >
+                     onPress={ ()=> this.props.navigation.navigate('CampaignFiveDetail') }  >
                        ENACT FAIR TRADE POLICIES
                     </Text>
                </View>
               
-                {/* <View>
-                    <CampaignCard  navigate={this.props.navigation.navigate} />
-                
-                </View> */}
+               <View style={styles.lightbackground}>
+                    < Text style={ styles.textSytle }
+                     onPress={ ()=>{ 
+                        Linking.openURL("https://www.livingwage-sf.org/transform-welfare-to-work/")} }  >
+                       TRANSFORM A BROKEN WELFARE-TO-WORK-SYSTEM
+                    </Text>
+               </View>
         </View>
 	
 		</ScrollView>

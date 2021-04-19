@@ -47,6 +47,11 @@ import CampaignFourFullDetail from '../screens/CampaignScreen/CampaignFourFullDe
 import CampaignFourFullDetail2 from '../screens/CampaignScreen/CampaignFourFullDetail2';
 import CampaignFourFullDetail3 from '../screens/CampaignScreen/CampaignFourFullDetail3';
 import CampaignFourFullDetail4 from '../screens/CampaignScreen/CampaignFourFullDetail4';
+import CampaignFiveDetail from '../screens/CampaignScreen/CampaignFiveDetail';
+import CampaignFiveFullDetail from '../screens/CampaignScreen/CampaignFiveFullDetail';
+import CampaignFiveFullDetail2 from '../screens/CampaignScreen/CampaignFiveFullDetail2';
+import CampaignFiveFullDetail3 from '../screens/CampaignScreen/CampaignFiveFullDetail3';
+import CampaignFiveFullDetail4 from '../screens/CampaignScreen/CampaignFiveFullDetail4';
 //import DonateInKind from '../screens/DonateScreen/DonateInKind';
 //import DonateSales from '../screens/DonateScreen/DonateSales';
 
@@ -169,7 +174,12 @@ export const CampaignStack = createStackNavigator(
 		CampaignFourFullDetail: CampaignFourFullDetail,
 		CampaignFourFullDetail2: CampaignFourFullDetail2,
 		CampaignFourFullDetail3: CampaignFourFullDetail3,
-		CampaignFourFullDetail4: CampaignFourFullDetail4
+		CampaignFourFullDetail4: CampaignFourFullDetail4,
+		CampaignFiveDetail: CampaignFiveDetail,
+		CampaignFiveFullDetail: CampaignFiveFullDetail,
+		CampaignFiveFullDetail2: CampaignFiveFullDetail2,
+		CampaignFiveFullDetail3: CampaignFiveFullDetail3,
+		CampaignFiveFullDetail4, CampaignFiveFullDetail4
 	},
 	{
 		defaultNavigationOptions: header,
