@@ -32,7 +32,7 @@
     "gcp-metadata": "^4.2.1",
     "html-metadata": "^1.7.1",
     "link-preview-js": "^2.0.5",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "mysql": "^2.18.1",
     "native-base": "^2.13.14",
     "nodemon": "^1.19.4",
