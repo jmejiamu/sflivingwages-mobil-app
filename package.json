@@ -27,7 +27,7 @@
     "date-fns": "^2.16.1",
     "ejs": "^2.7.4",
     "expo": "^40.0.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "galio-framework": "^0.7.1",
     "gcp-metadata": "^4.2.1",
     "html-metadata": "^1.7.1",
